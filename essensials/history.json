@@ -1,11 +1,7 @@
 {
-  "cookies": [
-    "vpd=v1%3B955x426x1.6875; pas=100082124838717%3ALIABTN6iSr; fr=0ss1rqDq3ZQLBVXaF.AWeeR8acx-_jC_kW7nqXZt6jxnOpwoHkLg-yq51pGoK8U4asWeA.BpPo_W..AAA.0.0.BpPo_h.AWePZ_wNyDqsMYa7o5DiDMdk0Ac; m_pixel_ratio=1.6875; locale=hi_IN; fbl_st=100424995%3BT%3A29428462; xs=14%3AUwFtKfMX-XUjVA%3A2%3A1765707740%3A-1%3A-1; c_user=100082124838717; ps_n=1; sb=1o8-afnFDEcXTo2xWN8ThJLr; wd=427x956; wl_cbv=v2%3Bclient_version%3A3017%3Btimestamp%3A1765707745; ps_l=1; datr=1o8-aaKdPtm07i29jmBgCJSx;",
-    "vpd=v1%3B955x426x1.6875; fbl_st=100422689%3BT%3A29428465; xs=50%3AGds_I2OKWs5oXQ%3A2%3A1765707951%3A-1%3A-1; pas=100072252895488%3AziJyK3pl3k; fr=0N4UVqacdaDEU53Wg.AWcEmBIs1qdfUuTOEncX7RXSuEAGzG7xsflyRbpuY6T2mAdrcAE.BpPpCn..AAA.0.0.BpPpCz.AWfDsm7y7zdFxIr2jIxfPTXKNtc; m_pixel_ratio=1.6875; locale=en_US; c_user=100072252895488; wl_cbv=v2%3Bclient_version%3A3017%3Btimestamp%3A1765707955; ps_l=1; ps_n=1; sb=p5A-aWYdgudvNSalrc50_eiQ; wd=427x956; datr=p5A-aZAOVgv2a7yIfkgc55gy;",
-    "vpd=v1%3B955x426x1.6875; pas=100055324832768%3AfAkbOISPFR; fr=02lHVC0GfPm0GiHcG.AWec4ljt0isVEy4To9tmoIqmAX3sCwkTXbKA4w8YVyo5ijp4BV0.BpPpE8..AAA.0.0.BpPpFJ.AWeqItanO9duFi2TEB7Hsmqgtx0; m_pixel_ratio=1.6875; locale=en_US; fbl_st=101738373%3BT%3A29428468; xs=35%3AvhrGQu_YI-0kxQ%3A2%3A1765708101%3A-1%3A-1; c_user=100055324832768; ps_n=1; sb=PJE-acmCRdqPMcYo6OW5FOcm; wd=427x956; wl_cbv=v2%3Bclient_version%3A3017%3Btimestamp%3A1765708105; ps_l=1; datr=PJE-aay-01lXogzj35eyLMA-;"
-  ],
+  "cookies": [],
   "comment": "",
   "post_link": "",
-  "comment_per_acc": 1,
+  "comment_per_acc": 2,
   "threads_count": 1
 }

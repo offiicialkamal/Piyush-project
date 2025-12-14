@@ -83,12 +83,16 @@ class FacebookCommentBot:
                 timeout=15,
                 allow_redirects=True
             )
-            
+            print(response.headers.get('Content-Type'))
+            print(response.headers.get('Content-Encoding'))
+
             if response.status_code != 200:
                 return False, f"HTTP {response.status_code}", {}
             
             html = response.text
-            
+            print(type(html))
+            with open("aa.html", "w") as f:
+                f.write(html)
             # Check if we're logged in
             if "login.php" in response.url or "Log In" in html.lower():
                 return False, "Not logged in - cookies expired", {}
@@ -466,7 +470,8 @@ class FacebookCommentBot:
             if response.status_code == 200:
                 try:
                     result = json.loads(response_text)
-                    
+                    with open("aa.json", w) as a:
+                        json.dump(result, a, indent=2)
                     if 'errors' in result:
                         error_msg = result['errors'][0].get('message', 'Unknown error')
                         return False, error_msg, result
@@ -540,13 +545,7 @@ class FacebookCommentBot:
 if __name__ == "__main__":
     # Your Facebook cookies (replace with your actual cookies)
     COOKIES = '''
-    datr=klY9aXM9pdUcks3XTVsHSoKu;
-    fr=0unAOSi6yWfybLy7T.AWcuqYfgwbpzB5VyutJHOGJZKpHTQQ6KF7ZNYUOAcF_6oIQ5fR4.BpPVaS..AAA.0.0.BpPZzX.AWcYUKE6IRV5L2onw4y4x1x79Is;
-    xs=48%3AuUFoOvtkOFpd3w%3A2%3A1765627546%3A-1%3A-1;
-    c_user=61564971251642;
-    sb=klY9ac_nRIs1y1aa7Kca2hlo;
-    ps_l=1;
-    ps_n=1
+vpd=v1%3B955x426x1.6875; fbl_st=100422689%3BT%3A29428465; xs=50%3AGds_I2OKWs5oXQ%3A2%3A1765707951%3A-1%3A-1; pas=100072252895488%3AziJyK3pl3k; fr=0N4UVqacdaDEU53Wg.AWcEmBIs1qdfUuTOEncX7RXSuEAGzG7xsflyRbpuY6T2mAdrcAE.BpPpCn..AAA.0.0.BpPpCz.AWfDsm7y7zdFxIr2jIxfPTXKNtc; m_pixel_ratio=1.6875; locale=en_US; c_user=100072252895488; wl_cbv=v2%3Bclient_version%3A3017%3Btimestamp%3A1765707955; ps_l=1; ps_n=1; sb=p5A-aWYdgudvNSalrc50_eiQ; wd=427x956; datr=p5A-aZAOVgv2a7yIfkgc55gy;
     '''
     
     # Initialize the bot

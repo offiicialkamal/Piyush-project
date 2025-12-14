@@ -27,7 +27,7 @@ class comenter:
         # S(REQUITRTEMENTS_FILE).check()
         # updates().check()
         self.clear()
-        logo_length = L(COLORS_FILE, SETTINGS_FILE).print_logo()
+        logo_length = 10#L(COLORS_FILE, SETTINGS_FILE).print_logo()
         self.logo_length = logo_length
         self.show_options()
         choice = self.get_choice("Choice", "int")
@@ -52,7 +52,7 @@ class comenter:
         self.set_cookie()
         self.set_post_link()
         self.set_comment_per_acc()
-        self.threads_count()
+        self.set_threads_count()
         self.set_comment()
 
         self.print_line()
@@ -71,7 +71,7 @@ class comenter:
             choice = input(subject) if (" " in subject) else input(
                 f"Enter Your {subject} : ")
             if not choice:
-                return self.get_choice(subject, t)
+                return
         else:
             try:
                 choice = int(input(subject) if (" " in subject)
@@ -103,6 +103,9 @@ class comenter:
             print("Unexpected Input Please choose one of the given option")
             time.sleep(3)
             self.start()
+
+
+
     ###########################################################################
     ######################       small methods      ###########################
 
@@ -123,27 +126,36 @@ class comenter:
             return self.set_cookie()
     def set_post_link(self):
         link = self.get_choice("post_link: ")
+        if not link: return
         self.post_link = link
         update_data(HISTORY_FILE, "post_link", link)
     def set_comment_per_acc(self):
-        number_of_coments = self.get_choice("Comments Per Account: ", "int")
-        self.comment_per_acc = number_of_coments
+        number_of_coments = input("Comments Per Account: ")
+        if not number_of_coments: return
+        try:self.comment_per_acc = int(number_of_coments)
+        except:print("invalid input");set_comment_per_acc(self)
         update_data(HISTORY_FILE, "comment_per_acc", number_of_coments)
-    def threads_count(self):
-        threads_count = self.get_choice("Enter Speed (1 - 10 recomended): ", "int")
-        self.threads_count = threads_count
+    def set_threads_count(self):
+        threads_count = input("Enter Speed (1 - 10 recomended): ")
+        if not threads_count: return
+        try:self.threads_count = int(threads_count)
+        except: print("invalid input");set_threads_count(self)
         update_data(HISTORY_FILE, "threads_count", threads_count)
     def set_comment(self):
+        is_enterd= False
         while True:
             cmt = input("Comment: ")
             if not cmt:break
+            is_enterd = True
             comment += "\n" + cmt
+        if not is_enterd: return
         self.comment = comment
         update_data(HISTORY_FILE, "comment", comment)
     def start_thread(self):
         #hear ill handle the threads count system
         for account in self.cookies:
-            t = commenter()
+            t = commenter(account, self.post_link,  self.comment, self.comment_per_acc)
             t.start()
+            t.join()
 
 comenter().start()

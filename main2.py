@@ -6,7 +6,17 @@ import re
 cookies = {}
 
 
-
+def format_cookie(s):
+    cokie_json = {}
+    li = s.split(';')
+    for ele in li:
+        ele = ele.strip().split('=')
+        if len(ele) == 2:
+            name = ele[0]
+            value = ele[1]
+            cokie_json[name] = value
+    print("sucessfully refactord cookies")
+    return cokie_json
 
 def extract_params_from_page():
     global cookies
@@ -14,7 +24,7 @@ def extract_params_from_page():
     main_page_url = "https://www.facebook.com/pages/?category=your_page"
     # cookie = format_cookie('vpd=v1%3B955x426x1.6875; pas=61564971251642%3A3lsIQzxXIw; fr=0unAOSi6yWfybLy7T.AWfLSnVmX35EkDGnDHwXibt8MrkBt6Al8hblGGjnR9MQZHxgzps.BpPVaS..AAA.0.0.BpPVaw.AWcIyCJUeSVRV9XLGoDiCN-iKjY; m_pixel_ratio=1.6875; locale=en_GB; fbl_st=100633974%3BT%3A29427126; xs=48%3AuUFoOvtkOFpd3w%3A2%3A1765627546%3A-1%3A-1; c_user=61564971251642; ps_n=1; sb=klY9ac_nRIs1y1aa7Kca2hlo; wd=427x956; wl_cbv=v2%3Bclient_version%3A3017%3Btimestamp%3A1765627568; ps_l=1; datr=klY9aXM9pdUcks3XTVsHSoKu;')
     # cookie = format_cookie('vpd=v1%3B955x426x1.6875; pas=100028085268481%3Ag12cPYTDlp; fr=03FG9b5R29NXRi5Lj.AWexyFgJiYjx8oTaxPUR0fmFpEc_i2B_SARlwNpSmFuMM0i5YVM.BpPUGw..AAA.0.0.BpPUHA.AWfBxKfap16jH-4aPTKuPvF0UV4; m_pixel_ratio=1.6875; locale=hi_IN; fbl_st=100434845%3BT%3A29427036; xs=27%3AU5TgH9fqYyFoUw%3A2%3A1765622200%3A-1%3A-1; wl_cbv=v2%3Bclient_version%3A3017%3Btimestamp%3A1765622208; c_user=100028085268481; sb=sEE9aerzdRizAtKuBGYpldOl; wd=427x956; datr=sEE9aT0RVLyqUxLhVQGv3EqK;')
-    cookie = format_cookie('datr=WGwgaYh5sku3vMAaebggYKbb; fr=1mVs6TvFsDfE62CwX.AWe-Kbu0rud61tMuNDKT_tzGw7D5s1wTXTzixLSC1Ix9NdDAVjw.BpPV7P..AAA.0.0.BpPV7P.AWf8xIeGvK42FmLYIN4vej2Dh3A; sb=WGwgaaBrqfxyo9O1wAjt-Ysn; ps_l=1; ps_n=1; c_user=61561308892846; xs=14%3Axihjjq6qwqq43A%3A2%3A1764063981%3A-1%3A-1%3A%3AAcy-2hOyOas1-hk9Sgr41wMJWanysI7lhqXs7m586Us; presence=C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1765629662999%2C%22v%22%3A1%7D; wd=982x695; dpr=1.25')
+    cookie = format_cookie('vpd=v1%3B955x426x1.6875; pas=100055324832768%3AfAkbOISPFR; fr=02lHVC0GfPm0GiHcG.AWec4ljt0isVEy4To9tmoIqmAX3sCwkTXbKA4w8YVyo5ijp4BV0.BpPpE8..AAA.0.0.BpPpFJ.AWeqItanO9duFi2TEB7Hsmqgtx0; m_pixel_ratio=1.6875; locale=en_US; fbl_st=101738373%3BT%3A29428468; xs=35%3AvhrGQu_YI-0kxQ%3A2%3A1765708101%3A-1%3A-1; c_user=100055324832768; ps_n=1; sb=PJE-acmCRdqPMcYo6OW5FOcm; wd=427x956; wl_cbv=v2%3Bclient_version%3A3017%3Btimestamp%3A1765708105; ps_l=1; datr=PJE-aay-01lXogzj35eyLMA-;    ')
     cookies = cookie
     session = requests.Session()
 
@@ -39,7 +49,8 @@ def extract_params_from_page():
         return None
 
     html = response.text
-
+    with open("hh.html", "w") as a:
+        a.write(html)
     # Extract parameters using regex patterns
     params = {}
 
@@ -66,7 +77,8 @@ def extract_params_from_page():
         print("Warning: Could not find lsd")
 
     # Extract jazoest (often in hidden input fields)
-    jazoest_match = re.search(r'name="jazoest" value="(\d+)"', html)
+    # jazoest_match = re.search(r'name="jazoest" value="(\d+)"', html)
+    jazoest_match = re.search(r'jazoest=(\d+)"', html)
     if not jazoest_match:
         jazoest_match = re.search(r'"jazoest":"(\d+)"', html)
 
