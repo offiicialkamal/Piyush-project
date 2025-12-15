@@ -16,4 +16,3 @@ sequenceDiagram
     P->>F: Fetch and post data to Facebook (Profile)
     I->>F: Fetch and post data to Facebook (ID)
     F->>F: Successfully post comments to Facebook
-```
