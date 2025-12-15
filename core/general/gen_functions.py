@@ -1,0 +1,21 @@
+import json
+
+class generalFunctions:
+    """contains alll small and general functions"""
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def refactorCookie(cookie):
+        cokie_json = {}
+        li = cookie.split(';')
+        for ele in li:
+            ele = ele.strip().split('=')
+            if len(ele) == 2:
+                name = ele[0]
+                value = ele[1]
+                cokie_json[name] = value
+        print("sucessfully refactord cookies")
+        return cokie_json
+
+    
