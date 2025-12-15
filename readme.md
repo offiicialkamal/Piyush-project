@@ -1,31 +1,35 @@
-%% Mermaid Diagram with Improved Horizontal Flow
-graph LR
-M[main.py] -->|Pass cookies| C(core/main.py)
-C -->|Divide cookies by speed| T1(Thread 1)
-C -->|Divide cookies by speed| T2(Thread 2)
-C -->|Divide cookies by speed| T3(Thread 3)
-T1 -->|Extract token| P(core/profile)
-T2 -->|Extract token| I(core/id)
-T3 -->|Extract token| I
-P --> F(Facebook)
-I --> F
-F -->|Post comments| F2(Facebook confirmation)
+```mermaid
+flowchart TD
+    A[main.py] -->|Pass cookies| B[core/main.py]
 
-    %% Styling for nodes
-    style M fill:#f9f,stroke:#333,stroke-width:4px
-    style C fill:#ccf,stroke:#333,stroke-width:2px
-    style T1 fill:#bbf,stroke:#333,stroke-width:2px
-    style T2 fill:#bbf,stroke:#333,stroke-width:2px
-    style T3 fill:#bbf,stroke:#333,stroke-width:2px
-    style P fill:#cfc,stroke:#333,stroke-width:2px
-    style I fill:#cfc,stroke:#333,stroke-width:2px
-    style F fill:#fcf,stroke:#333,stroke-width:2px
-    style F2 fill:#fcf,stroke:#333,stroke-width:2px
+    B -->|Split by speed / threads| C1[Thread 1]
+    B -->|Split by speed / threads| C2[Thread 2]
+    B -->|Split by speed / threads| C3[Thread N]
 
-    %% Customizing links
-    linkStyle 0 stroke:#00f,stroke-width:2px
-    linkStyle 1 stroke:#00f,stroke-width:2px
-    linkStyle 2 stroke:#00f,stroke-width:2px
-    linkStyle 3 stroke:#0f0,stroke-width:2px
-    linkStyle 4 stroke:#f00,stroke-width:2px
-    linkStyle 5 stroke:#f00,stroke-width:2px
+    C1 -->|Iterate cookies| D1[Extract Token & Data]
+    C2 -->|Iterate cookies| D2[Extract Token & Data]
+    C3 -->|Iterate cookies| D3[Extract Token & Data]
+
+    D1 --> E[core/profile]
+    D2 --> F[core/id]
+    D3 --> E
+
+    E -->|Fetch data & post comment| G[Facebook]
+    F -->|Fetch data & post comment| G
+
+    %% Styling (GitHub safe)
+    style A fill:#1f2937,color:#ffffff,stroke:#111827,stroke-width:2px
+    style B fill:#2563eb,color:#ffffff,stroke:#1e40af,stroke-width:2px
+
+    style C1 fill:#0284c7,color:#ffffff
+    style C2 fill:#0284c7,color:#ffffff
+    style C3 fill:#0284c7,color:#ffffff
+
+    style D1 fill:#16a34a,color:#ffffff
+    style D2 fill:#16a34a,color:#ffffff
+    style D3 fill:#16a34a,color:#ffffff
+
+    style E fill:#9333ea,color:#ffffff
+    style F fill:#9333ea,color:#ffffff
+
+    style G fill:#dc2626,color:#ffffff,stroke-width:2px
