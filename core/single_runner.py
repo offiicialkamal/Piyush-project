@@ -47,45 +47,45 @@ class run_single(threading.Thread, generalFunctions, Admin1):
             ######################################################################################################################
         ######## STEP 1
             params, fresh_cookies = self.extract_params_from_page(self.__cookie, self.__pagesURL, self.__userAgent)
-            print(params)
-            print()
-            print(fresh_cookies)
-            sys.exit()
+            # print(params)
+            # print()
+            # print(fresh_cookies)
+            # sys.exit()
         ######## STEP 2
             if params:
                 self.__tokens = params
                 print(f"Extracted parameters: {list(params.keys())}")
 
                 # Make the GraphQL request with fresh parameters
-                print("\nMaking GraphQL request...")
-                response = self.make_graphql_request(params, fresh_cookies)
+                # print("\nMaking GraphQL request...")
+                response = self.fetch_pages(params, fresh_cookies, self.__userAgent)
 
-                print(f"Response status: {response.status_code}")
+                # print(f"Response status: {response.status_code}")
 
                 if response.status_code == 200:
                     try:
                         data = response.json()
-                        # Save the response
-                        with open('main.json', 'w') as f:
-                            json.dump(data, f, indent=4)
+                        # # Save the response
+                        # with open('main.json', 'w') as f:
+                        #     json.dump(data, f, indent=4)
 
                         # Extract profiles if available
                         if 'data' in data and 'viewer' in data['data']:
-                            profiles = data['data']['viewer']['actor'].get(
-                                'additional_profiles_with_biz_tools', {}).get('edges', {})
+                            profiles = data['data']['viewer']['actor'].get('additional_profiles_with_biz_tools', {}).get('edges', {})
                             print(f"\nFound {len(profiles)} profiles:")
                             for profile in profiles:
                                 profile = profile.get('node', {})
-                                name = profile.get('name', 'N/A')
+                                # name = profile.get('name', 'N/A')
                                 profile_id = profile.get('id', 'N/A')
-                                print(f"{name}    {profile_id}")
-                                print()
+                                # print(f"{name}    {profile_id}")
+                                print(profile_id)
                         else:
                             print("No profiles found in response")
                             print("Response structure:",
                                   json.dumps(data, indent=2)[:500])
 
                     except json.JSONDecodeError as e:
+                        pass
                         print(f"Failed to parse JSON response: {e}")
                         print(f"Response text: {response.text[:500]}")
                 else:

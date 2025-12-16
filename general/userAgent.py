@@ -3,7 +3,7 @@ import random
 class Generator:
     def generate_random_os(self):
         os_choices = [
-            "Windows NT", "Macintosh; Intel Mac OS X", "Linux; U;", "X11; Ubuntu;", "Android", "iPhone; CPU iPhone OS"
+            "Windows NT", "Macintosh; Intel Mac OS X", "Linux; U;", "X11; Ubuntu;"
         ]
         os = random.choice(os_choices)
         
