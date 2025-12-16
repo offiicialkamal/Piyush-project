@@ -3,16 +3,16 @@ import json
 import threading
 import requests
 # from file_handlers import read_json
-from general.gen_functions import generalFunctions
+from .general import generalFunctions
 
 
-class run_single(threading.Thread, generalFunctions, result_container):
+class run_single(threading.Thread, generalFunctions):
     def __init__(self, cookie, post_link, comment, comment_per_acc, result_container):
         super().__init__()
         self.result_container = result_container
         self.__comment_per_acc = comment_per_acc
-        self.__userAgent = 
-        self.__cookies = general_funnctions.refactorCookie(cookie)
+        self.__userAgent = cookie.get(list(cookie.keys())[0])
+        self.__cookie = generalFunctions().refactorCookie(list(cookie.keys())[0])
         ## class specific variables
         self.__pagesURL = "https://www.facebook.com/pages/?category=your_page"
         self.__tokens = {}
@@ -20,6 +20,31 @@ class run_single(threading.Thread, generalFunctions, result_container):
     def run(self):
         print("started threed")
         try:
+
+            ######################################################################################################################
+            ######################################################################################################################
+            ############# TILL NOW EVERYTHING IS WORKING #########################################################################
+            ########################### THIS IS THE MAIN PART OF THE PROGRAM #####################################################
+            ##                                                                                                                  ##
+            ## EXTRACT THE TOKENS AND SET TO INSTANCE                                                                           ##
+            ## ======>>>>>>>>>> IF LOGIN FAILED / CHECKPOINT TAKE EXIT ==>> IN FUTURE THAT COOKIE IS USEFULL FOR CLEANUP        ##
+            ##                                                                                                                  ##
+            ## EXTRACT THE POST PAGE DATA                                                                                       ## 
+            ##                                                                                                                  ##
+            ## IF USER WANT COMMENT BY PAGE ====>>>> Extract PAGES                                                              ##
+            ##=============>>>> CREATE AN LIST OOF PAGES                                                                        ##
+            ##=============>>>> LOOP THROUGH IT AND POST COMMENTS ONE BY ONE ACCORDING TO THE COMMENT_PER_ACC VARIABLE          ##
+            ## ELSE ACCORDING TO THE COMMENT_PER_ACC VARIABLE LOOP POST COMMENT N TIMES USING MAIN ID                           ##
+            ##                                                                                                                  ##
+            ######################################################################################################################
+            ######################################################################################################################
+            ######################################################################################################################
+            ######################################################################################################################
+
+
+
+
+
             print("Extracting fresh parameters from Facebook page...")
             params, fresh_cookies = self.extract_params_from_page()
 
@@ -72,9 +97,3 @@ class run_single(threading.Thread, generalFunctions, result_container):
             import traceback
             traceback.print_exc()
 
-
-cookie = "datr=OZ4oaaPMapVsAMgQ-kctLHAf; fr=1pXZrWFE4HqVWV2wj.AWejfeSTh--N3PulYdY5Tpt94ymCXqn_KwOcD9Gak4vn1geUPAY.BpPvJN..AAA.0.0.BpPvJN.AWfhqEC1Jxqa2Sc0mxTIO2Y1csM; sb=OZ4oaetTZUNpwQtVht7HwxCu; wd=588x479; dpr=1.6800000667572021; locale=en_US; ps_l=1; ps_n=1; c_user=61558074221758; xs=41%3AwPxC4m9Aw-KdHw%3A2%3A1765119401%3A-1%3A-1%3A%3AAcySD8XTcwi2Vxf7cA3VX--_s5yQSgMBTdkjY7CBhQ; presence=C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1765732966716%2C%22v%22%3A1%7D"
-ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
-
-t = commenter(cookie, ua)
-t.start()
