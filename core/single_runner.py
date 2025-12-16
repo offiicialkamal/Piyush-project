@@ -59,40 +59,9 @@ class run_single(threading.Thread, generalFunctions, Admin1):
                 # Make the GraphQL request with fresh parameters
                 # print("\nMaking GraphQL request...")
                 response = self.fetch_pages(params, fresh_cookies, self.__userAgent)
+                print(response)
 
                 # print(f"Response status: {response.status_code}")
-
-                if response.status_code == 200:
-                    try:
-                        data = response.json()
-                        # # Save the response
-                        # with open('main.json', 'w') as f:
-                        #     json.dump(data, f, indent=4)
-
-                        # Extract profiles if available
-                        if 'data' in data and 'viewer' in data['data']:
-                            profiles = data['data']['viewer']['actor'].get('additional_profiles_with_biz_tools', {}).get('edges', {})
-                            print(f"\nFound {len(profiles)} profiles:")
-                            for profile in profiles:
-                                profile = profile.get('node', {})
-                                # name = profile.get('name', 'N/A')
-                                profile_id = profile.get('id', 'N/A')
-                                # print(f"{name}    {profile_id}")
-                                print(profile_id)
-                        else:
-                            print("No profiles found in response")
-                            print("Response structure:",
-                                  json.dumps(data, indent=2)[:500])
-
-                    except json.JSONDecodeError as e:
-                        pass
-                        print(f"Failed to parse JSON response: {e}")
-                        print(f"Response text: {response.text[:500]}")
-                else:
-                    print(
-                        f"Request failed with status: {response.status_code}")
-                    print(f"Response: {response.text[:500]}")
-
             else:
                 print("Failed to extract parameters MAY BE ACCOUNT IS ALREADY LOCKED")
 

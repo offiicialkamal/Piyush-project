@@ -1,5 +1,5 @@
 import requests
-import re, time
+import re, time, json
 
 class Admin1:
     def __init__(self):
@@ -108,7 +108,45 @@ class Admin1:
             data=data
         )
 
-        return response
+        profiles_collection = {}
+        profiles_collection["ids"] = {}
+        profiles_collection["is_locked"] = False
+        if response.status_code == 200:
+            try:
+                data = response.json()
+                # # Save the response
+                # with open('main.json', 'w') as f:
+                #     json.dump(data, f, indent=4)
+
+                # Extract profiles if available
+                if 'data' in data and 'viewer' in data['data']:
+                    profiles = data['data']['viewer']['actor'].get('additional_profiles_with_biz_tools', {}).get('edges', {})
+                    # print(f"\nFound {len(profiles)} profiles:")
+                    
+                    for profile in profiles:
+                        profile = profile.get('node', {})
+                        name = profile.get('name', 'N/A')
+                        profile_id = profile.get('id', 'N/A')
+                        # print(f"{name}    {profile_id}")
+                        # print(profile_id)
+                        profiles_collection["ids"][profile_id] = name
+                    return profiles_collection
+                    
+                else:
+                    # print("No profiles found in response")
+                    # print("Response structure:",json.dumps(data, indent=2)[:500])
+                    return profiles_collection
+
+            except json.JSONDecodeError as e:
+                profiles["is_locked"] = True
+                # print(f"Failed to parse JSON response: {e}")
+                # print(f"Response text: {response.text[:500]}")
+                return profiles_collection
+        else:
+            # print(f"Request failed with status: {response.status_code}")
+            # print(f"Response: {response.text[:500]}")
+            profiles["is_locked"] = True
+            return profiles_collection
 
     def extract_params_from_page(self, cookies, pageURL, userAgent):
         main_page_url = pageURL
