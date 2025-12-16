@@ -5,17 +5,19 @@ import webbrowser as wb
 from customs import show
 from global_constants import COLORS_FILE, SETTINGS_FILE, HISTORY_FILE
 from file_handlers import read_text, update_data, read_json
-from general import logo as L
+from general import logo as L, Generator
 from security import security as S
 from updater import updates
-from core import commenter
+from core import batch_runner
+from queue import Queue
 
 history = read_json(HISTORY_FILE)
-print(history)
+result_container = Queue() # list like structure and by default its thread safe and provides put, get like mutable methods 
 
 time.sleep(2)
 class comenter:
-    def __init__(self):
+    def __init__(self, result_container):
+        self.result_container = result_container
         self.logo_length = None
         self.cookies = history["cookies"]
         self.comment = history["comment"]
@@ -117,7 +119,8 @@ class comenter:
             new_cookie = read_text(path)
             print(type(new_cookie))
             for cookie in new_cookie.splitlines():
-                cookies.append(cookie)
+                user_agent = Generator().generate()
+                cookies.append({cookie: [user_agent]})
             self.cookies = cookies
             update_data(HISTORY_FILE, "cookies", cookies)
         except Exception as e:
@@ -153,9 +156,17 @@ class comenter:
         update_data(HISTORY_FILE, "comment", comment)
     def start_thread(self):
         #hear ill handle the threads count system
-        for account in self.cookies:
-            t = commenter(account, self.post_link,  self.comment, self.comment_per_acc)
+        total_cookies = len(self.cookies)
+        cookies_batch_size = self.threads_count // total_cookies
+        while True:
+            if cookies_batch <= len(self.cookies):cookies_batch = self.cookies
+            else: cookies_batch = [self.cookies.pop() for _ in range(cookies_batch_size)]
+            t = batch_runner(cookies_batch, self.post_link,  self.comment, self.comment_per_acc, self.result_container)
             t.start()
-            t.join()
+             # block the execution untill this thread finishes 
+             # in that tharead ill start all cooies threads parlerly
+            t.join()  
+            if not self.cookies: break
 
-comenter().start()
+
+comenter(result_container).start()

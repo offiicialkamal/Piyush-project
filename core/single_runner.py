@@ -6,12 +6,14 @@ import requests
 from general.gen_functions import generalFunctions
 
 
-class commenter(threading.Thread, generalFunctions):
-    def __init__(self, cookie, userAgent):
-        # def __init__(self):
+class run_single(threading.Thread, generalFunctions, result_container):
+    def __init__(self, cookie, post_link, comment, comment_per_acc, result_container):
         super().__init__()
-        self.__userAgent = userAgent
+        self.result_container = result_container
+        self.__comment_per_acc = comment_per_acc
+        self.__userAgent = 
         self.__cookies = general_funnctions.refactorCookie(cookie)
+        ## class specific variables
         self.__pagesURL = "https://www.facebook.com/pages/?category=your_page"
         self.__tokens = {}
 

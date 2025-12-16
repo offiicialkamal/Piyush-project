@@ -1,1 +1,1 @@
-from core.main import commenter
+from batch_runner import batch_runner
