@@ -5,10 +5,10 @@ import webbrowser as wb
 from customs import show
 from global_constants import COLORS_FILE, SETTINGS_FILE, HISTORY_FILE
 from file_handlers import read_text, update_data, read_json
-from general import logo as L
+from general import logo as L, Generator
 from security import security as S
 from updater import updates
-from core import commenter
+from core import batch_runner
 from queue import Queue
 
 history = read_json(HISTORY_FILE)
@@ -119,7 +119,8 @@ class comenter:
             new_cookie = read_text(path)
             print(type(new_cookie))
             for cookie in new_cookie.splitlines():
-                cookies.append(cookie)
+                user_agent = Generator().generate()
+                cookies.append({cookie: [user_agent]})
             self.cookies = cookies
             update_data(HISTORY_FILE, "cookies", cookies)
         except Exception as e:
@@ -165,7 +166,7 @@ class comenter:
              # block the execution untill this thread finishes 
              # in that tharead ill start all cooies threads parlerly
             t.join()  
-            is not self.cookies: break
+            if not self.cookies: break
 
 
 comenter(result_container).start()

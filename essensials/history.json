@@ -1,5 +1,5 @@
 {
-  "cookies": [],
+  "cookies": [{"cookies":["useer_agent", "other things to maintain the consistency"]}],
   "comment": "",
   "post_link": "",
   "comment_per_acc": 2,
