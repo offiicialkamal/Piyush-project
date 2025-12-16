@@ -7,7 +7,7 @@ class generalFunctions:
     def __init__(self):
         pass
 
-    def refactorCookie(self,cookie):
+    def refactorCookie(self, cookie):
         cokie_json = {}
         li = cookie.split(';')
         for ele in li:
@@ -99,10 +99,10 @@ class generalFunctions:
 
         return response
 
-    def extract_params_from_page(self):
+    def extract_params_from_page(self, pageURL):
         global cookies
         # First, fetch the main page to get fresh parameters
-        main_page_url = self.__pagesURL
+        main_page_url = pageURL
         # cookie = format_cookie('vpd=v1%3B955x426x1.6875; pas=61564971251642%3A3lsIQzxXIw; fr=0unAOSi6yWfybLy7T.AWfLSnVmX35EkDGnDHwXibt8MrkBt6Al8hblGGjnR9MQZHxgzps.BpPVaS..AAA.0.0.BpPVaw.AWcIyCJUeSVRV9XLGoDiCN-iKjY; m_pixel_ratio=1.6875; locale=en_GB; fbl_st=100633974%3BT%3A29427126; xs=48%3AuUFoOvtkOFpd3w%3A2%3A1765627546%3A-1%3A-1; c_user=61564971251642; ps_n=1; sb=klY9ac_nRIs1y1aa7Kca2hlo; wd=427x956; wl_cbv=v2%3Bclient_version%3A3017%3Btimestamp%3A1765627568; ps_l=1; datr=klY9aXM9pdUcks3XTVsHSoKu;')
         # cookie = format_cookie('vpd=v1%3B955x426x1.6875; pas=100028085268481%3Ag12cPYTDlp; fr=03FG9b5R29NXRi5Lj.AWexyFgJiYjx8oTaxPUR0fmFpEc_i2B_SARlwNpSmFuMM0i5YVM.BpPUGw..AAA.0.0.BpPUHA.AWfBxKfap16jH-4aPTKuPvF0UV4; m_pixel_ratio=1.6875; locale=hi_IN; fbl_st=100434845%3BT%3A29427036; xs=27%3AU5TgH9fqYyFoUw%3A2%3A1765622200%3A-1%3A-1; wl_cbv=v2%3Bclient_version%3A3017%3Btimestamp%3A1765622208; c_user=100028085268481; sb=sEE9aerzdRizAtKuBGYpldOl; wd=427x956; datr=sEE9aT0RVLyqUxLhVQGv3EqK;')
         # cookie = format_cookie('vpd=v1%3B955x426x1.6875; pas=100055324832768%3AfAkbOISPFR; fr=02lHVC0GfPm0GiHcG.AWec4ljt0isVEy4To9tmoIqmAX3sCwkTXbKA4w8YVyo5ijp4BV0.BpPpE8..AAA.0.0.BpPpFJ.AWeqItanO9duFi2TEB7Hsmqgtx0; m_pixel_ratio=1.6875; locale=en_US; fbl_st=101738373%3BT%3A29428468; xs=35%3AvhrGQu_YI-0kxQ%3A2%3A1765708101%3A-1%3A-1; c_user=100055324832768; ps_n=1; sb=PJE-acmCRdqPMcYo6OW5FOcm; wd=427x956; wl_cbv=v2%3Bclient_version%3A3017%3Btimestamp%3A1765708105; ps_l=1; datr=PJE-aay-01lXogzj35eyLMA-;')

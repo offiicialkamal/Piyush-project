@@ -146,6 +146,7 @@ class comenter:
         update_data(HISTORY_FILE, "threads_count", threads_count)
     def set_comment(self):
         is_enterd= False
+        comment = ""
         while True:
             cmt = input("Comment: ")
             if not cmt:break
