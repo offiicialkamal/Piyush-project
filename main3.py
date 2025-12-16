@@ -83,12 +83,16 @@ class FacebookCommentBot:
                 timeout=15,
                 allow_redirects=True
             )
-            
+            print(response.headers.get('Content-Type'))
+            print(response.headers.get('Content-Encoding'))
+
             if response.status_code != 200:
                 return False, f"HTTP {response.status_code}", {}
             
             html = response.text
-            
+            print(type(html))
+            with open("aa.html", "w") as f:
+                f.write(html)
             # Check if we're logged in
             if "login.php" in response.url or "Log In" in html.lower():
                 return False, "Not logged in - cookies expired", {}
@@ -460,13 +464,15 @@ class FacebookCommentBot:
             )
             
             response_text = response.text
+            print(response_text)
             if response_text.startswith("for (;;);"):
                 response_text = response_text[9:]
             
             if response.status_code == 200:
                 try:
                     result = json.loads(response_text)
-                    
+                    with open("aa.json", w) as a:
+                        json.dump(result, a, indent=2)
                     if 'errors' in result:
                         error_msg = result['errors'][0].get('message', 'Unknown error')
                         return False, error_msg, result
@@ -540,13 +546,7 @@ class FacebookCommentBot:
 if __name__ == "__main__":
     # Your Facebook cookies (replace with your actual cookies)
     COOKIES = '''
-    datr=klY9aXM9pdUcks3XTVsHSoKu;
-    fr=0unAOSi6yWfybLy7T.AWcuqYfgwbpzB5VyutJHOGJZKpHTQQ6KF7ZNYUOAcF_6oIQ5fR4.BpPVaS..AAA.0.0.BpPZzX.AWcYUKE6IRV5L2onw4y4x1x79Is;
-    xs=48%3AuUFoOvtkOFpd3w%3A2%3A1765627546%3A-1%3A-1;
-    c_user=61564971251642;
-    sb=klY9ac_nRIs1y1aa7Kca2hlo;
-    ps_l=1;
-    ps_n=1
+datr=OZ4oaaPMapVsAMgQ-kctLHAf; fr=1pXZrWFE4HqVWV2wj.AWejfeSTh--N3PulYdY5Tpt94ymCXqn_KwOcD9Gak4vn1geUPAY.BpPvJN..AAA.0.0.BpPvJN.AWfhqEC1Jxqa2Sc0mxTIO2Y1csM; sb=OZ4oaetTZUNpwQtVht7HwxCu; wd=588x479; dpr=1.6800000667572021; locale=en_US; ps_l=1; ps_n=1; c_user=61558074221758; xs=41%3AwPxC4m9Aw-KdHw%3A2%3A1765119401%3A-1%3A-1%3A%3AAcySD8XTcwi2Vxf7cA3VX--_s5yQSgMBTdkjY7CBhQ; presence=C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1765732966716%2C%22v%22%3A1%7D
     '''
     
     # Initialize the bot

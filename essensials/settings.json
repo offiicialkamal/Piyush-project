@@ -1,0 +1,16 @@
+{
+  "update": {
+    "auto": true,
+    "force": false
+  },
+  "logo": {
+    "main": "MASTER 160",
+    "secondary": "UPDATE",
+    "font": "random",
+    "color": {
+      "delay": 1,
+      "color": "random",
+      "random_color_each_line": true
+    }
+  }
+}
