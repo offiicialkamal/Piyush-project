@@ -1,17 +1,19 @@
-import re
+import re, sys
 import json
 import threading
 import requests
 # from file_handlers import read_json
 from .general import generalFunctions
+from .general import Admin1
 
 
-class run_single(threading.Thread, generalFunctions):
+
+class run_single(threading.Thread, generalFunctions, Admin1):
     def __init__(self, cookie, post_link, comment, comment_per_acc, result_container):
         super().__init__()
         self.result_container = result_container
         self.__comment_per_acc = comment_per_acc
-        self.__userAgent = cookie.get(list(cookie.keys())[0])
+        self.__userAgent = cookie.get(list(cookie.keys())[0])[0]
         self.__cookie = generalFunctions().refactorCookie(list(cookie.keys())[0])
         ## class specific variables
         self.__pagesURL = "https://www.facebook.com/pages/?category=your_page"
@@ -20,7 +22,10 @@ class run_single(threading.Thread, generalFunctions):
     def run(self):
         print("started threed")
         try:
-
+            # print(self.__cookie)
+            # print()
+            # print(self.__userAgent)
+            # sys.exit()
             ######################################################################################################################
             ######################################################################################################################
             ############# TILL NOW EVERYTHING IS WORKING #########################################################################
@@ -40,14 +45,13 @@ class run_single(threading.Thread, generalFunctions):
             ######################################################################################################################
             ######################################################################################################################
             ######################################################################################################################
-
-
-
-
-
-            print("Extracting fresh parameters from Facebook page...")
-            params, fresh_cookies = self.extract_params_from_page()
-
+        ######## STEP 1
+            params, fresh_cookies = self.extract_params_from_page(self.__cookie, self.__pagesURL, self.__userAgent)
+            print(params)
+            print()
+            print(fresh_cookies)
+            sys.exit()
+        ######## STEP 2
             if params:
                 self.__tokens = params
                 print(f"Extracted parameters: {list(params.keys())}")
