@@ -1,17 +1,19 @@
-import re
+import re, sys
 import json
 import threading
 import requests
 # from file_handlers import read_json
 from .general import generalFunctions
+from .general import Admin1
 
 
-class run_single(threading.Thread, generalFunctions):
+
+class run_single(threading.Thread, generalFunctions, Admin1):
     def __init__(self, cookie, post_link, comment, comment_per_acc, result_container):
         super().__init__()
         self.result_container = result_container
         self.__comment_per_acc = comment_per_acc
-        self.__userAgent = cookie.get(list(cookie.keys())[0])
+        self.__userAgent = cookie.get(list(cookie.keys())[0])[0]
         self.__cookie = generalFunctions().refactorCookie(list(cookie.keys())[0])
         ## class specific variables
         self.__pagesURL = "https://www.facebook.com/pages/?category=your_page"
@@ -20,7 +22,10 @@ class run_single(threading.Thread, generalFunctions):
     def run(self):
         print("started threed")
         try:
-
+            # print(self.__cookie)
+            # print()
+            # print(self.__userAgent)
+            # sys.exit()
             ######################################################################################################################
             ######################################################################################################################
             ############# TILL NOW EVERYTHING IS WORKING #########################################################################
@@ -40,55 +45,23 @@ class run_single(threading.Thread, generalFunctions):
             ######################################################################################################################
             ######################################################################################################################
             ######################################################################################################################
-
-
-
-
-
-            print("Extracting fresh parameters from Facebook page...")
-            params, fresh_cookies = self.extract_params_from_page()
-
+        ######## STEP 1
+            params, fresh_cookies = self.extract_params_from_page(self.__cookie, self.__pagesURL, self.__userAgent)
+            # print(params)
+            # print()
+            # print(fresh_cookies)
+            # sys.exit()
+        ######## STEP 2
             if params:
                 self.__tokens = params
                 print(f"Extracted parameters: {list(params.keys())}")
 
                 # Make the GraphQL request with fresh parameters
-                print("\nMaking GraphQL request...")
-                response = self.make_graphql_request(params, fresh_cookies)
+                # print("\nMaking GraphQL request...")
+                response = self.fetch_pages(params, fresh_cookies, self.__userAgent)
+                print(response)
 
-                print(f"Response status: {response.status_code}")
-
-                if response.status_code == 200:
-                    try:
-                        data = response.json()
-                        # Save the response
-                        with open('main.json', 'w') as f:
-                            json.dump(data, f, indent=4)
-
-                        # Extract profiles if available
-                        if 'data' in data and 'viewer' in data['data']:
-                            profiles = data['data']['viewer']['actor'].get(
-                                'additional_profiles_with_biz_tools', {}).get('edges', {})
-                            print(f"\nFound {len(profiles)} profiles:")
-                            for profile in profiles:
-                                profile = profile.get('node', {})
-                                name = profile.get('name', 'N/A')
-                                profile_id = profile.get('id', 'N/A')
-                                print(f"{name}    {profile_id}")
-                                print()
-                        else:
-                            print("No profiles found in response")
-                            print("Response structure:",
-                                  json.dumps(data, indent=2)[:500])
-
-                    except json.JSONDecodeError as e:
-                        print(f"Failed to parse JSON response: {e}")
-                        print(f"Response text: {response.text[:500]}")
-                else:
-                    print(
-                        f"Request failed with status: {response.status_code}")
-                    print(f"Response: {response.text[:500]}")
-
+                # print(f"Response status: {response.status_code}")
             else:
                 print("Failed to extract parameters MAY BE ACCOUNT IS ALREADY LOCKED")
 

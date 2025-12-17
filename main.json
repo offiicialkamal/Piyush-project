@@ -4,39 +4,33 @@
             "has_biz_web_access": true,
             "actor": {
                 "__typename": "User",
-                "id": "100055324832768",
+                "id": "61558074221758",
                 "delegate_page_id": null,
                 "additional_profiles_with_biz_tools": {
                     "edges": [
                         {
                             "node": {
                                 "__typename": "User",
-                                "delegate_page_id": "836225922918516",
+                                "delegate_page_id": "919939847868793",
                                 "if_viewer_can_login_as_profile_plus": {
                                     "__typename": "User",
-                                    "id": "61585252465952"
+                                    "id": "61585170539284"
                                 },
-                                "id": "61585252465952",
+                                "id": "61585170539284",
                                 "name": "I\u1db0D Whitelisted \u4e97",
                                 "unseen_message_count": 0,
                                 "viewer_has_advertising_permission": true,
                                 "unseen_update_count": 1,
                                 "__isActor": "User",
                                 "__isEntity": "User",
-                                "entity_url": "https://www.facebook.com/profile.php?id=61585252465952",
-                                "profile_url": "https://www.facebook.com/profile.php?id=61585252465952",
+                                "entity_url": "https://www.facebook.com/profile.php?id=61585170539284",
+                                "profile_url": "https://www.facebook.com/profile.php?id=61585170539284",
                                 "story_bucket": {
-                                    "nodes": [
-                                        {
-                                            "should_show_close_friend_badge": false,
-                                            "id": "122094902091175082",
-                                            "first_story_to_show": null
-                                        }
-                                    ]
+                                    "nodes": []
                                 },
-                                "url": "https://www.facebook.com/profile.php?id=61585252465952",
+                                "url": "https://www.facebook.com/profile.php?id=61585170539284",
                                 "profile_picture": {
-                                    "uri": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.30808-1/600146993_122094902067175082_5854377793816270244_n.png?stp=cp0_dst-png_s60x60&_nc_cat=102&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=nSkT9EW4Te8Q7kNvwEnWfGm&_nc_oc=AdnuZGZuJLI9eC1KswuDrtgDdldcnAX--Rd_Lkfmr9nOujvhI8-WAr2_8D62SsHUnUY&_nc_zt=24&_nc_ht=scontent-lga3-1.xx&_nc_gid=9ZmE_4NNyOaO6_q6ZnyX-Q&oh=00_Afky5UxrebHSnfyKUMS8vf23UpSAUD0SvDrOPat_SpPBvg&oe=69459967",
+                                    "uri": "https://scontent-lga3-3.xx.fbcdn.net/v/t39.30808-1/599664418_122096122659172351_4218146774162627515_n.png?stp=cp0_dst-png_s60x60&_nc_cat=110&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=z7FTGbJOYGgQ7kNvwH_fTPD&_nc_oc=AdnyUCH8ySsuud1l1hTDMYkTbo49AlSpz_4oPAku9MlwBh83InaAHmCpri6etcM2zl8&_nc_zt=24&_nc_ht=scontent-lga3-3.xx&_nc_gid=CqeQVRpmyCrc2SMlp_kGjw&oh=00_AfkC2hbR0FRl4qfJ45_UlIP6UHp2LtHhwTMVp5KwMZRooA&oe=69475F56",
                                     "width": 60,
                                     "height": 60,
                                     "scale": 1
@@ -45,14 +39,14 @@
                                 "acting_account_has_advertising_permission": true,
                                 "unseen_page_messages_feature": {
                                     "unseen_page_message_count": 0,
-                                    "id": "61585252465952"
+                                    "id": "61585170539284"
                                 }
                             },
-                            "cursor": "AQHSKZ5pOlF3HfLWKy9jMl79BAqcUydwWvkfwAUTc4kVaPbTASHe6-YvSC17p7VEp2Hj"
+                            "cursor": "AQHSyBBhK349AGikoPiTR9p4JpSylIpXNxYOuKxnMp1xZhiQO6D8TfkrE4C4DpietfH7pE2nIjqqhiO2BnsalSCQBA"
                         }
                     ],
                     "page_info": {
-                        "end_cursor": "AQHSVjxVmUGG2gTzu5cE2G4x0VaDUx88XTVr7VI7UOemxlUB-F-cMzBbnBT3iyRonpoF",
+                        "end_cursor": "AQHSNyWEpYQcaTOwx_HeEsTiatolPiC3xydGjHzI3epI16542aHl08RN6pdlFEolIww-b6Vwbo3cUOEoNEyyQp27_Q",
                         "has_next_page": false
                     }
                 },
@@ -70,7 +64,7 @@
                         {
                             "profile": {
                                 "name": "I\u1db0D Whitelisted \u4e97",
-                                "id": "61585252465952"
+                                "id": "61585170539284"
                             }
                         }
                     ]
@@ -193,15 +187,15 @@
     "extensions": {
         "prefetch_uris_v2": [
             {
-                "uri": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.30808-1/600146993_122094902067175082_5854377793816270244_n.png?stp=cp0_dst-png_s60x60&_nc_cat=102&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=nSkT9EW4Te8Q7kNvwEnWfGm&_nc_oc=AdnuZGZuJLI9eC1KswuDrtgDdldcnAX--Rd_Lkfmr9nOujvhI8-WAr2_8D62SsHUnUY&_nc_zt=24&_nc_ht=scontent-lga3-1.xx&_nc_gid=9ZmE_4NNyOaO6_q6ZnyX-Q&oh=00_Afky5UxrebHSnfyKUMS8vf23UpSAUD0SvDrOPat_SpPBvg&oe=69459967",
+                "uri": "https://scontent-lga3-3.xx.fbcdn.net/v/t39.30808-1/599664418_122096122659172351_4218146774162627515_n.png?stp=cp0_dst-png_s60x60&_nc_cat=110&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=z7FTGbJOYGgQ7kNvwH_fTPD&_nc_oc=AdnyUCH8ySsuud1l1hTDMYkTbo49AlSpz_4oPAku9MlwBh83InaAHmCpri6etcM2zl8&_nc_zt=24&_nc_ht=scontent-lga3-3.xx&_nc_gid=CqeQVRpmyCrc2SMlp_kGjw&oh=00_AfkC2hbR0FRl4qfJ45_UlIP6UHp2LtHhwTMVp5KwMZRooA&oe=69475F56",
                 "label": null,
                 "width": null,
                 "height": null
             }
         ],
         "server_metadata": {
-            "request_start_time_ms": 1765788128217,
-            "time_at_flush_ms": 1765788128336
+            "request_start_time_ms": 1765907458284,
+            "time_at_flush_ms": 1765907458384
         },
         "is_final": true
     }
