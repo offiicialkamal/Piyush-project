@@ -1,0 +1,2819 @@
+{
+  "data": {
+    "comment_create": {
+      "feedback": {
+        "associated_group": null,
+        "have_comments_been_disabled": false,
+        "are_live_video_comments_disabled": false,
+        "is_viewer_muted": false,
+        "comment_rendering_instance": null,
+        "comments_disabled_notice_renderer": {
+          "__typename": "GeneralCommentDisableNotice",
+          "notice_message": {
+            "delight_ranges": [],
+            "image_ranges": [],
+            "inline_style_ranges": [],
+            "aggregated_ranges": [],
+            "ranges": [],
+            "color_ranges": [],
+            "text": "Commenting has been turned off for this post."
+          },
+          "__module_operation_CometUFICommentDisabledNotice_feedback": {
+            "__dr": "CometGenericCommentDisableNotice_commentDisableNotice$normalization.graphql"
+          },
+          "__module_component_CometUFICommentDisabledNotice_feedback": {
+            "__dr": "CometGenericCommentDisableNotice.react"
+          }
+        },
+        "id": "ZmVlZGJhY2s6MTIyMTA0MTQwOTI3MTQxODg5XzE0NzgxNjIzODk5NTc1MTQ=",
+        "url": "https://www.facebook.com/Piyushshuklatbrking/posts/pfbid02xzAvL8NgaSCkEpb7YN7F2AKd4j5C4yTrMCk3SQ9PbJG96ZSQUqiaDVGDGeYNr8hQl?comment_id=1478162389957514",
+        "__typename": "Feedback",
+        "if_viewer_can_comment_anonymously": null,
+        "viewer_actor": {
+          "__typename": "User",
+          "id": "61558074221758"
+        }
+      },
+      "feedback_comment_edge": {
+        "cursor": "Y29tbWVudF9jdXJzb3I6MTkwNTMzMDI5MDA2ODkxMjoxNzY1OTY1MjI0",
+        "node": {
+          "id": "Y29tbWVudDoxMjIxMDQxNDA5MjcxNDE4ODlfMTkwNTMzMDI5MDA2ODkxMg==",
+          "living_room_content_item": null,
+          "fishbowl_comment_ordering_mode": null,
+          "community_comment_signal_renderer": null,
+          "attachments": [],
+          "comment_menu_tooltip": "Edit or delete this",
+          "should_show_comment_menu": true,
+          "author": {
+            "__typename": "User",
+            "id": "61558074221758",
+            "name": "Rajkumar Das Ji",
+            "__isActor": "User",
+            "profile_picture_depth_0": {
+              "uri": "https://scontent-lga3-3.xx.fbcdn.net/v/t39.30808-1/460968231_122148472082269140_6057255584979650791_n.jpg?stp=cp0_dst-jpg_s32x32_tt6&_nc_cat=106&ccb=1-7&_nc_sid=e99d92&_nc_ohc=MhVopH-X1_AQ7kNvwHELu5c&_nc_oc=Adkdg4IVIhOegoci81ZE-Ux5nvhx23hIr7ol4pspVtPtpuvE-A8vTAs9AI1Cfpwt23w&_nc_zt=24&_nc_ht=scontent-lga3-3.xx&_nc_gid=-otvGlFf8dGiC85dOmowQA&oh=00_Afmikqdd1ZHvEj-OW1pa9GyvPg3vM2qCZTbe5rSi_Ru_jw&oe=69484530"
+            },
+            "profile_picture_depth_1": {
+              "uri": "https://scontent-lga3-3.xx.fbcdn.net/v/t39.30808-1/460968231_122148472082269140_6057255584979650791_n.jpg?stp=cp0_dst-jpg_s24x24_tt6&_nc_cat=106&ccb=1-7&_nc_sid=e99d92&_nc_ohc=MhVopH-X1_AQ7kNvwHELu5c&_nc_oc=Adkdg4IVIhOegoci81ZE-Ux5nvhx23hIr7ol4pspVtPtpuvE-A8vTAs9AI1Cfpwt23w&_nc_zt=24&_nc_ht=scontent-lga3-3.xx&_nc_gid=-otvGlFf8dGiC85dOmowQA&oh=00_Afl1j3m2aaYt3xEV3zjJV0APq92zrHKdMKIIeyYMaRXB-A&oe=69484530"
+            },
+            "gender": "MALE",
+            "__isEntity": "User",
+            "url": "https://www.facebook.com/rajkumar.das.ji.40385",
+            "work_info": null,
+            "is_verified": false,
+            "short_name": "Rajkumar Das",
+            "subscribe_status": "CANNOT_SUBSCRIBE"
+          },
+          "is_author_weak_reference": false,
+          "comment_action_links": [
+            {
+              "__typename": "XFBCommentTimeStampActionLink",
+              "comment": {
+                "id": "Y29tbWVudDoxMjIxMDQxNDA5MjcxNDE4ODlfMTkwNTMzMDI5MDA2ODkxMg==",
+                "created_time": 1765965223,
+                "url": "https://www.facebook.com/Piyushshuklatbrking/posts/pfbid02xzAvL8NgaSCkEpb7YN7F2AKd4j5C4yTrMCk3SQ9PbJG96ZSQUqiaDVGDGeYNr8hQl?comment_id=1478162389957514&reply_comment_id=1905330290068912"
+              },
+              "__module_operation_CometUFICommentActionLinks_comment": {
+                "__dr": "CometUFICommentTimeStampActionLink_commentActionLink$normalization.graphql"
+              },
+              "__module_component_CometUFICommentActionLinks_comment": {
+                "__dr": "CometUFICommentTimeStampActionLink.react"
+              }
+            },
+            {
+              "__typename": "XFBCommentReactionActionLink",
+              "comment": {
+                "id": "Y29tbWVudDoxMjIxMDQxNDA5MjcxNDE4ODlfMTkwNTMzMDI5MDA2ODkxMg==",
+                "is_live_video_comment": false,
+                "feedback": {
+                  "id": "ZmVlZGJhY2s6MTIyMTA0MTQwOTI3MTQxODg5XzE5MDUzMzAyOTAwNjg5MTI=",
+                  "viewer_feedback_reaction_info": null,
+                  "viewer_actor": {
+                    "__typename": "User",
+                    "id": "61558074221758"
+                  },
+                  "supported_reaction_infos": [
+                    {
+                      "animation": {
+                        "uri_keyframes2": "https://scontent-lga3-1.xx.fbcdn.net/m1/v/t6/An_NYk94x95Kypus5FJQ4k1oKEtko7-rUveEhwXytks318UoxoopBczHucoGDTjX4YcuAmIDkUw9SWBKhz7XYoAsQO_zxmWdkseO4YNdrvYmnIdmeAk.kf?_nc_gid=-otvGlFf8dGiC85dOmowQA&_nc_oc=Adnwph9Ifxj-vX-MxWFga05Ef2ikJEkkHwE--LBWOm0NEi2O2RukdDOz9o9TZaJhkVg&ccb=10-5&oh=00_Afk3PxdCF10yzdOqD2k51q2UYj-bTX50d0_nNl9KiUTmTQ&oe=6969F4B8&_nc_sid=7da55a"
+                      },
+                      "id": "1635855486666999"
+                    },
+                    {
+                      "animation": {
+                        "uri_keyframes2": "https://scontent-lga3-1.xx.fbcdn.net/m1/v/t6/An9Tph7xL5aYi3BTTpVl2ow-l1vEv0-qYrBxereq6t6fWgcNnxeyJLsd3DuGnbCLdLFmcvvxn5ivo85wlrIv-EZhT1EucYZ-qoMW0ahYWHGpBBoqSjw.kf?_nc_gid=-otvGlFf8dGiC85dOmowQA&_nc_oc=AdlJOV9O15d7_thy55A2y7Mlg_hss8B3KkuhC_Jr6yB3531mKb0Nl-TgAEs3iqv7Ztc&ccb=10-5&oh=00_AfkBI7KQK1OVgZ5-dOpOWcwonjKfqRpNr-_3S-N-Fc9HXA&oe=696A0A41&_nc_sid=7da55a"
+                      },
+                      "id": "1678524932434102"
+                    },
+                    {
+                      "animation": {
+                        "uri_keyframes2": "https://scontent-lga3-1.xx.fbcdn.net/m1/v/t6/An-iEpi04A6D-3XVq3wsUCtKdkB4w6IdurXeouCv4FsHYljtXw-fLrmbfC8B8zH5fPrckxLdEzR7V7dfidlNcrNoGsJWxiPDnzyNK-npl_KrJieMlg.kf?_nc_gid=-otvGlFf8dGiC85dOmowQA&_nc_oc=Adm7oEiVrS0fIQjajfnegpEZ4qGMg5jhkD7YBlMatpj6NaVlHcor1vv1dni7ASgOsCE&ccb=10-5&oh=00_AflWgw-cHBk5DmrrNBYsUWpC8El7ZEXIy7vY639Is0ZD2A&oe=6969FA2E&_nc_sid=7da55a"
+                      },
+                      "id": "613557422527858"
+                    },
+                    {
+                      "animation": {
+                        "uri_keyframes2": "https://scontent-lga3-1.xx.fbcdn.net/m1/v/t6/An9yyyXsW_c8BzV1_m0x9WqIPc7IKsshuStlldoUJeshdwMKRkmQmdPEGGwMopV9sH85YDKihkJ8DjNhx1wb2IaUuEOGzE_ji5F9MEXs_50bbA-IXQ.kf?_nc_gid=-otvGlFf8dGiC85dOmowQA&_nc_oc=AdmFjm570Rx0Mhc5A81MJWzjhObRDTqkOtmmyP5WGKLK0ZnWCbwPLlsNucdHPefaMoI&ccb=10-5&oh=00_Afkx-mn_NGmFH395nIn1T_P5BiNPdVxVmQzMhQsvBMmKow&oe=6969D925&_nc_sid=7da55a"
+                      },
+                      "id": "115940658764963"
+                    },
+                    {
+                      "animation": {
+                        "uri_keyframes2": "https://scontent-lga3-1.xx.fbcdn.net/m1/v/t6/An9Ob_EAguyCtqplSNOuikWQ6JjlxIh8vYoEgMXvR0CwneLvNdYwV-1NZgwJfR4aZ4QXhIpQUZxunwGdGubGw20jp-9DikfLbRVh-i4tobncZg9LGpE.kf?_nc_gid=-otvGlFf8dGiC85dOmowQA&_nc_oc=AdklminmOf6kQD-jMvw6guCgm166fCdmrmW2uiwo1CIGGcSbLyZTkfNpyPY94JA1SyE&ccb=10-5&oh=00_AflnCLj8AcMkDzKiLOhnxHA0_9j70OvvHfLzIGSGG_K2JA&oe=6969FE31&_nc_sid=7da55a"
+                      },
+                      "id": "478547315650144"
+                    },
+                    {
+                      "animation": {
+                        "uri_keyframes2": "https://scontent-lga3-1.xx.fbcdn.net/m1/v/t6/An9UFu6eXdDopP-SnPAhX-9SngOH_VeoYgHIGK6re6qbARX_PMcNl8Z14QPPFnVzbcfOQwxJxX5q-H5Fy3602EbOrVHhr1m4VSMXypn3fj2NSJongRg.kf?_nc_gid=-otvGlFf8dGiC85dOmowQA&_nc_oc=Adn1Kaa0sTlKpBEDupsr7gEXPPb-PZl3ZbQW3-7M5CBhJd5kv07Lj-3nvX5DRgp7Gf0&ccb=10-5&oh=00_AfnPWm1JQresZf6cCa4qunXNMKdA_Ni36LAiGfEygYvrnQ&oe=6969EC48&_nc_sid=7da55a"
+                      },
+                      "id": "908563459236466"
+                    },
+                    {
+                      "animation": {
+                        "uri_keyframes2": "https://scontent-lga3-1.xx.fbcdn.net/m1/v/t6/An919EwtdC17ceBi2men2TIR0UhNUwitUvpE61_Jbs44ggFt3mvLWkKiHP_CSmw72ohKdyEscSIBof6y1FeS57I3kGfh5tg96jndT5mnnEuJlpXuvuUj.kf?_nc_gid=-otvGlFf8dGiC85dOmowQA&_nc_oc=Adn2OOO4-qBzgARiR4ciK5ChzE0u_72acE-M1GBs1h4cCwvbTBYdGXCYUZ_zPj_d2Xw&ccb=10-5&oh=00_AflSRxLlK9GNSUeuCMl56XyQhAlSnU_-Neg4VODMw1GyNA&oe=6969EA24&_nc_sid=7da55a"
+                      },
+                      "id": "444813342392137"
+                    }
+                  ],
+                  "comet_ufi_reaction_icon_renderer": {
+                    "__typename": "XFBCometUFIAnimatedReactionIconRenderer",
+                    "__module_operation_CometUFIReactionStrategy_feedback": {
+                      "__dr": "CometAnimatedReactionIconRenderer_renderer$normalization.graphql"
+                    },
+                    "__module_component_CometUFIReactionStrategy_feedback": {
+                      "__dr": "CometAnimatedReactionIconRenderer.react"
+                    }
+                  },
+                  "associated_video": null,
+                  "top_reactions": {
+                    "edges": []
+                  },
+                  "unified_reactors": {
+                    "count": 0
+                  },
+                  "reactors": {
+                    "count": 0,
+                    "is_empty": true
+                  },
+                  "url": "https://www.facebook.com/Piyushshuklatbrking/posts/pfbid02xzAvL8NgaSCkEpb7YN7F2AKd4j5C4yTrMCk3SQ9PbJG96ZSQUqiaDVGDGeYNr8hQl?comment_id=1478162389957514&reply_comment_id=1905330290068912",
+                  "__typename": "Feedback",
+                  "if_viewer_can_comment_anonymously": null
+                }
+              },
+              "__module_operation_CometUFICommentActionLinks_comment": {
+                "__dr": "CometUFICommentReactionActionLink_commentActionLink$normalization.graphql"
+              },
+              "__module_component_CometUFICommentActionLinks_comment": {
+                "__dr": "CometUFICommentReactionActionLink.react"
+              }
+            },
+            {
+              "__typename": "XFBCommentReplyActionLink",
+              "comment": {
+                "id": "Y29tbWVudDoxMjIxMDQxNDA5MjcxNDE4ODlfMTkwNTMzMDI5MDA2ODkxMg==",
+                "comment_parent": {
+                  "id": "Y29tbWVudDoxMjIxMDQxNDA5MjcxNDE4ODlfMTQ3ODE2MjM4OTk1NzUxNA=="
+                },
+                "is_author_weak_reference": false,
+                "legacy_fbid": "1905330290068912",
+                "url": "https://www.facebook.com/Piyushshuklatbrking/posts/pfbid02xzAvL8NgaSCkEpb7YN7F2AKd4j5C4yTrMCk3SQ9PbJG96ZSQUqiaDVGDGeYNr8hQl?comment_id=1478162389957514&reply_comment_id=1905330290068912",
+                "author": {
+                  "__typename": "User",
+                  "id": "61558074221758",
+                  "name": "Rajkumar Das Ji",
+                  "url": "https://www.facebook.com/rajkumar.das.ji.40385"
+                },
+                "feedback": {
+                  "comment_composer_placeholder": "Reply to Rajkumar Das Ji",
+                  "id": "ZmVlZGJhY2s6MTIyMTA0MTQwOTI3MTQxODg5XzE5MDUzMzAyOTAwNjg5MTI="
+                },
+                "is_live_video_comment": false
+              },
+              "__module_operation_CometUFICommentActionLinks_comment": {
+                "__dr": "CometUFICommentReplyActionLink_commentActionLink$normalization.graphql"
+              },
+              "__module_component_CometUFICommentActionLinks_comment": {
+                "__dr": "CometUFICommentReplyActionLink.react"
+              }
+            }
+          ],
+          "feedback": {
+            "viewer_feedback_reaction_info": null,
+            "id": "ZmVlZGJhY2s6MTIyMTA0MTQwOTI3MTQxODg5XzE5MDUzMzAyOTAwNjg5MTI=",
+            "top_reactions": {
+              "edges": []
+            },
+            "reactors": {
+              "count_reduced": "0"
+            },
+            "threading_config": {
+              "__typename": "FullThreadingFeedbackConfig"
+            },
+            "can_viewer_comment": true,
+            "should_always_show_composer_on_top": false,
+            "comment_rendering_instance_for_feed_location": null,
+            "typing_indicator_renderer": {
+              "__typename": "XFBFeedbackInlineTypingIndicatorRenderer",
+              "feedback": {
+                "id": "ZmVlZGJhY2s6MTIyMTA0MTQwOTI3MTQxODg5XzE5MDUzMzAyOTAwNjg5MTI="
+              },
+              "__module_operation_useCometUFITopLevelCommentListComponents_feedback": {
+                "__dr": "CometUFIInlineTypingIndicator_renderer$normalization.graphql"
+              },
+              "__module_component_useCometUFITopLevelCommentListComponents_feedback": {
+                "__dr": "CometUFIInlineTypingIndicator.react"
+              }
+            },
+            "viewer_actor": {
+              "__typename": "User",
+              "id": "61558074221758"
+            },
+            "url": "https://www.facebook.com/Piyushshuklatbrking/posts/pfbid02xzAvL8NgaSCkEpb7YN7F2AKd4j5C4yTrMCk3SQ9PbJG96ZSQUqiaDVGDGeYNr8hQl?comment_id=1478162389957514&reply_comment_id=1905330290068912",
+            "__typename": "Feedback",
+            "if_viewer_can_comment_anonymously": null,
+            "actor_provider": {
+              "__typename": "Feedback",
+              "current_actor": {
+                "__typename": "User",
+                "id": "61558074221758",
+                "__isActor": "User",
+                "name": "Rajkumar Das Ji",
+                "profile_picture_depth_0": {
+                  "uri": "https://scontent-lga3-3.xx.fbcdn.net/v/t39.30808-1/460968231_122148472082269140_6057255584979650791_n.jpg?stp=cp0_dst-jpg_s32x32_tt6&_nc_cat=106&ccb=1-7&_nc_sid=e99d92&_nc_ohc=MhVopH-X1_AQ7kNvwHELu5c&_nc_oc=Adkdg4IVIhOegoci81ZE-Ux5nvhx23hIr7ol4pspVtPtpuvE-A8vTAs9AI1Cfpwt23w&_nc_zt=24&_nc_ht=scontent-lga3-3.xx&_nc_gid=-otvGlFf8dGiC85dOmowQA&oh=00_Afmikqdd1ZHvEj-OW1pa9GyvPg3vM2qCZTbe5rSi_Ru_jw&oe=69484530"
+                },
+                "profile_picture_depth_1": {
+                  "uri": "https://scontent-lga3-3.xx.fbcdn.net/v/t39.30808-1/460968231_122148472082269140_6057255584979650791_n.jpg?stp=cp0_dst-jpg_s24x24_tt6&_nc_cat=106&ccb=1-7&_nc_sid=e99d92&_nc_ohc=MhVopH-X1_AQ7kNvwHELu5c&_nc_oc=Adkdg4IVIhOegoci81ZE-Ux5nvhx23hIr7ol4pspVtPtpuvE-A8vTAs9AI1Cfpwt23w&_nc_zt=24&_nc_ht=scontent-lga3-3.xx&_nc_gid=-otvGlFf8dGiC85dOmowQA&oh=00_Afl1j3m2aaYt3xEV3zjJV0APq92zrHKdMKIIeyYMaRXB-A&oe=69484530"
+                },
+                "gender": "MALE"
+              },
+              "id": "ZmVlZGJhY2s6MTIyMTA0MTQwOTI3MTQxODg5XzE5MDUzMzAyOTAwNjg5MTI="
+            },
+            "plugins": [
+              {
+                "__typename": "CommentComposerMentionsPlugin",
+                "context_id": null,
+                "post_id": "122104140927141889",
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerMentionsPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerMentionsPlugin"
+                }
+              },
+              {
+                "__typename": "CommentComposerAvatarPlugin",
+                "has_avatar": false,
+                "feedback_id": "ZmVlZGJhY2s6MTIyMTA0MTQwOTI3MTQxODg5XzE5MDUzMzAyOTAwNjg5MTI=",
+                "avatar_style_version": null,
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerAvatarPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerAvatarPlugin"
+                }
+              },
+              {
+                "__typename": "CommentComposerHashtagPlugin",
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerHashtagPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerHashtagPlugin"
+                }
+              },
+              {
+                "__typename": "CommentComposerEmojiPlugin",
+                "emoji_size": 16,
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerEmojiPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerEmojiPlugin"
+                }
+              },
+              {
+                "__typename": "CommentComposerMediaUploadPlugin",
+                "viewer_actor": {
+                  "__typename": "User",
+                  "id": "61558074221758"
+                },
+                "should_condense_video_preview": true,
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerMediaUploadPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerMediaUploadPlugin"
+                }
+              },
+              {
+                "__typename": "CommentComposerGIFPlugin",
+                "feedback_id": "ZmVlZGJhY2s6MTIyMTA0MTQwOTI3MTQxODg5XzE5MDUzMzAyOTAwNjg5MTI=",
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerGIFPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerGIFPlugin"
+                }
+              },
+              {
+                "__typename": "CometComposerCometizedStickersPlugin",
+                "feedback_id": "ZmVlZGJhY2s6MTIyMTA0MTQwOTI3MTQxODg5XzE5MDUzMzAyOTAwNjg5MTI=",
+                "owning_profile_id": "61558074221758",
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerStickersPlugin_next_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerStickersPlugin.next"
+                }
+              },
+              {
+                "__typename": "CommentComposerEmoticonPlugin",
+                "emoji_size": 16,
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerEmoticonPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerEmoticonPlugin"
+                }
+              },
+              {
+                "__typename": "CommentComposerPrefillMentionPlugin",
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerPrefillMentionPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerPrefillMentionPlugin"
+                }
+              },
+              {
+                "__typename": "CommentComposerAssociateReplyWithParentPlugin",
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerAssociateReplyWithParentPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerAssociateReplyWithParentPlugin"
+                }
+              },
+              {
+                "__typename": "CommentComposerSetReplyClickedPlugin",
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerSetReplyClickedPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerSetReplyClickedPlugin"
+                }
+              },
+              {
+                "__typename": "CommentComposerStateSnapshotPlugin",
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerStateSnapshotPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerStateSnapshotPlugin"
+                }
+              },
+              {
+                "__typename": "CommentComposerLiveTypingBroadcastPlugin",
+                "feedback_id": "ZmVlZGJhY2s6MTIyMTA0MTQwOTI3MTQxODg5XzE5MDUzMzAyOTAwNjg5MTI=",
+                "viewer_actor": {
+                  "__typename": "User",
+                  "id": "61558074221758"
+                },
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerLiveTypingBroadcastPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerLiveTypingBroadcastPlugin"
+                }
+              },
+              {
+                "__typename": "CommentComposerCommentCharacterLimitPlugin",
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerCommentCharacterLimitPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerCommentCharacterLimitPlugin"
+                }
+              },
+              {
+                "__typename": "CommentComposerWriteToComposerPlugin",
+                "__module_operation_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerWriteToComposerPlugin_plugin$normalization.graphql"
+                },
+                "__module_component_useCometUFIComposerPlugins_feedback": {
+                  "__dr": "cometUFIComposerWriteToComposerPlugin"
+                }
+              }
+            ],
+            "comment_composer_placeholder": "Reply to Rajkumar Das Ji",
+            "constituent_badge_banner_renderer": null,
+            "associated_group": null,
+            "have_comments_been_disabled": false,
+            "are_live_video_comments_disabled": false,
+            "is_viewer_muted": false,
+            "comment_rendering_instance": null,
+            "comments_disabled_notice_renderer": {
+              "__typename": "GeneralCommentDisableNotice",
+              "notice_message": {
+                "delight_ranges": [],
+                "image_ranges": [],
+                "inline_style_ranges": [],
+                "aggregated_ranges": [],
+                "ranges": [],
+                "color_ranges": [],
+                "text": "Commenting has been turned off for this post."
+              },
+              "__module_operation_CometUFICommentDisabledNotice_feedback": {
+                "__dr": "CometGenericCommentDisableNotice_commentDisableNotice$normalization.graphql"
+              },
+              "__module_component_CometUFICommentDisabledNotice_feedback": {
+                "__dr": "CometGenericCommentDisableNotice.react"
+              }
+            },
+            "expansion_info": {
+              "expansion_token": null,
+              "should_show_reply_count": true
+            },
+            "replies_fields": {
+              "filtering_footer_string": "",
+              "count": 0,
+              "total_count": 0,
+              "has_only_low_quality_comments": false
+            },
+            "replies_connection": {
+              "is_not_behind_the_fold": null,
+              "edges": [],
+              "page_info": {
+                "end_cursor": null,
+                "has_next_page": false,
+                "has_previous_page": false,
+                "start_cursor": null
+              }
+            },
+            "parent_object_ent": {
+              "__typename": "Comment",
+              "feedback": {
+                "id": "ZmVlZGJhY2s6MTIyMTA0MTQwOTI3MTQxODg5XzE5MDUzMzAyOTAwNjg5MTI="
+              },
+              "inline_replies_expander_renderer": null,
+              "id": "Y29tbWVudDoxMjIxMDQxNDA5MjcxNDE4ODlfMTkwNTMzMDI5MDA2ODkxMg=="
+            },
+            "default_comment_ordering_mode": "TOPLEVEL",
+            "inline_composer_visible_by_default": true
+          },
+          "preferred_body": {
+            "__typename": "TextWithEntities",
+            "delight_ranges": [],
+            "image_ranges": [],
+            "inline_style_ranges": [],
+            "aggregated_ranges": [],
+            "ranges": [],
+            "color_ranges": [],
+            "text": "This is hacking star",
+            "translation_type": "ORIGINAL"
+          },
+          "body_renderer": {
+            "__typename": "TextWithEntities",
+            "delight_ranges": [],
+            "image_ranges": [],
+            "inline_style_ranges": [],
+            "aggregated_ranges": [],
+            "ranges": [],
+            "color_ranges": [],
+            "text": "This is hacking star",
+            "__module_operation_CometUFICommentTextBodyRenderer_comment": {
+              "__dr": "CometUFICommentBodyTextWithEntities_textWithEntities$normalization.graphql"
+            },
+            "__module_component_CometUFICommentTextBodyRenderer_comment": {
+              "__dr": "CometUFICommentBodyTextWithEntities.react"
+            }
+          },
+          "comment_parent": {
+            "author": {
+              "__typename": "User",
+              "name": "Akash Choudhary",
+              "short_name": "Akash",
+              "id": "100054202111575"
+            },
+            "id": "Y29tbWVudDoxMjIxMDQxNDA5MjcxNDE4ODlfMTQ3ODE2MjM4OTk1NzUxNA=="
+          },
+          "is_declined_by_group_admin_assistant": false,
+          "is_gaming_video_comment": false,
+          "timestamp_in_video": null,
+          "translatability_for_viewer": {
+            "source_dialect": "en_XX"
+          },
+          "written_while_video_was_live": false,
+          "group_comment_info": null,
+          "bizweb_comment_info": null,
+          "has_constituent_badge": false,
+          "can_viewer_see_subsribe_button": false,
+          "can_see_constituent_badge_upsell": false,
+          "legacy_token": "122104140927141889_1905330290068912",
+          "parent_feedback": {
+            "id": "ZmVlZGJhY2s6MTIyMTA0MTQwOTI3MTQxODg5",
+            "share_fbid": "122104140927141889",
+            "political_figure_data": null,
+            "owning_profile": {
+              "__typename": "User",
+              "name": "Piyush Shukla",
+              "id": "61584256683639"
+            }
+          },
+          "question_and_answer_type": null,
+          "author_user_signals_renderer": null,
+          "author_badge_renderers": [],
+          "identity_badges_web": [],
+          "can_show_multiple_identity_badges": false,
+          "discoverable_identity_badges_web": [],
+          "user": {
+            "name": "Rajkumar Das Ji",
+            "profile_picture": {
+              "uri": "https://scontent-lga3-3.xx.fbcdn.net/v/t39.30808-1/460968231_122148472082269140_6057255584979650791_n.jpg?stp=cp0_dst-jpg_s50x50_tt6&_nc_cat=106&ccb=1-7&_nc_sid=e99d92&_nc_ohc=MhVopH-X1_AQ7kNvwHELu5c&_nc_oc=Adkdg4IVIhOegoci81ZE-Ux5nvhx23hIr7ol4pspVtPtpuvE-A8vTAs9AI1Cfpwt23w&_nc_zt=24&_nc_ht=scontent-lga3-3.xx&_nc_gid=-otvGlFf8dGiC85dOmowQA&oh=00_AfmWowlURB4H1kLs_uan36v9vutN0QYK6lf_R1bp2OsPgw&oe=69484530"
+            },
+            "id": "61558074221758"
+          },
+          "is_viewer_comment_poster": true,
+          "parent_post_story": {
+            "attachments": [
+              {
+                "media": {
+                  "__typename": "Photo",
+                  "__isNode": "Photo",
+                  "id": "122104140627141889"
+                }
+              }
+            ],
+            "id": "UzpfSTYxNTg0MjU2NjgzNjM5OjEyMjEwNDE0MDkyNzE0MTg4OToxMjIxMDQxNDA5MjcxNDE4ODk="
+          },
+          "gen_ai_content_transparency_label_renderer": null,
+          "work_ama_answer_status": null,
+          "work_knowledge_inline_annotation_comment_badge_renderer": null,
+          "is_live_video_comment": false,
+          "comet_meta_gen_comment_source_renderer": null,
+          "created_time": 1765965223,
+          "translation_available_for_viewer": false,
+          "inline_survey_config": null,
+          "legacy_fbid": "1905330290068912",
+          "spam_display_mode": "none",
+          "attached_story": null,
+          "comment_direct_parent": {
+            "author": {
+              "__typename": "User",
+              "name": "Akash Choudhary",
+              "gender": "MALE",
+              "id": "100054202111575"
+            },
+            "id": "Y29tbWVudDoxMjIxMDQxNDA5MjcxNDE4ODlfMTQ3ODE2MjM4OTk1NzUxNA=="
+          },
+          "if_viewer_can_see_member_page_tooltip": null,
+          "is_disabled": false,
+          "work_answered_event_comment_renderer": null,
+          "comment_upper_badge_renderer": null,
+          "elevated_comment_data": null,
+          "depth": 1,
+          "body": {
+            "text": "This is hacking star",
+            "ranges": []
+          },
+          "is_markdown_enabled": false,
+          "threading_depth": 1
+        }
+      },
+      "detection_analytics_enabled": false
+    }
+  },
+  "extensions": {
+    "server_metadata": {
+      "request_start_time_ms": 1765965223369,
+      "time_at_flush_ms": 1765965224926
+    },
+    "is_final": true,
+    "sr_payload": {
+      "ddd": {
+        "hsrp": {
+          "hsdp": {
+            "gkxData": {
+              "1315": {
+                "result": false,
+                "hash": null
+              },
+              "4088": {
+                "result": false,
+                "hash": null
+              }
+            },
+            "ixData": {
+              "393983": {
+                "sprited": 2,
+                "spi": "https://static.xx.fbcdn.net/rsrc.php/v4/yH/r/Eoi2rFThRn5.png",
+                "_spi": "https://static.xx.fbcdn.net/rsrc.php/v4/yH/r/Eoi2rFThRn5.png",
+                "w": 16,
+                "h": 16,
+                "p": "0 -906px",
+                "sz": "auto"
+              },
+              "1876411": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yd/r/3mD7kKai_7W.gif",
+                "width": 12,
+                "height": 12
+              },
+              "1876412": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/y1/r/mHADa0fT0mI.gif",
+                "width": 16,
+                "height": 16
+              },
+              "1876413": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yV/r/ZY0eC865SgX.gif",
+                "width": 20,
+                "height": 20
+              },
+              "1876414": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/y8/r/M3mvaC7u8oH.gif",
+                "width": 24,
+                "height": 24
+              },
+              "1876415": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yL/r/hVe2HmwMRpE.gif",
+                "width": 32,
+                "height": 32
+              },
+              "1876416": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yC/r/yFaaylccZ5L.gif",
+                "width": 48,
+                "height": 48
+              },
+              "1876418": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yk/r/96GJYGbUDCJ.gif",
+                "width": 72,
+                "height": 72
+              },
+              "1876419": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yS/r/NiR8M1k4AVU.gif",
+                "width": 12,
+                "height": 12
+              },
+              "1876420": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/ym/r/FNERtXIk9xp.gif",
+                "width": 16,
+                "height": 16
+              },
+              "1876421": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yJ/r/l2FWxc8ihQj.gif",
+                "width": 20,
+                "height": 20
+              },
+              "1876422": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yo/r/Io_N1z4MXYh.gif",
+                "width": 24,
+                "height": 24
+              },
+              "1876423": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yD/r/-1hifBvDgEQ.gif",
+                "width": 32,
+                "height": 32
+              },
+              "1876424": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yG/r/RcIiVWWukEr.gif",
+                "width": 48,
+                "height": 48
+              },
+              "1876426": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yP/r/9ISCYYcy94m.gif",
+                "width": 72,
+                "height": 72
+              },
+              "1876427": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yU/r/MStXnCtsaSe.gif",
+                "width": 12,
+                "height": 12
+              },
+              "1876428": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/y6/r/dw2egiKdoVV.gif",
+                "width": 16,
+                "height": 16
+              },
+              "1876429": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yA/r/1DbfjOftY0d.gif",
+                "width": 20,
+                "height": 20
+              },
+              "1876430": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yi/r/2uPGz8a6lb6.gif",
+                "width": 24,
+                "height": 24
+              },
+              "1876431": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yw/r/60r9oPEvxiL.gif",
+                "width": 32,
+                "height": 32
+              },
+              "1876432": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yM/r/NlAFhiEx3a1.gif",
+                "width": 48,
+                "height": 48
+              },
+              "1876434": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yx/r/uzrQzxgD_Bg.gif",
+                "width": 72,
+                "height": 72
+              },
+              "1876435": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yM/r/TtXj9IXnkoK.gif",
+                "width": 12,
+                "height": 12
+              },
+              "1876436": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yy/r/HNs8yq0QiXE.gif",
+                "width": 16,
+                "height": 16
+              },
+              "1876437": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yT/r/ay_drQe6StD.gif",
+                "width": 20,
+                "height": 20
+              },
+              "1876438": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/y4/r/iACDMhAROS_.gif",
+                "width": 24,
+                "height": 24
+              },
+              "1876439": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yy/r/WEhNL1y2zoZ.gif",
+                "width": 32,
+                "height": 32
+              },
+              "1876440": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/y-/r/mAeZkO4yhqj.gif",
+                "width": 48,
+                "height": 48
+              },
+              "1876442": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yl/r/79uB7ciX8vY.gif",
+                "width": 72,
+                "height": 72
+              },
+              "1876443": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yG/r/dzn6it4Fw3p.gif",
+                "width": 12,
+                "height": 12
+              },
+              "1876444": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yc/r/wqjQpFb4tea.gif",
+                "width": 16,
+                "height": 16
+              },
+              "1876445": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yk/r/yy3mR2PXKrn.gif",
+                "width": 20,
+                "height": 20
+              },
+              "1876446": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yl/r/gTdm7zPKz-c.gif",
+                "width": 24,
+                "height": 24
+              },
+              "1876447": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/ym/r/kdaft251gQ_.gif",
+                "width": 32,
+                "height": 32
+              },
+              "1876448": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yG/r/6-FTd4KBtOk.gif",
+                "width": 48,
+                "height": 48
+              },
+              "1876450": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yq/r/Tks_lRPtYc-.gif",
+                "width": 72,
+                "height": 72
+              },
+              "1876451": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yK/r/Bys0xcVibDa.gif",
+                "width": 12,
+                "height": 12
+              },
+              "1876452": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yI/r/Wk0dcHGH6EG.gif",
+                "width": 16,
+                "height": 16
+              },
+              "1876453": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/ys/r/aOTs7vt2hEc.gif",
+                "width": 20,
+                "height": 20
+              },
+              "1876454": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yh/r/wVjfNbGZ3CH.gif",
+                "width": 24,
+                "height": 24
+              },
+              "1876455": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yw/r/oT6wM_vuQNQ.gif",
+                "width": 32,
+                "height": 32
+              },
+              "1876456": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yp/r/ac61i44rSWK.gif",
+                "width": 48,
+                "height": 48
+              },
+              "1876458": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yg/r/ZH27Vvjc9-u.gif",
+                "width": 72,
+                "height": 72
+              },
+              "1940508": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/y3/r/ycQ2OPoZwUA.gif",
+                "width": 64,
+                "height": 64
+              },
+              "1940509": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yg/r/8kyIVWHZW-b.gif",
+                "width": 64,
+                "height": 64
+              },
+              "1940510": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yK/r/8gPN8wBD9yB.gif",
+                "width": 64,
+                "height": 64
+              },
+              "1940511": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yG/r/WtK_u51t3nM.gif",
+                "width": 64,
+                "height": 64
+              },
+              "1940512": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yj/r/JYwEre3ewp7.gif",
+                "width": 64,
+                "height": 64
+              },
+              "1940513": {
+                "sprited": 0,
+                "uri": "https://static.xx.fbcdn.net/rsrc.php/v4/yu/r/M2HDLLPAUWl.gif",
+                "width": 64,
+                "height": 64
+              }
+            }
+          },
+          "hblp": {
+            "consistency": {
+              "rev": 1031055084
+            },
+            "rsrcMap": {
+              "csr:_2_0_G2": {
+                "type": "csr",
+                "src": ":1,75,7,5,4,8,12,24,2,11,26,14,47,219,10,317,17,3,31,23,34,29,145,41,19,27,25,256,9,6",
+                "c": 1
+              },
+              "csr:_2_1_xt": {
+                "type": "csr",
+                "src": ":674,326",
+                "c": 1
+              },
+              "csr:_2_2_GK": {
+                "type": "csr",
+                "src": ":7,1,1151,179,5,4,8,9,12,2,11,19,27,110,10,77,40",
+                "c": 1
+              },
+              "csr:_2_3_qb": {
+                "type": "csr",
+                "src": ":81",
+                "c": 1
+              },
+              "csr:_2_4_Fj": {
+                "type": "csr",
+                "src": ":1,5,4,12,3,2,11,27,19,110,77,10,190,16,40",
+                "c": 1
+              },
+              "csr:_2_5_mk": {
+                "type": "csr",
+                "src": ":9,25,26",
+                "c": 1
+              },
+              "csr:_2_6_lE": {
+                "type": "csr",
+                "src": ":81",
+                "c": 1
+              },
+              "buy0Yxj": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4imXi4/y3/l/en_US-j/6bwYeTHXP_e.js",
+                "c": 1,
+                "p": ":309",
+                "m": "1031055084_main"
+              },
+              "csr:_2_7_SE": {
+                "type": "csr",
+                "src": ":47,7,1,31,5,4,8,586,62,9,99,41,12,17,3,321,2,11,171,19,27,110,10,77,40,190,16",
+                "c": 1
+              },
+              "csr:_2_8_us": {
+                "type": "csr",
+                "src": ":81",
+                "c": 1
+              },
+              "xjWGbgB": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4iNdx4/yo/l/en_US-j/Dpd6eU3gUfz.js",
+                "c": 1,
+                "p": ":805",
+                "m": "1031055084_main"
+              },
+              "3aIVQ5v": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4iIQ84/yt/l/en_US-j/r_l8TBVNA_j.js",
+                "c": 1,
+                "p": ":989",
+                "m": "1031055084_main"
+              },
+              "csr:_2_9_zS": {
+                "type": "csr",
+                "src": ":7,1,31,49,5,4,8,1711,9,41,12,3,2,11,19,27,25,26,110,21,38,10,55,16,77,40,190,104,18,56,82,93,42,282",
+                "c": 1
+              },
+              "csr:_2_a_DL": {
+                "type": "csr",
+                "src": ":193,124,85,115,135",
+                "c": 1
+              },
+              "EoE/Me+": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yk/r/10g4byJuXk9.js",
+                "c": 1,
+                "p": ":1294",
+                "m": "1031055084_main"
+              },
+              "csr:_2_b_8J": {
+                "type": "csr",
+                "src": ":81,111,33,107",
+                "c": 1
+              },
+              "/ajNE1B": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4idt34/yy/l/en_US-j/WHIZbJflK6U.js",
+                "c": 1,
+                "p": ":613",
+                "m": "1031055084_main"
+              },
+              "csr:_2_c_Dj": {
+                "type": "csr",
+                "src": ":7,1,31,49,64,5,195,4,8,1711,20,9,41,12,3,144,2,11,19,27,110,21,38,10,55,16,25,26,77,40,190,104,18,56,82,93,42,282",
+                "c": 1
+              },
+              "csr:_2_d_wb": {
+                "type": "csr",
+                "src": ":193,124,85,115,135",
+                "c": 1
+              },
+              "csr:_2_e_nF": {
+                "type": "csr",
+                "src": ":81,111,33,107",
+                "c": 1
+              },
+              "csr:_2_f_yo": {
+                "type": "csr",
+                "src": ":47,150,75,7,163,1,71,209,49,64,5,23,182,22,4,8,200,18,38,10,20,185,9,44,12,3,188,1702,2,11,16,19,27,256,25,26,110,77,40,190,21,55,104,56,82,93,42,282",
+                "c": 1
+              },
+              "csr:_2_g_lC": {
+                "type": "csr",
+                "src": ":193,124,85,115,135",
+                "c": 1
+              },
+              "csr:_2_h_Tm": {
+                "type": "csr",
+                "src": ":111,33,107,81",
+                "c": 1
+              },
+              "6W7STwl": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4i0Ke4/yN/l/en_US-j/RGilR719Jzx.js",
+                "c": 1,
+                "p": ":1235",
+                "m": "1031055084_main"
+              },
+              "X33qBRX": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yt/r/VqULsWVHu8M.js",
+                "c": 1,
+                "p": ":255",
+                "m": "1031055084_main"
+              },
+              "csr:_2_i_Ny": {
+                "type": "csr",
+                "src": ":7,1,5,19,4,8,28,9,12,3,144,2,11,27,21,38,10,55,16,25,26,110,104,18,56,82,93,42,77,40,190,282",
+                "c": 1
+              },
+              "csr:_2_j_PE": {
+                "type": "csr",
+                "src": ":193,124,85,115,135",
+                "c": 1
+              },
+              "csr:_2_k_PO": {
+                "type": "csr",
+                "src": ":111,81,33,107",
+                "c": 1
+              },
+              "6uCwN3L": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yA/r/R3Lbk_MvB8G.js",
+                "c": 1,
+                "p": ":961",
+                "m": "1031055084_main"
+              },
+              "bRzwgjT": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4ihD44/yL/l/en_US-j/EAdxMMaUpeu.js",
+                "c": 1,
+                "p": ":2946",
+                "m": "1031055084_main"
+              },
+              "/lgmcgJ": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yo/r/FIj5I4XcwZl.js",
+                "c": 1,
+                "p": ":800",
+                "m": "1031055084_main"
+              },
+              "Bw4pRwt": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4iEuQ4/yN/l/en_US-j/K_rJf-UnXqB.js",
+                "c": 1,
+                "p": ":36185",
+                "m": "1031055084_longtail"
+              },
+              "csr:_2_l_ab": {
+                "type": "csr",
+                "src": ":63,58,7,1,49,5,22,4,459,8,14,9,41,12,17,3,6,24,61,2,11,26,19,27,21,38,10,55,16,25,110,104,18,56,82,93,42,77,40,190,282",
+                "c": 1
+              },
+              "csr:_2_m_be": {
+                "type": "csr",
+                "src": ":193,124,85,115,135",
+                "c": 1
+              },
+              "csr:_2_n_dP": {
+                "type": "csr",
+                "src": ":111,81,33,107",
+                "c": 1
+              },
+              "csr:_2_o_9O": {
+                "type": "csr",
+                "src": ":63,7,1,49,5,4,8,1092,62,1711,9,12,3,2,11,19,27,21,38,10,55,16,110,104,18,56,82,93,42,77,40,190,25,26,282",
+                "c": 1
+              },
+              "csr:_2_p_lP": {
+                "type": "csr",
+                "src": ":193,124,85,115,135",
+                "c": 1
+              },
+              "csr:_2_q_ga": {
+                "type": "csr",
+                "src": ":111,81,33,107",
+                "c": 1
+              },
+              "PZp3dnA": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yN/r/ZN_rp6Vv7mh.js",
+                "c": 1,
+                "p": ":1969",
+                "m": "1031055084_main"
+              },
+              "csr:_2_r_mO": {
+                "type": "csr",
+                "src": ":63,7,1,5,4,8,18,9,12,3,2,11,19,27,38,10,25,26,110,77,40,190,16",
+                "c": 1
+              },
+              "csr:_2_s_+p": {
+                "type": "csr",
+                "src": ":1,2",
+                "c": 1
+              },
+              "csr:_2_t_MB": {
+                "type": "csr",
+                "src": ":7,1,5,4,8,1711,9,12,17,2,11,19,27,25,3,26,110,10,77,40,190,16",
+                "c": 1
+              },
+              "csr:_2_u_uk": {
+                "type": "csr",
+                "src": ":81",
+                "c": 1
+              },
+              "csr:_2_v_pc": {
+                "type": "csr",
+                "src": ":21,63,7,1,71,49,5,327,23,82,4,206,8,1092,18,62,161,10,59,207,157,9,12,3,79,2,11,45,26,19,27,25,110,77,40,190,16",
+                "c": 1
+              },
+              "csr:_2_w_Uj": {
+                "type": "csr",
+                "src": ":38",
+                "c": 1
+              },
+              "csr:_2_x_kj": {
+                "type": "csr",
+                "src": ":81",
+                "c": 1
+              },
+              "r5UmZvF": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yG/r/IoZu-lsulN2.js",
+                "c": 1,
+                "p": ":54521",
+                "m": "1031055084_longtail"
+              },
+              "csr:_2_y_/K": {
+                "type": "csr",
+                "src": ":47,1,5,4,8,34,10,9,12,2,11,19,27,110,77,40,190,16",
+                "c": 1
+              },
+              "csr:_2_z_Uh": {
+                "type": "csr",
+                "src": ":245,253,49,81,3",
+                "c": 1
+              },
+              "zdK4sAk": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yt/r/MOZsV44WqNm.js",
+                "c": 1,
+                "p": ":5909",
+                "m": "1031055084_main"
+              },
+              "csr:_2_10_n4": {
+                "type": "csr",
+                "src": ":1",
+                "c": 1
+              },
+              "38nGJmL": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yC/r/xCSZs4oa6vA.js",
+                "c": 1,
+                "p": ":292",
+                "m": "1031055084_main"
+              },
+              "csr:_2_11_5S": {
+                "type": "csr",
+                "src": ":446,1,271,5,4,65,20,44,152,12,3,2,436,19,9,77",
+                "c": 1
+              },
+              "jGJJBVi": {
+                "type": "js",
+                "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yo/r/waArAwuDvAO.js",
+                "c": 1,
+                "p": ":368",
+                "m": "1031055084_main"
+              },
+              "csr:_2_12_ty": {
+                "type": "csr",
+                "src": ":7,1,137,31,64,5,4,8,120,59,157,9,41,261,12,3,618,144,2,11,19,27,21,38,10,55,16,25,26,110,104,18,56,82,93,42,77,40,190,282",
+                "c": 1
+              },
+              "csr:_2_13_wr": {
+                "type": "csr",
+                "src": ":193,124,85,115,135",
+                "c": 1
+              },
+              "csr:_2_14_jZ": {
+                "type": "csr",
+                "src": ":66,111,81,33,107",
+                "c": 1
+              }
+            },
+            "compMap": {
+              "CometStickerPickerPopoverRoot.react": {
+                "r": [
+                  "csr:_2_2_GK"
+                ],
+                "rds": {
+                  "m": [
+                    "FbtLogging",
+                    "IntlQtEventFalcoEvent",
+                    "LogJsspStatsFalcoEvent"
+                  ],
+                  "r": [
+                    "csr:_2_3_qb"
+                  ]
+                },
+                "be": 1
+              },
+              "FDSTooltip.react": {
+                "r": [
+                  "csr:_2_4_Fj"
+                ],
+                "rdfds": {
+                  "m": [
+                    "FDSTooltipDeferredImpl.react"
+                  ],
+                  "r": [
+                    "csr:_2_5_mk"
+                  ]
+                },
+                "rds": {
+                  "m": [
+                    "bumpVultureJSHash",
+                    "FbtLogging",
+                    "IntlQtEventFalcoEvent",
+                    "LogJsspStatsFalcoEvent"
+                  ],
+                  "r": [
+                    "csr:_2_6_lE"
+                  ]
+                },
+                "be": 1
+              },
+              "CometUFIEmojiPickerPopoverForLexical.react": {
+                "r": [
+                  "buy0Yxj",
+                  "csr:_2_7_SE"
+                ],
+                "rds": {
+                  "m": [
+                    "FbtLogging",
+                    "ODS",
+                    "IntlQtEventFalcoEvent",
+                    "LogJsspStatsFalcoEvent"
+                  ],
+                  "r": [
+                    "csr:_2_8_us"
+                  ]
+                },
+                "be": 1
+              },
+              "CometStickerPickerGeneratedStickersFlyoutTagSelectorRoot.react": {
+                "r": [
+                  "xjWGbgB",
+                  "3aIVQ5v",
+                  "csr:_2_9_zS"
+                ],
+                "rdfds": {
+                  "m": [
+                    "CometExceptionDialog.react",
+                    "SecuredActionTriggerWithAccountID.react",
+                    "SecuredActionTriggerWithEncryptedContext.react",
+                    "FDSTooltipDeferredImpl.react"
+                  ],
+                  "r": [
+                    "csr:_2_a_DL"
+                  ]
+                },
+                "rds": {
+                  "m": [
+                    "FbtLogging",
+                    "StickerStoreFalcoEvent",
+                    "ODS",
+                    "IntlQtEventFalcoEvent",
+                    "CometRelayEF",
+                    "LogJsspStatsFalcoEvent",
+                    "ContextualConfig",
+                    "BladeRunnerClient",
+                    "DGWRequestStreamClient",
+                    "CometToast.react",
+                    "MqttLongPollingRunner",
+                    "bumpVultureJSHash"
+                  ],
+                  "r": [
+                    "EoE/Me+",
+                    "csr:_2_b_8J"
+                  ]
+                },
+                "be": 1
+              },
+              "CometStickerPickerStickerGeneratedCard.react": {
+                "r": [
+                  "/ajNE1B",
+                  "xjWGbgB",
+                  "3aIVQ5v",
+                  "csr:_2_c_Dj"
+                ],
+                "rdfds": {
+                  "m": [
+                    "CometExceptionDialog.react",
+                    "SecuredActionTriggerWithAccountID.react",
+                    "SecuredActionTriggerWithEncryptedContext.react",
+                    "FDSTooltipDeferredImpl.react"
+                  ],
+                  "r": [
+                    "csr:_2_d_wb"
+                  ]
+                },
+                "rds": {
+                  "m": [
+                    "FbtLogging",
+                    "ODS",
+                    "IntlQtEventFalcoEvent",
+                    "CometRelayEF",
+                    "LogJsspStatsFalcoEvent",
+                    "ContextualConfig",
+                    "BladeRunnerClient",
+                    "DGWRequestStreamClient",
+                    "CometToast.react",
+                    "MqttLongPollingRunner",
+                    "bumpVultureJSHash"
+                  ],
+                  "r": [
+                    "csr:_2_e_nF"
+                  ]
+                },
+                "be": 1
+              },
+              "CometUFIMediaUploadUpgradedPlugin.experimental.react": {
+                "r": [
+                  "csr:_2_f_yo"
+                ],
+                "rdfds": {
+                  "m": [
+                    "CometExceptionDialog.react",
+                    "FDSTooltipDeferredImpl.react",
+                    "SecuredActionTriggerWithAccountID.react",
+                    "SecuredActionTriggerWithEncryptedContext.react"
+                  ],
+                  "r": [
+                    "csr:_2_g_lC"
+                  ]
+                },
+                "rds": {
+                  "m": [
+                    "ContextualConfig",
+                    "BladeRunnerClient",
+                    "bumpVultureJSHash",
+                    "FbtLogging",
+                    "DGWRequestStreamClient",
+                    "ODS",
+                    "IntlQtEventFalcoEvent",
+                    "LogJsspStatsFalcoEvent",
+                    "MqttLongPollingRunner",
+                    "CometToast.react",
+                    "CometRelayEF"
+                  ],
+                  "r": [
+                    "csr:_2_h_Tm"
+                  ]
+                },
+                "be": 1
+              },
+              "CometUFIAvatarPopoverForLexical.react": {
+                "r": [
+                  "6W7STwl",
+                  "X33qBRX",
+                  "csr:_2_i_Ny"
+                ],
+                "rdfds": {
+                  "m": [
+                    "FDSTooltipDeferredImpl.react",
+                    "CometExceptionDialog.react",
+                    "SecuredActionTriggerWithAccountID.react",
+                    "SecuredActionTriggerWithEncryptedContext.react"
+                  ],
+                  "r": [
+                    "csr:_2_j_PE"
+                  ]
+                },
+                "rds": {
+                  "m": [
+                    "CometToast.react",
+                    "FbtLogging",
+                    "ODS",
+                    "IntlQtEventFalcoEvent",
+                    "ContextualConfig",
+                    "BladeRunnerClient",
+                    "DGWRequestStreamClient",
+                    "LogJsspStatsFalcoEvent",
+                    "bumpVultureJSHash",
+                    "MqttLongPollingRunner",
+                    "CometRelayEF"
+                  ],
+                  "r": [
+                    "csr:_2_k_PO"
+                  ]
+                },
+                "be": 1
+              },
+              "GroupsCometGroupRuleEntityDialog.react": {
+                "r": [
+                  "6uCwN3L",
+                  "bRzwgjT",
+                  "/lgmcgJ",
+                  "Bw4pRwt",
+                  "csr:_2_l_ab"
+                ],
+                "rdfds": {
+                  "m": [
+                    "FDSTooltipDeferredImpl.react",
+                    "CometExceptionDialog.react",
+                    "SecuredActionTriggerWithAccountID.react",
+                    "SecuredActionTriggerWithEncryptedContext.react"
+                  ],
+                  "r": [
+                    "csr:_2_m_be"
+                  ]
+                },
+                "rds": {
+                  "m": [
+                    "CometRelayEF",
+                    "bumpVultureJSHash",
+                    "FbtLogging",
+                    "GroupsViewedRulesFalcoEvent",
+                    "ODS",
+                    "IntlQtEventFalcoEvent",
+                    "ContextualConfig",
+                    "BladeRunnerClient",
+                    "DGWRequestStreamClient",
+                    "LogJsspStatsFalcoEvent",
+                    "CometToast.react",
+                    "MqttLongPollingRunner"
+                  ],
+                  "r": [
+                    "csr:_2_n_dP"
+                  ]
+                },
+                "be": 1
+              },
+              "CometStickerPickerStickerSearchCard.react": {
+                "r": [
+                  "xjWGbgB",
+                  "3aIVQ5v",
+                  "csr:_2_o_9O"
+                ],
+                "rdfds": {
+                  "m": [
+                    "CometExceptionDialog.react",
+                    "SecuredActionTriggerWithAccountID.react",
+                    "SecuredActionTriggerWithEncryptedContext.react",
+                    "FDSTooltipDeferredImpl.react"
+                  ],
+                  "r": [
+                    "csr:_2_p_lP"
+                  ]
+                },
+                "rds": {
+                  "m": [
+                    "FbtLogging",
+                    "StickerStoreFalcoEvent",
+                    "ODS",
+                    "IntlQtEventFalcoEvent",
+                    "ContextualConfig",
+                    "BladeRunnerClient",
+                    "DGWRequestStreamClient",
+                    "LogJsspStatsFalcoEvent",
+                    "CometToast.react",
+                    "MqttLongPollingRunner",
+                    "CometRelayEF",
+                    "bumpVultureJSHash"
+                  ],
+                  "r": [
+                    "EoE/Me+",
+                    "csr:_2_q_ga"
+                  ]
+                },
+                "be": 1
+              },
+              "CometUFICodedErrorDialog.react": {
+                "r": [
+                  "PZp3dnA",
+                  "csr:_2_r_mO"
+                ],
+                "rds": {
+                  "m": [
+                    "FbtLogging",
+                    "ODS",
+                    "IntlQtEventFalcoEvent"
+                  ]
+                },
+                "be": 1
+              },
+              "logStickersFlyoutHasOpened": {
+                "r": [
+                  "EoE/Me+",
+                  "csr:_2_s_+p"
+                ],
+                "be": 1
+              },
+              "CometStickerPickerFlyoutTagSelectorRoot.react": {
+                "r": [
+                  "xjWGbgB",
+                  "csr:_2_t_MB"
+                ],
+                "rds": {
+                  "m": [
+                    "FbtLogging",
+                    "StickerStoreFalcoEvent",
+                    "ODS",
+                    "IntlQtEventFalcoEvent",
+                    "LogJsspStatsFalcoEvent"
+                  ],
+                  "r": [
+                    "EoE/Me+",
+                    "csr:_2_u_uk"
+                  ]
+                },
+                "be": 1
+              },
+              "CometUFIGIFPickerPopoverForLexical.react": {
+                "r": [
+                  "/ajNE1B",
+                  "xjWGbgB",
+                  "csr:_2_v_pc"
+                ],
+                "rdfds": {
+                  "m": [
+                    "CometExceptionDialog.react",
+                    "VideoPlayerSpinner.react",
+                    "VideoPlayerCaptionsArea.react",
+                    "FDSTooltipDeferredImpl.react"
+                  ],
+                  "r": [
+                    "csr:_2_w_Uj"
+                  ]
+                },
+                "rds": {
+                  "m": [
+                    "VideoPlayerWithLiveVideoInterruptedOverlay.react",
+                    "bumpVultureJSHash",
+                    "FbtLogging",
+                    "ODS",
+                    "IntlQtEventFalcoEvent",
+                    "LogJsspStatsFalcoEvent"
+                  ],
+                  "r": [
+                    "csr:_2_x_kj"
+                  ]
+                },
+                "be": 1
+              },
+              "CometTextDelightAnimation.react": {
+                "r": [
+                  "r5UmZvF",
+                  "csr:_2_y_/K"
+                ],
+                "rds": {
+                  "m": [
+                    "KeyframesRenderer",
+                    "FBKeyframesLoggedSession",
+                    "KeyframesAssetDecoder",
+                    "ODS",
+                    "LogJsspStatsFalcoEvent"
+                  ],
+                  "r": [
+                    "csr:_2_z_Uh"
+                  ]
+                },
+                "be": 1
+              },
+              "VultureJSSampleRatesLoader": {
+                "r": [
+                  "zdK4sAk",
+                  "csr:_2_10_n4"
+                ],
+                "be": 1
+              },
+              "Sticker.react": {
+                "r": [
+                  "38nGJmL",
+                  "csr:_2_11_5S"
+                ],
+                "rds": {
+                  "m": [
+                    "FbtLogging",
+                    "IntlQtEventFalcoEvent"
+                  ]
+                },
+                "be": 1
+              },
+              "CometStickerPickerCard.react": {
+                "r": [
+                  "/ajNE1B",
+                  "jGJJBVi",
+                  "xjWGbgB",
+                  "3aIVQ5v",
+                  "csr:_2_12_ty"
+                ],
+                "rdfds": {
+                  "m": [
+                    "CometExceptionDialog.react",
+                    "SecuredActionTriggerWithAccountID.react",
+                    "SecuredActionTriggerWithEncryptedContext.react",
+                    "FDSTooltipDeferredImpl.react"
+                  ],
+                  "r": [
+                    "csr:_2_13_wr"
+                  ]
+                },
+                "rds": {
+                  "m": [
+                    "FDSTabMenu.react",
+                    "CometRelayEF",
+                    "FbtLogging",
+                    "ODS",
+                    "IntlQtEventFalcoEvent",
+                    "ContextualConfig",
+                    "BladeRunnerClient",
+                    "DGWRequestStreamClient",
+                    "LogJsspStatsFalcoEvent",
+                    "CometToast.react",
+                    "bumpVultureJSHash",
+                    "MqttLongPollingRunner"
+                  ],
+                  "r": [
+                    "csr:_2_14_jZ"
+                  ]
+                },
+                "be": 1
+              }
+            },
+            "indexUpgrades": {
+              "__hblp": ":16779,15175,13188,4492,4302,6361,4501,6445,6451,4320,6448,4473,6443,6566,7520,8686,5294",
+              "__hsdp": ":83,84"
+            }
+          }
+        },
+        "jsmods": {
+          "define": [
+            [
+              "cr:310",
+              [
+                "RunWWW"
+              ],
+              {
+                "__rc": [
+                  "RunWWW",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:619",
+              [
+                "setTimeoutCometLoggingPriWWW"
+              ],
+              {
+                "__rc": [
+                  "setTimeoutCometLoggingPriWWW",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:686",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:755",
+              [
+                "warningWWW"
+              ],
+              {
+                "__rc": [
+                  "warningWWW",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:1078",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:1080",
+              [
+                "unexpectedUseInComet"
+              ],
+              {
+                "__rc": [
+                  "unexpectedUseInComet",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:1126",
+              [
+                "TimeSliceSham"
+              ],
+              {
+                "__rc": [
+                  "TimeSliceSham",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:3725",
+              [
+                "clearTimeoutWWWOrMobile"
+              ],
+              {
+                "__rc": [
+                  "clearTimeoutWWWOrMobile",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:4344",
+              [
+                "setTimeoutWWWOrMobile"
+              ],
+              {
+                "__rc": [
+                  "setTimeoutWWWOrMobile",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:6640",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:7383",
+              [
+                "BanzaiWWW"
+              ],
+              {
+                "__rc": [
+                  "BanzaiWWW",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:7385",
+              [
+                "clearIntervalWWW"
+              ],
+              {
+                "__rc": [
+                  "clearIntervalWWW",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:7388",
+              [
+                "setIntervalWWW"
+              ],
+              {
+                "__rc": [
+                  "setIntervalWWW",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:7391",
+              [
+                "setTimeoutAcrossTransitionsWWW"
+              ],
+              {
+                "__rc": [
+                  "setTimeoutAcrossTransitionsWWW",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:7422",
+              [
+                "ImageDownloadTrackerWWW"
+              ],
+              {
+                "__rc": [
+                  "ImageDownloadTrackerWWW",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:7730",
+              [
+                "getFbtResult"
+              ],
+              {
+                "__rc": [
+                  "getFbtResult",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:8907",
+              [
+                "HeroTracingCoreConfigWWW"
+              ],
+              {
+                "__rc": [
+                  "HeroTracingCoreConfigWWW",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:8908",
+              [
+                "HeroTracingCoreDependenciesWWW"
+              ],
+              {
+                "__rc": [
+                  "HeroTracingCoreDependenciesWWW",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:8958",
+              [
+                "FBJSON"
+              ],
+              {
+                "__rc": [
+                  "FBJSON",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:8967",
+              [
+                "clearTimeoutComet"
+              ],
+              {
+                "__rc": [
+                  "clearTimeoutComet",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:12179",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:12180",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:13597",
+              [
+                "JSSelfProfilerLoomProvider"
+              ],
+              {
+                "__rc": [
+                  "JSSelfProfilerLoomProvider",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:13699",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:15957",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:17264",
+              [
+                "RSTLogForCrash"
+              ],
+              {
+                "__rc": [
+                  "RSTLogForCrash",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:20362",
+              [
+                "FDSTextImpl.react"
+              ],
+              {
+                "__rc": [
+                  "FDSTextImpl.react",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:955714",
+              [
+                "JSSelfProfilerLoomProvider"
+              ],
+              {
+                "__rc": [
+                  "JSSelfProfilerLoomProvider",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:1094133",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:1108857",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:1294158",
+              [
+                "React.classic"
+              ],
+              {
+                "__rc": [
+                  "React.classic",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:1984081",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:564",
+              [
+                "ClickIDDomainBlacklistSVConfigJSModuleWrapper"
+              ],
+              {
+                "__rc": [
+                  "ClickIDDomainBlacklistSVConfigJSModuleWrapper",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:734",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:1293",
+              [
+                "ReactDOM.classic"
+              ],
+              {
+                "__rc": [
+                  "ReactDOM.classic",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:2448",
+              [
+                "useHeroBootloadedComponent"
+              ],
+              {
+                "__rc": [
+                  "useHeroBootloadedComponent",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:2866",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:4852",
+              [
+                "ClickIDURLBlocklistSVConfigJSModuleWrapper"
+              ],
+              {
+                "__rc": [
+                  "ClickIDURLBlocklistSVConfigJSModuleWrapper",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:5128",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:7063",
+              [
+                "CometErrorBoundary.react"
+              ],
+              {
+                "__rc": [
+                  "CometErrorBoundary.react",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:7162",
+              [
+                "ReactDOMCompatibilityLayer"
+              ],
+              {
+                "__rc": [
+                  "ReactDOMCompatibilityLayer",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:7389",
+              [
+                "setIntervalAcrossTransitionsWWW"
+              ],
+              {
+                "__rc": [
+                  "setIntervalAcrossTransitionsWWW",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:8959",
+              [
+                "DTSG"
+              ],
+              {
+                "__rc": [
+                  "DTSG",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:8960",
+              [
+                "DTSG_ASYNC"
+              ],
+              {
+                "__rc": [
+                  "DTSG_ASYNC",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:11054",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:13992",
+              [
+                "FDSCrossFilled12PNGIcon.react"
+              ],
+              {
+                "__rc": [
+                  "FDSCrossFilled12PNGIcon.react",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:17816",
+              [
+                "FBDomainsSVConfigJSModuleWrapper"
+              ],
+              {
+                "__rc": [
+                  "FBDomainsSVConfigJSModuleWrapper",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:20266",
+              [
+                "useEmptyFunction"
+              ],
+              {
+                "__rc": [
+                  "useEmptyFunction",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:20414",
+              [
+                "FDSTextContext_Old.react"
+              ],
+              {
+                "__rc": [
+                  "FDSTextContext_Old.react",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:21238",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:22912",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:696703",
+              [
+                "JSScheduler"
+              ],
+              {
+                "__rc": [
+                  "JSScheduler",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:1106516",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:1294159",
+              [
+                "ReactDOM.classic"
+              ],
+              {
+                "__rc": [
+                  "ReactDOM.classic",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:1522191",
+              [
+                "CometLinkTrackingUtils.facebook"
+              ],
+              {
+                "__rc": [
+                  "CometLinkTrackingUtils.facebook",
+                  null
+                ]
+              },
+              -1
+            ],
+            [
+              "cr:1645510",
+              [],
+              {
+                "__rc": [
+                  null,
+                  null
+                ]
+              },
+              -1
+            ]
+          ],
+          "require": [
+            [
+              "CometGenericCommentDisableNotice.react"
+            ],
+            [
+              "CometGenericCommentDisableNotice_commentDisableNotice$normalization.graphql"
+            ],
+            [
+              "CometUFICommentReplyActionLink.react"
+            ],
+            [
+              "CometUFIInlineTypingIndicator.react"
+            ],
+            [
+              "CometUFIInlineTypingIndicator_renderer$normalization.graphql"
+            ],
+            [
+              "CometUFICommentBodyTextWithEntities_textWithEntities$normalization.graphql"
+            ],
+            [
+              "CometUFICommentBodyTextWithEntities.react"
+            ],
+            [
+              "cometUFIComposerMentionsPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerMentionsPlugin"
+            ],
+            [
+              "cometUFIComposerAvatarPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerAvatarPlugin"
+            ],
+            [
+              "cometUFIComposerHashtagPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerHashtagPlugin"
+            ],
+            [
+              "cometUFIComposerEmojiPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerEmojiPlugin"
+            ],
+            [
+              "cometUFIComposerMediaUploadPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerMediaUploadPlugin"
+            ],
+            [
+              "cometUFIComposerGIFPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerGIFPlugin"
+            ],
+            [
+              "cometUFIComposerStickersPlugin_next_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerStickersPlugin.next"
+            ],
+            [
+              "cometUFIComposerEmoticonPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerEmoticonPlugin"
+            ],
+            [
+              "cometUFIComposerPrefillMentionPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerPrefillMentionPlugin"
+            ],
+            [
+              "cometUFIComposerAssociateReplyWithParentPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerAssociateReplyWithParentPlugin"
+            ],
+            [
+              "cometUFIComposerSetReplyClickedPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerSetReplyClickedPlugin"
+            ],
+            [
+              "cometUFIComposerStateSnapshotPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerStateSnapshotPlugin"
+            ],
+            [
+              "cometUFIComposerLiveTypingBroadcastPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerLiveTypingBroadcastPlugin"
+            ],
+            [
+              "cometUFIComposerCommentCharacterLimitPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerCommentCharacterLimitPlugin"
+            ],
+            [
+              "cometUFIComposerWriteToComposerPlugin_plugin$normalization.graphql"
+            ],
+            [
+              "cometUFIComposerWriteToComposerPlugin"
+            ],
+            [
+              "CometUFICommentTimeStampActionLink_commentActionLink$normalization.graphql"
+            ],
+            [
+              "CometUFICommentTimeStampActionLink.react"
+            ],
+            [
+              "CometAnimatedReactionIconRenderer_renderer$normalization.graphql"
+            ],
+            [
+              "CometAnimatedReactionIconRenderer.react"
+            ],
+            [
+              "CometUFICommentReactionActionLink_commentActionLink$normalization.graphql"
+            ],
+            [
+              "CometUFICommentReactionActionLink.react"
+            ],
+            [
+              "CometUFICommentReplyActionLink_commentActionLink$normalization.graphql"
+            ],
+            [
+              "emptyFunction",
+              "thatReturns",
+              [
+                "RequireDeferredReference"
+              ],
+              [
+                [
+                  {
+                    "__dr": "CometGenericCommentDisableNotice.react"
+                  },
+                  {
+                    "__dr": "CometGenericCommentDisableNotice_commentDisableNotice$normalization.graphql"
+                  },
+                  {
+                    "__dr": "CometUFICommentReplyActionLink.react"
+                  },
+                  {
+                    "__dr": "CometUFIInlineTypingIndicator.react"
+                  },
+                  {
+                    "__dr": "CometUFIInlineTypingIndicator_renderer$normalization.graphql"
+                  },
+                  {
+                    "__dr": "CometUFICommentBodyTextWithEntities_textWithEntities$normalization.graphql"
+                  },
+                  {
+                    "__dr": "CometUFICommentBodyTextWithEntities.react"
+                  },
+                  {
+                    "__dr": "cometUFIComposerMentionsPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerMentionsPlugin"
+                  },
+                  {
+                    "__dr": "cometUFIComposerAvatarPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerAvatarPlugin"
+                  },
+                  {
+                    "__dr": "cometUFIComposerHashtagPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerHashtagPlugin"
+                  },
+                  {
+                    "__dr": "cometUFIComposerEmojiPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerEmojiPlugin"
+                  },
+                  {
+                    "__dr": "cometUFIComposerMediaUploadPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerMediaUploadPlugin"
+                  },
+                  {
+                    "__dr": "cometUFIComposerGIFPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerGIFPlugin"
+                  },
+                  {
+                    "__dr": "cometUFIComposerStickersPlugin_next_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerStickersPlugin.next"
+                  },
+                  {
+                    "__dr": "cometUFIComposerEmoticonPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerEmoticonPlugin"
+                  },
+                  {
+                    "__dr": "cometUFIComposerPrefillMentionPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerPrefillMentionPlugin"
+                  },
+                  {
+                    "__dr": "cometUFIComposerAssociateReplyWithParentPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerAssociateReplyWithParentPlugin"
+                  },
+                  {
+                    "__dr": "cometUFIComposerSetReplyClickedPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerSetReplyClickedPlugin"
+                  },
+                  {
+                    "__dr": "cometUFIComposerStateSnapshotPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerStateSnapshotPlugin"
+                  },
+                  {
+                    "__dr": "cometUFIComposerLiveTypingBroadcastPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerLiveTypingBroadcastPlugin"
+                  },
+                  {
+                    "__dr": "cometUFIComposerCommentCharacterLimitPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerCommentCharacterLimitPlugin"
+                  },
+                  {
+                    "__dr": "cometUFIComposerWriteToComposerPlugin_plugin$normalization.graphql"
+                  },
+                  {
+                    "__dr": "cometUFIComposerWriteToComposerPlugin"
+                  },
+                  {
+                    "__dr": "CometUFICommentTimeStampActionLink_commentActionLink$normalization.graphql"
+                  },
+                  {
+                    "__dr": "CometUFICommentTimeStampActionLink.react"
+                  },
+                  {
+                    "__dr": "CometAnimatedReactionIconRenderer_renderer$normalization.graphql"
+                  },
+                  {
+                    "__dr": "CometAnimatedReactionIconRenderer.react"
+                  },
+                  {
+                    "__dr": "CometUFICommentReactionActionLink_commentActionLink$normalization.graphql"
+                  },
+                  {
+                    "__dr": "CometUFICommentReactionActionLink.react"
+                  },
+                  {
+                    "__dr": "CometUFICommentReplyActionLink_commentActionLink$normalization.graphql"
+                  }
+                ]
+              ]
+            ],
+            [
+              "FbtLogging"
+            ],
+            [
+              "IntlQtEventFalcoEvent"
+            ],
+            [
+              "ODS"
+            ],
+            [
+              "CometUFIStickersComposerUpgradedPreviewContent.react"
+            ],
+            [
+              "FDSTooltipDeferredImpl.react"
+            ],
+            [
+              "RequireDeferredReference",
+              "unblock",
+              [],
+              [
+                [
+                  "CometGenericCommentDisableNotice.react",
+                  "CometGenericCommentDisableNotice_commentDisableNotice$normalization.graphql",
+                  "CometUFICommentReplyActionLink.react",
+                  "CometUFIInlineTypingIndicator.react",
+                  "CometUFIInlineTypingIndicator_renderer$normalization.graphql",
+                  "CometUFICommentBodyTextWithEntities_textWithEntities$normalization.graphql",
+                  "CometUFICommentBodyTextWithEntities.react",
+                  "cometUFIComposerMentionsPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerMentionsPlugin",
+                  "cometUFIComposerAvatarPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerAvatarPlugin",
+                  "cometUFIComposerHashtagPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerHashtagPlugin",
+                  "cometUFIComposerEmojiPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerEmojiPlugin",
+                  "cometUFIComposerMediaUploadPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerMediaUploadPlugin",
+                  "cometUFIComposerGIFPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerGIFPlugin",
+                  "cometUFIComposerStickersPlugin_next_plugin$normalization.graphql",
+                  "cometUFIComposerStickersPlugin.next",
+                  "cometUFIComposerEmoticonPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerEmoticonPlugin",
+                  "cometUFIComposerPrefillMentionPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerPrefillMentionPlugin",
+                  "cometUFIComposerAssociateReplyWithParentPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerAssociateReplyWithParentPlugin",
+                  "cometUFIComposerSetReplyClickedPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerSetReplyClickedPlugin",
+                  "cometUFIComposerStateSnapshotPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerStateSnapshotPlugin",
+                  "cometUFIComposerLiveTypingBroadcastPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerLiveTypingBroadcastPlugin",
+                  "cometUFIComposerCommentCharacterLimitPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerCommentCharacterLimitPlugin",
+                  "cometUFIComposerWriteToComposerPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerWriteToComposerPlugin",
+                  "CometUFICommentTimeStampActionLink_commentActionLink$normalization.graphql",
+                  "CometUFICommentTimeStampActionLink.react",
+                  "CometAnimatedReactionIconRenderer_renderer$normalization.graphql",
+                  "CometAnimatedReactionIconRenderer.react",
+                  "CometUFICommentReactionActionLink_commentActionLink$normalization.graphql",
+                  "CometUFICommentReactionActionLink.react",
+                  "CometUFICommentReplyActionLink_commentActionLink$normalization.graphql",
+                  "FDSTooltipDeferredImpl.react"
+                ],
+                "sd"
+              ]
+            ],
+            [
+              "RequireDeferredReference",
+              "unblock",
+              [],
+              [
+                [
+                  "FbtLogging",
+                  "IntlQtEventFalcoEvent",
+                  "ODS",
+                  "CometUFIStickersComposerUpgradedPreviewContent.react"
+                ],
+                "sd"
+              ]
+            ],
+            [
+              "RequireDeferredReference",
+              "unblock",
+              [],
+              [
+                [
+                  "CometGenericCommentDisableNotice.react",
+                  "CometGenericCommentDisableNotice_commentDisableNotice$normalization.graphql",
+                  "CometUFICommentReplyActionLink.react",
+                  "CometUFIInlineTypingIndicator.react",
+                  "CometUFIInlineTypingIndicator_renderer$normalization.graphql",
+                  "CometUFICommentBodyTextWithEntities_textWithEntities$normalization.graphql",
+                  "CometUFICommentBodyTextWithEntities.react",
+                  "cometUFIComposerMentionsPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerMentionsPlugin",
+                  "cometUFIComposerAvatarPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerAvatarPlugin",
+                  "cometUFIComposerHashtagPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerHashtagPlugin",
+                  "cometUFIComposerEmojiPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerEmojiPlugin",
+                  "cometUFIComposerMediaUploadPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerMediaUploadPlugin",
+                  "cometUFIComposerGIFPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerGIFPlugin",
+                  "cometUFIComposerStickersPlugin_next_plugin$normalization.graphql",
+                  "cometUFIComposerStickersPlugin.next",
+                  "cometUFIComposerEmoticonPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerEmoticonPlugin",
+                  "cometUFIComposerPrefillMentionPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerPrefillMentionPlugin",
+                  "cometUFIComposerAssociateReplyWithParentPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerAssociateReplyWithParentPlugin",
+                  "cometUFIComposerSetReplyClickedPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerSetReplyClickedPlugin",
+                  "cometUFIComposerStateSnapshotPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerStateSnapshotPlugin",
+                  "cometUFIComposerLiveTypingBroadcastPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerLiveTypingBroadcastPlugin",
+                  "cometUFIComposerCommentCharacterLimitPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerCommentCharacterLimitPlugin",
+                  "cometUFIComposerWriteToComposerPlugin_plugin$normalization.graphql",
+                  "cometUFIComposerWriteToComposerPlugin",
+                  "CometUFICommentTimeStampActionLink_commentActionLink$normalization.graphql",
+                  "CometUFICommentTimeStampActionLink.react",
+                  "CometAnimatedReactionIconRenderer_renderer$normalization.graphql",
+                  "CometAnimatedReactionIconRenderer.react",
+                  "CometUFICommentReactionActionLink_commentActionLink$normalization.graphql",
+                  "CometUFICommentReactionActionLink.react",
+                  "CometUFICommentReplyActionLink_commentActionLink$normalization.graphql",
+                  "FDSTooltipDeferredImpl.react"
+                ],
+                "css"
+              ]
+            ],
+            [
+              "RequireDeferredReference",
+              "unblock",
+              [],
+              [
+                [
+                  "FbtLogging",
+                  "IntlQtEventFalcoEvent",
+                  "ODS",
+                  "CometUFIStickersComposerUpgradedPreviewContent.react"
+                ],
+                "css"
+              ]
+            ]
+          ],
+          "phd2_indexes": ":968,83,84"
+        },
+        "allResources": [
+          "csr:_2_0_G2",
+          "csr:_2_1_xt"
+        ],
+        "tieredResources": {
+          "r": [
+            "csr:_2_0_G2"
+          ],
+          "rdfds": [],
+          "rds": [
+            "csr:_2_1_xt"
+          ]
+        }
+      }
+    }
+  }
+}

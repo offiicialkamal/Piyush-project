@@ -12,10 +12,7 @@ comment_per_acc = 1
 
 
 cookie = cookies_batch[0]
-options = {
-    "from_page": False,
-    "from_user": False
-}
+
 
 # print(type(list(cookie.keys())[0]))
 

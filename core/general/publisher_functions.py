@@ -6,7 +6,7 @@ import uuid
 from typing import Dict, Optional, Tuple
 
 
-class publish:
+class FacebookCommentBot:
     """
     A bot that automates posting comments on Facebook posts using GraphQL API.
     Dynamically fetches all required parameters for each session.
@@ -21,7 +21,7 @@ class publish:
         """
         self.user_agent = user_agent
         self.session = requests.Session()
-        self.cookies = self._parse_cookies(cookie_string)
+        self.cookies = cookie_string
         self.session.cookies.update(self.cookies)
         
         # User ID from cookies
@@ -92,7 +92,7 @@ class publish:
                 return False, f"HTTP {response.status_code}", {}
 
             html = response.text
-            print(type(html))
+            # print(html)
             with open("aa.html", "w") as f:
                 f.write(html)
             # Check if we're logged in
@@ -360,8 +360,7 @@ class publish:
         except Exception as e:
             return False, f"Error: {str(e)}", ""
 
-    def post_comment(self, basic_params: Dict, volatile_params: Dict,
-                     session_id: str, comment_text: str) -> Tuple[bool, str, Dict]:
+    def post_comment(self, basic_params: Dict, volatile_params: Dict,session_id: str, comment_text: str) -> Tuple[bool, str, Dict]:
         """Post the actual comment."""
         print(f"💬 Posting comment: '{comment_text}'")
 
@@ -479,7 +478,7 @@ class publish:
             if response.status_code == 200:
                 try:
                     result = json.loads(response_text)
-                    with open("aa.json", w) as a:
+                    with open("aa.json", "w") as a:
                         json.dump(result, a, indent=2)
                     if 'errors' in result:
                         error_msg = result['errors'][0].get(
@@ -531,8 +530,7 @@ class publish:
 
         # Step 3: Send typing indicator
         time.sleep(1)  # Small delay
-        success, error, session_id = self.send_typing_indicator(
-            basic_params, volatile_params)
+        success, error, session_id = self.send_typing_indicator(basic_params, volatile_params)
         if not success:
             print(f"⚠ Typing indicator failed: {error}")
             # Continue anyway with a generated session_id
@@ -552,34 +550,34 @@ class publish:
         return success, result, full_response
 
 
-# ============================================================================
-# MAIN EXECUTION - EXAMPLE USAGE
-# ============================================================================
+# # ============================================================================
+# # MAIN EXECUTION - EXAMPLE USAGE
+# # ============================================================================
 
-if __name__ == "__main__":
-    # Your Facebook cookies (replace with your actual cookies)
-    COOKIES = '''
-datr=OZ4oaaPMapVsAMgQ-kctLHAf; fr=1pXZrWFE4HqVWV2wj.AWejfeSTh--N3PulYdY5Tpt94ymCXqn_KwOcD9Gak4vn1geUPAY.BpPvJN..AAA.0.0.BpPvJN.AWfhqEC1Jxqa2Sc0mxTIO2Y1csM; sb=OZ4oaetTZUNpwQtVht7HwxCu; wd=588x479; dpr=1.6800000667572021; locale=en_US; ps_l=1; ps_n=1; c_user=61558074221758; xs=41%3AwPxC4m9Aw-KdHw%3A2%3A1765119401%3A-1%3A-1%3A%3AAcySD8XTcwi2Vxf7cA3VX--_s5yQSgMBTdkjY7CBhQ; presence=C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1765732966716%2C%22v%22%3A1%7D
-    '''
+# if __name__ == "__main__":
+#     # Your Facebook cookies (replace with your actual cookies)
+#     COOKIES = '''
+# datr=OZ4oaaPMapVsAMgQ-kctLHAf; fr=1pXZrWFE4HqVWV2wj.AWejfeSTh--N3PulYdY5Tpt94ymCXqn_KwOcD9Gak4vn1geUPAY.BpPvJN..AAA.0.0.BpPvJN.AWfhqEC1Jxqa2Sc0mxTIO2Y1csM; sb=OZ4oaetTZUNpwQtVht7HwxCu; wd=588x479; dpr=1.6800000667572021; locale=en_US; ps_l=1; ps_n=1; c_user=61558074221758; xs=41%3AwPxC4m9Aw-KdHw%3A2%3A1765119401%3A-1%3A-1%3A%3AAcySD8XTcwi2Vxf7cA3VX--_s5yQSgMBTdkjY7CBhQ; presence=C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1765732966716%2C%22v%22%3A1%7D
+#     '''
 
-    # Initialize the bot
-    bot = FacebookCommentBot(COOKIES)
+#     # Initialize the bot
+#     bot = FacebookCommentBot(COOKIES)
 
-    # Post to comment on
-    POST_URL = "https://www.facebook.com/share/1AkJY1hLLP/"
+#     # Post to comment on
+#     POST_URL = "https://www.facebook.com/share/1AkJY1hLLP/"
 
-    # Comment text
-    COMMENT = "CMT by Hacker!"
+#     # Comment text
+#     COMMENT = "CMT by Hacker!"
 
-    # Execute the comment
-    success, result, response = bot.execute_comment(POST_URL, COMMENT)
+#     # Execute the comment
+#     success, result, response = bot.execute_comment(POST_URL, COMMENT)
 
-    # Print result
-    print("\n" + "="*60)
-    if success:
-        print(f"✅ SUCCESS: Comment ID: {result}")
-    else:
-        print(f"❌ FAILED: {result}")
-        if response:
-            print(f"Response: {json.dumps(response, indent=2)[:500]}...")
-    print("="*60)
+#     # Print result
+#     print("\n" + "="*60)
+#     if success:
+#         print(f"✅ SUCCESS: Comment ID: {result}")
+#     else:
+#         print(f"❌ FAILED: {result}")
+#         if response:
+#             print(f"Response: {json.dumps(response, indent=2)[:500]}...")
+#     print("="*60)
