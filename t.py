@@ -10,14 +10,15 @@ post_link = "https://www.facebook.com/share/1AkJY1hLLP/"
 comment = "This is hacking star"
 comment_per_acc = 1
 
-
+options = {"from_page": True,"from_user": True}
 cookie = cookies_batch[0]
 
-print(type(list(cookie.keys())[0]))
+
+# print(type(list(cookie.keys())[0]))
 
 
 
 
 
-t = batch_runner(cookies_batch, post_link,  comment, comment_per_acc, result_container)
+t = batch_runner(cookies_batch, post_link,  comment, comment_per_acc, options, result_container)
 t.start()

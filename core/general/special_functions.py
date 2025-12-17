@@ -138,7 +138,7 @@ class Admin1:
                     return profiles_collection
 
             except json.JSONDecodeError as e:
-                profiles["is_locked"] = True
+                profiles_collection["is_locked"] = True
                 # print(f"Failed to parse JSON response: {e}")
                 # print(f"Response text: {response.text[:500]}")
                 return profiles_collection

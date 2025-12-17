@@ -6,29 +6,32 @@ import uuid
 from typing import Dict, Optional, Tuple
 
 
-class publish:
+class FacebookCommentBot:
     """
     A bot that automates posting comments on Facebook posts using GraphQL API.
     Dynamically fetches all required parameters for each session.
     """
 
-    def __init__(self, cookie_string: str):
+    def __init__(self, cookie_string, user_agent):
         """
         Initialize the bot with Facebook session cookies.
 
         Args:
             cookie_string: Facebook cookies in 'name=value; name2=value2' format
         """
+        self.user_agent = user_agent
         self.session = requests.Session()
-        self.cookies = self._parse_cookies(cookie_string)
+        self.cookies = cookie_string
         self.session.cookies.update(self.cookies)
-
+        
         # User ID from cookies
         self.user_id = self.cookies.get('c_user', '')
+        self.is_page = True
+        self.i_user = "61585351100418"
 
         # Base headers
         self.base_headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36',
+            'User-Agent': self.user_agent,
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
             'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,mr;q=0.6',
             'Accept-Encoding': 'gzip, deflate, br',
@@ -91,7 +94,7 @@ class publish:
                 return False, f"HTTP {response.status_code}", {}
 
             html = response.text
-            print(type(html))
+            # print(html)
             with open("aa.html", "w") as f:
                 f.write(html)
             # Check if we're logged in
@@ -269,7 +272,8 @@ class publish:
             'content-type': 'application/x-www-form-urlencoded',
             'origin': 'https://www.facebook.com',
             'priority': 'u=1, i',
-            'referer': 'https://www.facebook.com/',
+            # 'referer': 'https://www.facebook.com/',
+            'referer': 'https://www.facebook.com/share/1BWqDnrwJ7/',
             'sec-ch-prefers-color-scheme': 'dark',
             'sec-ch-ua': '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
             'sec-ch-ua-full-version-list': '"Google Chrome";v="143.0.7499.42", "Chromium";v="143.0.7499.42", "Not A(Brand";v="24.0.0.0"',
@@ -359,8 +363,7 @@ class publish:
         except Exception as e:
             return False, f"Error: {str(e)}", ""
 
-    def post_comment(self, basic_params: Dict, volatile_params: Dict,
-                     session_id: str, comment_text: str) -> Tuple[bool, str, Dict]:
+    def post_comment(self, basic_params: Dict, volatile_params: Dict,session_id: str, comment_text: str) -> Tuple[bool, str, Dict]:
         """Post the actual comment."""
         print(f"💬 Posting comment: '{comment_text}'")
 
@@ -392,9 +395,9 @@ class publish:
         current_time = int(time.time() * 1000)
 
         data = {
-            'av': self.user_id,
+            'av': self.user_id if not self.is_page else self.i_user,
             '__aaid': '0',
-            '__user': self.user_id,
+            '__user': self.user_id if not self.is_page else self.i_user,
             '__a': '1',
             '__req': hex(self.request_counter)[2:],
             '__hs': '20435.HYP:comet_pkg.2.1...0',
@@ -425,9 +428,9 @@ class publish:
                 "groupID": None,
                 "input": {
                     "client_mutation_id": str(self.request_counter),
-                    "actor_id": self.user_id,
+                    "actor_id": self.user_id if not self.is_page else self.i_user,
                     "attachments": None,
-                    "feedback_id": basic_params['feedback_id'],
+                    "feedback_id": "ZmVlZGJhY2s6NTM0ODkxMDcyMTU0MDM3",#basic_params['feedback_id'],
                     "formatting_style": None,
                     "message": {
                         "ranges": [],
@@ -462,7 +465,10 @@ class publish:
             'doc_id': '24615176934823390',
         }
 
+        
+
         try:
+            print(basic_params['feedback_id'])
             response = self.session.post(
                 'https://www.facebook.com/api/graphql/',
                 headers=headers,
@@ -471,29 +477,33 @@ class publish:
             )
 
             response_text = response.text
-            print(response_text)
+            # print(response_text)
             if response_text.startswith("for (;;);"):
                 response_text = response_text[9:]
 
             if response.status_code == 200:
                 try:
                     result = json.loads(response_text)
-                    with open("aa.json", w) as a:
+                    with open("aa.json", "w") as a:
                         json.dump(result, a, indent=2)
                     if 'errors' in result:
                         error_msg = result['errors'][0].get(
                             'message', 'Unknown error')
                         return False, error_msg, result
+                    # data.comment_create.feedback_comment_edge.node.id
+                    if isinstance(result, dict):
+                        data = result.get("data", {})
+                        comment_create = data.get("comment_create", {})
+                        
+                        comment = comment_create.get("feedback_comment_edge", {}).get("node", {})
+                        comment_id = comment.get("id")
 
-                    if 'data' in result and 'comment_create' in result['data']:
-                        comment_id = result['data']['comment_create'].get(
-                            'comment', {}).get('id')
                         if comment_id:
-                            print(
-                                f"✅ Comment posted successfully! ID: {comment_id}")
+                            # print(f"✅ Comment posted successfully! ID: {comment_id}")
                             return True, comment_id, result
 
                     return False, "Unexpected response format", result
+
 
                 except json.JSONDecodeError:
                     return False, "Invalid JSON response", {"text": response_text[:200]}
@@ -530,8 +540,7 @@ class publish:
 
         # Step 3: Send typing indicator
         time.sleep(1)  # Small delay
-        success, error, session_id = self.send_typing_indicator(
-            basic_params, volatile_params)
+        success, error, session_id = self.send_typing_indicator(basic_params, volatile_params)
         if not success:
             print(f"⚠ Typing indicator failed: {error}")
             # Continue anyway with a generated session_id
@@ -551,34 +560,34 @@ class publish:
         return success, result, full_response
 
 
-# ============================================================================
-# MAIN EXECUTION - EXAMPLE USAGE
-# ============================================================================
+# # ============================================================================
+# # MAIN EXECUTION - EXAMPLE USAGE
+# # ============================================================================
 
-if __name__ == "__main__":
-    # Your Facebook cookies (replace with your actual cookies)
-    COOKIES = '''
-datr=OZ4oaaPMapVsAMgQ-kctLHAf; fr=1pXZrWFE4HqVWV2wj.AWejfeSTh--N3PulYdY5Tpt94ymCXqn_KwOcD9Gak4vn1geUPAY.BpPvJN..AAA.0.0.BpPvJN.AWfhqEC1Jxqa2Sc0mxTIO2Y1csM; sb=OZ4oaetTZUNpwQtVht7HwxCu; wd=588x479; dpr=1.6800000667572021; locale=en_US; ps_l=1; ps_n=1; c_user=61558074221758; xs=41%3AwPxC4m9Aw-KdHw%3A2%3A1765119401%3A-1%3A-1%3A%3AAcySD8XTcwi2Vxf7cA3VX--_s5yQSgMBTdkjY7CBhQ; presence=C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1765732966716%2C%22v%22%3A1%7D
-    '''
+# if __name__ == "__main__":
+#     # Your Facebook cookies (replace with your actual cookies)
+#     COOKIES = '''
+# datr=OZ4oaaPMapVsAMgQ-kctLHAf; fr=1pXZrWFE4HqVWV2wj.AWejfeSTh--N3PulYdY5Tpt94ymCXqn_KwOcD9Gak4vn1geUPAY.BpPvJN..AAA.0.0.BpPvJN.AWfhqEC1Jxqa2Sc0mxTIO2Y1csM; sb=OZ4oaetTZUNpwQtVht7HwxCu; wd=588x479; dpr=1.6800000667572021; locale=en_US; ps_l=1; ps_n=1; c_user=61558074221758; xs=41%3AwPxC4m9Aw-KdHw%3A2%3A1765119401%3A-1%3A-1%3A%3AAcySD8XTcwi2Vxf7cA3VX--_s5yQSgMBTdkjY7CBhQ; presence=C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1765732966716%2C%22v%22%3A1%7D
+#     '''
 
-    # Initialize the bot
-    bot = FacebookCommentBot(COOKIES)
+#     # Initialize the bot
+#     bot = FacebookCommentBot(COOKIES)
 
-    # Post to comment on
-    POST_URL = "https://www.facebook.com/share/1AkJY1hLLP/"
+#     # Post to comment on
+#     POST_URL = "https://www.facebook.com/share/1AkJY1hLLP/"
 
-    # Comment text
-    COMMENT = "CMT by Hacker!"
+#     # Comment text
+#     COMMENT = "CMT by Hacker!"
 
-    # Execute the comment
-    success, result, response = bot.execute_comment(POST_URL, COMMENT)
+#     # Execute the comment
+#     success, result, response = bot.execute_comment(POST_URL, COMMENT)
 
-    # Print result
-    print("\n" + "="*60)
-    if success:
-        print(f"✅ SUCCESS: Comment ID: {result}")
-    else:
-        print(f"❌ FAILED: {result}")
-        if response:
-            print(f"Response: {json.dumps(response, indent=2)[:500]}...")
-    print("="*60)
+#     # Print result
+#     print("\n" + "="*60)
+#     if success:
+#         print(f"✅ SUCCESS: Comment ID: {result}")
+#     else:
+#         print(f"❌ FAILED: {result}")
+#         if response:
+#             print(f"Response: {json.dumps(response, indent=2)[:500]}...")
+#     print("="*60)

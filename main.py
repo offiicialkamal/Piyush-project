@@ -24,12 +24,13 @@ class comenter:
         self.post_link = history["post_link"]
         self.comment_per_acc = history["comment_per_acc"]
         self.threads_count = history["threads_count"]
+        self.options = {"from_page": True,"from_user": True}
 
     def start(self):
         # S(REQUITRTEMENTS_FILE).check()
         # updates().check()
         self.clear()
-        logo_length = 10#L(COLORS_FILE, SETTINGS_FILE).print_logo()
+        logo_length = 20 #L(COLORS_FILE, SETTINGS_FILE).print_logo()
         self.logo_length = logo_length
         self.show_options()
         choice = self.get_choice("Choice", "int")
@@ -49,6 +50,11 @@ class comenter:
 
     def ask_all_data(self, choice):
         # default local variables
+
+        #  IIF THE USER CHOOSES ANY ONE MODE THEN UPDATE THE RESPECTIVE VALUE  IN SELF.OPTIONS VARIABLE
+        #  IF USER CHOOSES OPTION NO 3 THEN I DONT NEED TO DO ANY CHANGES ON THAT OPTIONS VARIABLES 
+        if choice == 1:self.options["from_user"] = False
+        if choice == 2: self.options["from_page"] = False
         comment = ""
         # set the data now
         self.set_cookie()
@@ -56,13 +62,10 @@ class comenter:
         self.set_comment_per_acc()
         self.set_threads_count()
         self.set_comment()
-
         self.print_line()
         if not (self.cookies, self.post_link, self.comment_per_acc, self.threads_count, self.set_comment):
             show("Some Required data is missingg Please reStart the tool and enter the all details properly")
         self.start_thread()
-
-
 
     # def get_cookie_new(self, path):
     #     for cookie in read_text(path).splitlines():
@@ -88,6 +91,7 @@ class comenter:
 
     def print_line(self):
         length = self.logo_length
+
         print("<< " + "=" * length + " >>")
 
 
@@ -101,8 +105,8 @@ class comenter:
             print("   06 SETTINGS")
             print("   00 Exit")
             self.print_line()
-        except Exception:
-            print("Unexpected Input Please choose one of the given option")
+        except Exception as e:
+            print("Unexpected Input Please choose one of the given option",  e)
             time.sleep(3)
             self.start()
 
@@ -159,15 +163,17 @@ class comenter:
         #hear ill handle the threads count system
         total_cookies = len(self.cookies)
         cookies_batch_size = self.threads_count // total_cookies
+        
         while True:
-            if cookies_batch <= len(self.cookies):cookies_batch = self.cookies
+            if cookies_batch_size >= len(self.cookies):cookies_batch = [self.cookies.pop() for _ in range(len(self.cookies))]
             else: cookies_batch = [self.cookies.pop() for _ in range(cookies_batch_size)]
-            t = batch_runner(cookies_batch, self.post_link,  self.comment, self.comment_per_acc, self.result_container)
+            t = batch_runner(cookies_batch, self.post_link, self.comment, self.comment_per_acc, self.options, self.result_container)
             t.start()
-             # block the execution untill this thread finishes 
-             # in that tharead ill start all cooies threads parlerly
             t.join()  
             if not self.cookies: break
+            print("round complete")
+            print("hear is the cokie", self.cookies)
+            time.sleep(6)
 
 
 comenter(result_container).start()
