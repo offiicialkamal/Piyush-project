@@ -12,12 +12,16 @@ comment_per_acc = 1
 
 
 cookie = cookies_batch[0]
+options = {
+    "from_page": False,
+    "from_user": False
+}
 
-print(type(list(cookie.keys())[0]))
+# print(type(list(cookie.keys())[0]))
 
 
 
 
 
-t = batch_runner(cookies_batch, post_link,  comment, comment_per_acc, result_container)
+t = batch_runner(cookies_batch, post_link,  comment, comment_per_acc, options, result_container)
 t.start()

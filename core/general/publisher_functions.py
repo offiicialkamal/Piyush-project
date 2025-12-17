@@ -12,23 +12,24 @@ class publish:
     Dynamically fetches all required parameters for each session.
     """
 
-    def __init__(self, cookie_string: str):
+    def __init__(self, cookie_string, user_agent):
         """
         Initialize the bot with Facebook session cookies.
 
         Args:
             cookie_string: Facebook cookies in 'name=value; name2=value2' format
         """
+        self.user_agent = user_agent
         self.session = requests.Session()
         self.cookies = self._parse_cookies(cookie_string)
         self.session.cookies.update(self.cookies)
-
+        
         # User ID from cookies
         self.user_id = self.cookies.get('c_user', '')
 
         # Base headers
         self.base_headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36',
+            'User-Agent': self.user_agent,
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
             'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,mr;q=0.6',
             'Accept-Encoding': 'gzip, deflate, br',

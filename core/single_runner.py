@@ -9,18 +9,24 @@ from .general import Admin1
 
 
 class run_single(threading.Thread, generalFunctions, Admin1):
-    def __init__(self, cookie, post_link, comment, comment_per_acc, result_container):
+    def __init__(self, cookie, post_link, comment, comment_per_acc, options, result_container):
         super().__init__()
-        self.result_container = result_container
-        self.__comment_per_acc = comment_per_acc
         self.__userAgent = cookie.get(list(cookie.keys())[0])[0]
         self.__cookie = generalFunctions().refactorCookie(list(cookie.keys())[0])
+        self.__post_link = post_link
+        self.__comment = comment
+        self.__comment_per_acc = comment_per_acc
+        self.__options = options
+        self.result_container = result_container
+        
         ## class specific variables
         self.__pagesURL = "https://www.facebook.com/pages/?category=your_page"
         self.__tokens = {}
+        self.__all_profiles = {}
 
     def run(self):
-        print("started threed")
+        print(self.__options)
+        # print("started threed")
         try:
             # print(self.__cookie)
             # print()
@@ -54,17 +60,30 @@ class run_single(threading.Thread, generalFunctions, Admin1):
         ######## STEP 2
             if params:
                 self.__tokens = params
-                print(f"Extracted parameters: {list(params.keys())}")
+                if self.options['from_page']:
+                    response = self.fetch_pages(params, fresh_cookies, self.__userAgent)
+                    print(response)
+                if self.options['from_user']:
+                    self.__all_profiles[self.__cookie['c_user']] = 'Name'
+                
+                for user in self.__all_profiles.keys:
+                    # UID = user
+                    cookie = self.__cookie
+                    user_agent = self.__userAgent
+                    post_link = self.__post_link
+                    comment = self.__comment
+                    tokens = self.__tokens
+                    
+                    # for _ in range(self.__comment_per_acc):
+                    for _ in range(1):
+                        comment = self.post_comment(cookie, user_agent, post_link, comment, tokens)
 
-                # Make the GraphQL request with fresh parameters
-                # print("\nMaking GraphQL request...")
-                response = self.fetch_pages(params, fresh_cookies, self.__userAgent)
-                print(response)
-
-                # print(f"Response status: {response.status_code}")
+                self.__all_profiles[self.__cookie['c_user']] = 'Name'
             else:
+                ### pass mark acc as locked ( pass it to Queue )
                 print("Failed to extract parameters MAY BE ACCOUNT IS ALREADY LOCKED")
-
+                sys.exit()
+                
         except Exception as e:
             print(f"An error occurred: {e}")
             import traceback
