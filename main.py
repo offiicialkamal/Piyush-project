@@ -30,7 +30,7 @@ class comenter:
         # S(REQUITRTEMENTS_FILE).check()
         # updates().check()
         self.clear()
-        logo_length = L(COLORS_FILE, SETTINGS_FILE).print_logo()
+        logo_length = 20 #L(COLORS_FILE, SETTINGS_FILE).print_logo()
         self.logo_length = logo_length
         self.show_options()
         choice = self.get_choice("Choice", "int")

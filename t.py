@@ -10,7 +10,7 @@ post_link = "https://www.facebook.com/share/1AkJY1hLLP/"
 comment = "This is hacking star"
 comment_per_acc = 1
 
-
+options = {"from_page": True,"from_user": True}
 cookie = cookies_batch[0]
 
 

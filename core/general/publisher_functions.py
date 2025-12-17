@@ -26,6 +26,8 @@ class FacebookCommentBot:
         
         # User ID from cookies
         self.user_id = self.cookies.get('c_user', '')
+        self.is_page = True
+        self.i_user = "61585351100418"
 
         # Base headers
         self.base_headers = {
@@ -270,7 +272,8 @@ class FacebookCommentBot:
             'content-type': 'application/x-www-form-urlencoded',
             'origin': 'https://www.facebook.com',
             'priority': 'u=1, i',
-            'referer': 'https://www.facebook.com/',
+            # 'referer': 'https://www.facebook.com/',
+            'referer': 'https://www.facebook.com/share/1BWqDnrwJ7/',
             'sec-ch-prefers-color-scheme': 'dark',
             'sec-ch-ua': '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
             'sec-ch-ua-full-version-list': '"Google Chrome";v="143.0.7499.42", "Chromium";v="143.0.7499.42", "Not A(Brand";v="24.0.0.0"',
@@ -392,9 +395,9 @@ class FacebookCommentBot:
         current_time = int(time.time() * 1000)
 
         data = {
-            'av': self.user_id,
+            'av': self.user_id if not self.is_page else self.i_user,
             '__aaid': '0',
-            '__user': self.user_id,
+            '__user': self.user_id if not self.is_page else self.i_user,
             '__a': '1',
             '__req': hex(self.request_counter)[2:],
             '__hs': '20435.HYP:comet_pkg.2.1...0',
@@ -425,9 +428,9 @@ class FacebookCommentBot:
                 "groupID": None,
                 "input": {
                     "client_mutation_id": str(self.request_counter),
-                    "actor_id": self.user_id,
+                    "actor_id": self.user_id if not self.is_page else self.i_user,
                     "attachments": None,
-                    "feedback_id": basic_params['feedback_id'],
+                    "feedback_id": "ZmVlZGJhY2s6NTM0ODkxMDcyMTU0MDM3",#basic_params['feedback_id'],
                     "formatting_style": None,
                     "message": {
                         "ranges": [],
@@ -462,7 +465,10 @@ class FacebookCommentBot:
             'doc_id': '24615176934823390',
         }
 
+        
+
         try:
+            print(basic_params['feedback_id'])
             response = self.session.post(
                 'https://www.facebook.com/api/graphql/',
                 headers=headers,
@@ -471,7 +477,7 @@ class FacebookCommentBot:
             )
 
             response_text = response.text
-            print(response_text)
+            # print(response_text)
             if response_text.startswith("for (;;);"):
                 response_text = response_text[9:]
 
@@ -484,16 +490,20 @@ class FacebookCommentBot:
                         error_msg = result['errors'][0].get(
                             'message', 'Unknown error')
                         return False, error_msg, result
+                    # data.comment_create.feedback_comment_edge.node.id
+                    if isinstance(result, dict):
+                        data = result.get("data", {})
+                        comment_create = data.get("comment_create", {})
+                        
+                        comment = comment_create.get("feedback_comment_edge", {}).get("node", {})
+                        comment_id = comment.get("id")
 
-                    if 'data' in result and 'comment_create' in result['data']:
-                        comment_id = result['data']['comment_create'].get(
-                            'comment', {}).get('id')
                         if comment_id:
-                            print(
-                                f"✅ Comment posted successfully! ID: {comment_id}")
+                            # print(f"✅ Comment posted successfully! ID: {comment_id}")
                             return True, comment_id, result
 
                     return False, "Unexpected response format", result
+
 
                 except json.JSONDecodeError:
                     return False, "Invalid JSON response", {"text": response_text[:200]}

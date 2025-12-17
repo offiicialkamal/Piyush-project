@@ -24,6 +24,7 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
         self.__pagesURL = "https://www.facebook.com/pages/?category=your_page"
         self.__tokens = {}
         self.__all_profiles = {}
+        self.__main_user_id = self.__cookie.get("c_user")
 
     def run(self):
         print(self.__options)
@@ -70,14 +71,14 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
                 print(self.__all_profiles)
                 for user in self.__all_profiles.keys():
                     # UID = user
+                    self.__cookie["i_user"] = '61585351100418'
                     cookie = self.__cookie
                     user_agent = self.__userAgent
                     post_link = self.__post_link
                     comment = self.__comment
                     tokens = self.__tokens
-                    
-                    # for _ in range(self.__comment_per_acc):
-                    for _ in range(1):
+                    print(self.__cookie)
+                    for _ in range(self.__comment_per_acc):
                         bot = FacebookCommentBot(cookie, user_agent)
                         success, result, response = bot.execute_comment(post_link, comment)
                         # now validate 
