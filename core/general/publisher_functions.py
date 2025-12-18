@@ -3,31 +3,20 @@ import json
 import re
 import time
 import uuid
+import base64
 from typing import Dict, Optional, Tuple
 
 
 class FacebookCommentBot:
-    """
-    A bot that automates posting comments on Facebook posts using GraphQL API.
-    Dynamically fetches all required parameters for each session.
-    """
-
-    def __init__(self, cookie_string, user_agent):
-        """
-        Initialize the bot with Facebook session cookies.
-
-        Args:
-            cookie_string: Facebook cookies in 'name=value; name2=value2' format
-        """
+    def __init__(self, cookie_string, user_agent, ua_parts, i_user=None):
         self.user_agent = user_agent
         self.session = requests.Session()
         self.cookies = cookie_string
         self.session.cookies.update(self.cookies)
-        
+        self.ua_parts = ua_parts
         # User ID from cookies
         self.user_id = self.cookies.get('c_user', '')
-        self.is_page = True
-        self.i_user = "61585351100418"
+        self.i_user = i_user
 
         # Base headers
         self.base_headers = {
@@ -48,17 +37,8 @@ class FacebookCommentBot:
         self.volatile_params = {}
         self.request_counter = 0
 
-        print(f"✅ Bot initialized for user: {self.user_id}")
+        # print(f"✅ Bot initialized for user: {self.user_id}")
 
-    def _parse_cookies(self, cookie_string: str) -> Dict[str, str]:
-        """Parse cookie string into dictionary."""
-        cookies = {}
-        for item in cookie_string.split(';'):
-            item = item.strip()
-            if '=' in item:
-                key, value = item.split('=', 1)
-                cookies[key.strip()] = value.strip()
-        return cookies
 
     def _extract_from_html(self, html: str, patterns: list) -> Optional[str]:
         """Extract value from HTML using multiple regex patterns."""
@@ -68,14 +48,10 @@ class FacebookCommentBot:
                 return match.group(1)
         return None
 
-    def fetch_post_page(self, post_url: str) -> Tuple[bool, str, Dict]:
-        """
-        Fetch the post page and extract basic parameters.
 
-        Returns:
-            Tuple of (success, error_message, extracted_params)
-        """
-        print(f"📄 Fetching post page: {post_url}")
+
+    def fetch_post_page(self, post_url: str) -> Tuple[bool, str, Dict]:
+        # print(f"📄 Fetching post page: {post_url}")
 
         try:
             headers = self.base_headers.copy()
@@ -87,24 +63,20 @@ class FacebookCommentBot:
                 timeout=15,
                 allow_redirects=True
             )
-            print(response.headers.get('Content-Type'))
-            print(response.headers.get('Content-Encoding'))
+            # print(response.headers.get('Content-Type'))
+            # print(response.headers.get('Content-Encoding'))
 
             if response.status_code != 200:
                 return False, f"HTTP {response.status_code}", {}
 
             html = response.text
             # print(html)
-            with open("aa.html", "w") as f:
-                f.write(html)
+            # with open("aa.html", "w") as f:
+                # f.write(html)
             # Check if we're logged in
-            if "login.php" in response.url or "Log In" in html.lower():
-                return False, "Not logged in - cookies expired", {}
+            if "login.php" in response.url or "Log In" in html.lower():return False, "Not logged in - cookies expired", {}
 
-            # Extract all basic parameters
             params = {}
-
-            # Critical: fb_dtsg (multiple patterns)
             fb_dtsg_patterns = [
                 r'"DTSGInitData",\[\],{"token":"([^"]+)"',
                 r'name="fb_dtsg" value="([^"]+)"',
@@ -114,29 +86,20 @@ class FacebookCommentBot:
             ]
 
             fb_dtsg = self._extract_from_html(html, fb_dtsg_patterns)
-            if not fb_dtsg:
-                return False, "Could not find fb_dtsg", {}
+            if not fb_dtsg:return False, "Could not find fb_dtsg", {}
             params['fb_dtsg'] = fb_dtsg
 
-            # LSD
             lsd_patterns = [
                 r'"LSD",\[\],{"token":"([^"]+)"',
                 r'"lsd":"([^"]+)"',
                 r'LSD.*?token["\']:\s*["\']([^"\']+)',
             ]
-            params['lsd'] = self._extract_from_html(
-                html, lsd_patterns) or "Av0yXxabc123"
+            params['lsd'] = self._extract_from_html(html, lsd_patterns) or "Av0yXxabc123"
 
-            # Generate jazoest from fb_dtsg
             params['jazoest'] = str(sum(ord(c) for c in fb_dtsg) % 100000)
-
-            # Revision and other params
-            params['__rev'] = self._extract_from_html(
-                html, [r'"revision":(\d+)', r'"__rev":(\d+)']) or "1031055084"
-            params['__s'] = self._extract_from_html(
-                html, [r'"__s":"([^"]+)"']) or "vhcdt2:k0s1cy:4til2p"
-            params['__hsi'] = self._extract_from_html(
-                html, [r'"hsi":"(\d+)"', r'"__hsi":"(\d+)"']) or "7583390057087405802"
+            params['__rev'] = self._extract_from_html(html, [r'"revision":(\d+)', r'"__rev":(\d+)']) or "1031055084"
+            params['__s'] = self._extract_from_html(html, [r'"__s":"([^"]+)"']) or "vhcdt2:k0s1cy:4til2p"
+            params['__hsi'] = self._extract_from_html(html, [r'"hsi":"(\d+)"', r'"__hsi":"(\d+)"']) or "7583390057087405802"
             params['__spin_r'] = params['__rev']
             params['__spin_t'] = str(int(time.time()))
 
@@ -146,17 +109,20 @@ class FacebookCommentBot:
                 r'ft_ent_identifier":"([^"]+)"',
                 r'feedback:([^"]+)"',
             ]
-            params['feedback_id'] = self._extract_from_html(
-                html, feedback_patterns)
+            params['feedback_id'] = self._extract_from_html(html, feedback_patterns)
+            if params['feedback_id']:
+                decoded = base64.b64decode(params['feedback_id'].encode("utf-8")).decode("utf-8")
+                currected = decoded if '_' not in decoded else decoded.split('_')[0]
+                print(decoded)
+                print(currected)
+                params['feedback_id'] = base64.b64encode(f"{currected}".encode()).decode()
 
             if not params['feedback_id']:
                 # Try to extract post ID and construct feedback_id
                 post_id_match = re.search(r'post_id["\']:\s*["\'](\d+)', html)
                 if post_id_match:
                     post_id = post_id_match.group(1)
-                    import base64
-                    encoded = base64.b64encode(
-                        f"feedback:{post_id}".encode()).decode()
+                    encoded = base64.b64encode(f"feedback:{post_id if '_' not in post_id else post_id.split()[0]}".encode()).decode()
                     params['feedback_id'] = encoded
                 else:
                     return False, "Could not find feedback_id or post_id", params
@@ -186,7 +152,7 @@ class FacebookCommentBot:
                 'content-type': 'application/x-www-form-urlencoded',
                 'origin': 'https://www.facebook.com',
                 'referer': 'https://www.facebook.com/',
-                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                'user-agent': self.user_agent,
                 'x-asbd-id': '359341',
                 'x-fb-friendly-name': 'CometUFILiveTypingBroadcastMutation_StartMutation',
                 'x-fb-lsd': basic_params['lsd'],
@@ -274,17 +240,17 @@ class FacebookCommentBot:
             'priority': 'u=1, i',
             # 'referer': 'https://www.facebook.com/',
             'referer': 'https://www.facebook.com/share/1BWqDnrwJ7/',
-            'sec-ch-prefers-color-scheme': 'dark',
-            'sec-ch-ua': '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
-            'sec-ch-ua-full-version-list': '"Google Chrome";v="143.0.7499.42", "Chromium";v="143.0.7499.42", "Not A(Brand";v="24.0.0.0"',
-            'sec-ch-ua-mobile': '?0',
+            'sec-ch-prefers-color-scheme': 'dark',            
+            'sec-ch-ua': self.ua_parts["sec_ch_ua"],
+            'sec-ch-ua-full-version-list': self.ua_parts["sec_ch_ua_full_version_list"],
+            'sec-ch-ua-mobile': self.ua_parts["sec_ch_ua_mobile"],
             'sec-ch-ua-model': '""',
-            'sec-ch-ua-platform': '"Windows"',
-            'sec-ch-ua-platform-version': '"19.0.0"',
+            'sec-ch-ua-platform': self.ua_parts["sec_ch_ua_platform"],
+            'sec-ch-ua-platform-version':self.ua_parts["sec_ch_ua_platform_version"],
             'sec-fetch-dest': 'empty',
             'sec-fetch-mode': 'cors',
             'sec-fetch-site': 'same-origin',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'user-agent': self.user_agent,
             'x-asbd-id': '359341',
             'x-fb-friendly-name': 'CometUFILiveTypingBroadcastMutation_StartMutation',
             'x-fb-lsd': basic_params['lsd'],
@@ -364,8 +330,6 @@ class FacebookCommentBot:
             return False, f"Error: {str(e)}", ""
 
     def post_comment(self, basic_params: Dict, volatile_params: Dict,session_id: str, comment_text: str) -> Tuple[bool, str, Dict]:
-        """Post the actual comment."""
-        print(f"💬 Posting comment: '{comment_text}'")
 
         self.request_counter += 1
 
@@ -377,27 +341,27 @@ class FacebookCommentBot:
             'priority': 'u=1, i',
             'referer': 'https://www.facebook.com/',
             'sec-ch-prefers-color-scheme': 'dark',
-            'sec-ch-ua': '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
-            'sec-ch-ua-full-version-list': '"Google Chrome";v="143.0.7499.42", "Chromium";v="143.0.7499.42", "Not A(Brand";v="24.0.0.0"',
-            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua': self.ua_parts["sec_ch_ua"],
+            'sec-ch-ua-full-version-list': self.ua_parts["sec_ch_ua_full_version_list"],
+            'sec-ch-ua-mobile': self.ua_parts["sec_ch_ua_mobile"],
             'sec-ch-ua-model': '""',
-            'sec-ch-ua-platform': '"Windows"',
-            'sec-ch-ua-platform-version': '"19.0.0"',
+            'sec-ch-ua-platform': self.ua_parts["sec_ch_ua_platform"],
+            'sec-ch-ua-platform-version': self.ua_parts["sec_ch_ua_platform_version"],
             'sec-fetch-dest': 'empty',
             'sec-fetch-mode': 'cors',
             'sec-fetch-site': 'same-origin',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'user-agent': self.user_agent,
             'x-asbd-id': '359341',
             'x-fb-friendly-name': 'useCometUFICreateCommentMutation',
             'x-fb-lsd': basic_params['lsd'],
         }
 
         current_time = int(time.time() * 1000)
-
+        print("this is hear ",basic_params['feedback_id'],)
         data = {
-            'av': self.user_id if not self.is_page else self.i_user,
+            'av': self.user_id if not self.i_user else self.i_user,
             '__aaid': '0',
-            '__user': self.user_id if not self.is_page else self.i_user,
+            '__user': self.user_id if not self.i_user else self.i_user,
             '__a': '1',
             '__req': hex(self.request_counter)[2:],
             '__hs': '20435.HYP:comet_pkg.2.1...0',
@@ -428,9 +392,9 @@ class FacebookCommentBot:
                 "groupID": None,
                 "input": {
                     "client_mutation_id": str(self.request_counter),
-                    "actor_id": self.user_id if not self.is_page else self.i_user,
+                    "actor_id": self.user_id if not self.i_user else self.i_user,
                     "attachments": None,
-                    "feedback_id": "ZmVlZGJhY2s6NTM0ODkxMDcyMTU0MDM3",#basic_params['feedback_id'],
+                    "feedback_id": basic_params['feedback_id'],
                     "formatting_style": None,
                     "message": {
                         "ranges": [],
@@ -464,8 +428,6 @@ class FacebookCommentBot:
             }),
             'doc_id': '24615176934823390',
         }
-
-        
 
         try:
             print(basic_params['feedback_id'])
@@ -515,17 +477,6 @@ class FacebookCommentBot:
             return False, f"Error: {str(e)}", {}
 
     def execute_comment(self, post_url: str, comment_text: str) -> Tuple[bool, str, Dict]:
-        """
-        Main method to execute a complete comment posting workflow.
-
-        Returns:
-            Tuple of (success, message_or_comment_id, full_response)
-        """
-        print("\n" + "="*60)
-        print("🚀 Starting Facebook comment automation")
-        print("="*60)
-
-        # Step 1: Fetch post page and extract basic parameters
         success, error, basic_params = self.fetch_post_page(post_url)
         if not success:
             return False, f"Failed to fetch page: {error}", {}

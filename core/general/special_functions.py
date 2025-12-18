@@ -1,37 +1,38 @@
 import requests
-import re, time, json
+import re
+import time
+import json
+
 
 class Admin1:
     def __init__(self):
         pass
 
-    def fetch_pages(self, params, cookies, userAgent):
-        # Generate a random User-Agent
-        # generator = Generator()
+    def fetch_pages(self, params, cookies, userAgent, ua_parts):
         user_agent = userAgent
 
-        # Extract platform details safely
-        platform_match = re.search(r"\((.*?)\)", user_agent)
-        platform = platform_match.group(1) if platform_match else "Unknown Platform"
+        # # Extract platform details safely
+        # platform_match = re.search(r"\((.*?)\)", user_agent)
+        # platform = platform_match.group(1) if platform_match else "Unknown Platform"
 
-        # Generalized regex to detect browser name and version (e.g., Edge, Chrome, Safari, etc.)
-        browser_version_match = re.search(r"(Chrome|Safari|SamsungBrowser|Edge|Firefox)/(\d+\.\d+)", user_agent)
-        if browser_version_match:
-            browser_name = browser_version_match.group(1)
-            browser_version = browser_version_match.group(2)
-        else:
-            # Default to Unknown if no match
-            browser_name = "Unknown Browser"
-            browser_version = "Unknown Version"
-            print(f"Warning: Couldn't extract browser information from userAgent: {user_agent}")
+        # # Generalized regex to detect browser name and version (e.g., Edge, Chrome, Safari, etc.)
+        # browser_version_match = re.search(r"(Chrome|Safari|SamsungBrowser|Edge|Firefox)/(\d+\.\d+)", user_agent)
+        # if browser_version_match:
+        #     browser_name = browser_version_match.group(1)
+        #     browser_version = browser_version_match.group(2)
+        # else:
+        #     # Default to Unknown if no match
+        #     browser_name = "Unknown Browser"
+        #     browser_version = "Unknown Version"
+        #     print(f"Warning: Couldn't extract browser information from userAgent: {user_agent}")
 
-        # Generate headers based on the extracted data
-        sec_ch_ua = f'"{browser_name}";v="{browser_version}", "Chromium";v="{browser_version}", "Not_A Brand";v="99"'
-        sec_ch_ua_full_version_list = f'"{browser_name}";v="{browser_version}", "Chromium";v="{browser_version}", "Not_A Brand";v="99.0.0.0"'
-        sec_ch_ua_mobile = "?1" if "Mobile" in user_agent else "?0"  # If Mobile is present in userAgent, use ?1
-        sec_ch_ua_platform = '"Linux"' if "Linux" in platform else '"Unknown OS"'
-        sec_ch_ua_platform_version = '"i686"' if "i686" in platform else '"Unknown Platform Version"'
-        
+        # # Generate headers based on the extracted data
+        # sec_ch_ua = f'"{browser_name}";v="{browser_version}", "Chromium";v="{browser_version}", "Not_A Brand";v="99"'
+        # sec_ch_ua_full_version_list = f'"{browser_name}";v="{browser_version}", "Chromium";v="{browser_version}", "Not_A Brand";v="99.0.0.0"'
+        # sec_ch_ua_mobile = "?1" if "Mobile" in user_agent else "?0"  # If Mobile is present in userAgent, use ?1
+        # sec_ch_ua_platform = '"Linux"' if "Linux" in platform else '"Unknown OS"'
+        # sec_ch_ua_platform_version = '"i686"' if "i686" in platform else '"Unknown Platform Version"'
+
         # Construct headers using the extracted values and the generated user-agent
         headers = {
             'accept': '*/*',
@@ -41,12 +42,12 @@ class Admin1:
             'priority': 'u=1, i',
             'referer': 'https://www.facebook.com/pages/?category=your_page',
             'sec-ch-prefers-color-scheme': 'dark',
-            'sec-ch-ua': sec_ch_ua,
-            'sec-ch-ua-full-version-list': sec_ch_ua_full_version_list,
-            'sec-ch-ua-mobile': sec_ch_ua_mobile,
+            'sec-ch-ua': ua_parts["sec_ch_ua"],
+            'sec-ch-ua-full-version-list': ua_parts["sec_ch_ua_full_version_list"],
+            'sec-ch-ua-mobile': ua_parts["sec_ch_ua_mobile"],
             'sec-ch-ua-model': '""',  # Empty model for now
-            'sec-ch-ua-platform': sec_ch_ua_platform,
-            'sec-ch-ua-platform-version': sec_ch_ua_platform_version,
+            'sec-ch-ua-platform': ua_parts["sec_ch_ua_platform"],
+            'sec-ch-ua-platform-version': ua_parts["sec_ch_ua_platform_version"],
             'sec-fetch-dest': 'empty',
             'sec-fetch-mode': 'cors',
             'sec-fetch-site': 'same-origin',
@@ -96,10 +97,12 @@ class Admin1:
         }
 
         # Add __s parameter if found
-        if '__s' in params:data['__s'] = params['__s']
+        if '__s' in params:
+            data['__s'] = params['__s']
 
         # Set the lsd in headers
-        if 'lsd' in params:headers['x-fb-lsd'] = params['lsd']
+        if 'lsd' in params:
+            headers['x-fb-lsd'] = params['lsd']
 
         response = requests.post(
             'https://www.facebook.com/api/graphql/',
@@ -120,9 +123,10 @@ class Admin1:
 
                 # Extract profiles if available
                 if 'data' in data and 'viewer' in data['data']:
-                    profiles = data['data']['viewer']['actor'].get('additional_profiles_with_biz_tools', {}).get('edges', {})
+                    profiles = data['data']['viewer']['actor'].get(
+                        'additional_profiles_with_biz_tools', {}).get('edges', {})
                     # print(f"\nFound {len(profiles)} profiles:")
-                    
+
                     for profile in profiles:
                         profile = profile.get('node', {})
                         name = profile.get('name', 'N/A')
@@ -131,7 +135,7 @@ class Admin1:
                         # print(profile_id)
                         profiles_collection["ids"][profile_id] = name
                     return profiles_collection
-                    
+
                 else:
                     # print("No profiles found in response")
                     # print("Response structure:",json.dumps(data, indent=2)[:500])
@@ -153,8 +157,9 @@ class Admin1:
         session = requests.Session()
         session.cookies.update(cookies)
 
+        # print(cookies, pageURL, userAgent)
+
         headers = {
-            # 'User-Agent': '',
             'user-Agent': userAgent,
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
             'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,mr;q=0.6',
@@ -172,13 +177,10 @@ class Admin1:
             return None
 
         html = response.text
-        # print(html)
-        # with open("hh.html", "w") as a:
-        #     a.write(html)
-        # Extract parameters using regex patterns
+        with open("g.html", "w") as a:
+            a.write(html)
         params = {}
 
-        # Extract fb_dtsg sometimes comes with meta tagas
         fb_dtsg_match = re.search(r'"DTSGInitData",\[\],{"token":"([^"]+)"', html)
         if not fb_dtsg_match:fb_dtsg_match = re.search(r'name="fb_dtsg" value="([^"]+)"', html)
         if not fb_dtsg_match:fb_dtsg_match = re.search(r'"fb_dtsg":"([^"]+)"', html)
@@ -207,6 +209,7 @@ class Admin1:
 
         if '__s' not in params:
             script_match = re.search(r'__s":"([^"]+)"', html)
-            if script_match:params['__s'] = script_match.group(1)
+            if script_match:
+                params['__s'] = script_match.group(1)
 
         return params, session.cookies.get_dict()

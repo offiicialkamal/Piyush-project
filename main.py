@@ -9,10 +9,15 @@ from general import logo as L, Generator
 from security import security as S
 from updater import updates
 from core import batch_runner
-from queue import Queue
+# from queue import Queue
 
 history = read_json(HISTORY_FILE)
-result_container = Queue() # list like structure and by default its thread safe and provides put, get like mutable methods 
+# result_container = Queue() # list like structure and by default its thread safe and provides put, get like mutable methods 
+result_container = {
+    "success":{},   # id_no: name, .....
+    "faliure":{},   # id_no: name, .....
+    "locked":[]     # "cookie", "cookie"....
+}
 
 time.sleep(2)
 class comenter:
@@ -24,14 +29,15 @@ class comenter:
         self.post_link = history["post_link"]
         self.comment_per_acc = history["comment_per_acc"]
         self.threads_count = history["threads_count"]
+        self.locked_till_now = history["locked_till_now"]
         self.options = {"from_page": True,"from_user": True}
 
     def start(self):
         # S(REQUITRTEMENTS_FILE).check()
         # updates().check()
         self.clear()
-        logo_length = 20 #L(COLORS_FILE, SETTINGS_FILE).print_logo()
-        self.logo_length = logo_length
+        self.logo_length = L(COLORS_FILE, SETTINGS_FILE).print_logo()
+        self.show_history()
         self.show_options()
         choice = self.get_choice("Choice", "int")
         if choice in [0,1,2,3,4,5,6]:self.run_choice(choice) 
@@ -79,8 +85,7 @@ class comenter:
                 return
         else:
             try:
-                choice = int(input(subject) if (" " in subject)
-                             else input(f"Enter Your {subject} : "))
+                choice = int(input(subject) if (" " in subject) else input(f"Enter Your {subject} : "))
             except Exception:
                 show("Invalid 1input")
                 return self.get_choice(subject, t)
@@ -91,8 +96,11 @@ class comenter:
 
     def print_line(self):
         length = self.logo_length
-
-        print("<< " + "=" * length + " >>")
+        print("<< " + "━" * length + " >>")
+    
+    def show_history(self):
+        print("HISTORY".center(self.logo_length+6))
+        self.print_line()
 
 
     def show_options(self):
@@ -140,13 +148,13 @@ class comenter:
         number_of_coments = input("Comments Per Account: ")
         if not number_of_coments: return
         try:self.comment_per_acc = int(number_of_coments)
-        except:print("invalid input");set_comment_per_acc(self)
+        except:print("invalid input");self.set_comment_per_acc()
         update_data(HISTORY_FILE, "comment_per_acc", number_of_coments)
     def set_threads_count(self):
         threads_count = input("Enter Speed (1 - 10 recomended): ")
         if not threads_count: return
         try:self.threads_count = int(threads_count)
-        except: print("invalid input");set_threads_count(self)
+        except: print("invalid input");self.set_threads_count()
         update_data(HISTORY_FILE, "threads_count", threads_count)
     def set_comment(self):
         is_enterd= False

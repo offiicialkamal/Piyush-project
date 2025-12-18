@@ -26,12 +26,12 @@ class logo:
         lines = banner.splitlines() if banner else self.generate_logo().splitlines()
         for line in lines:
             if not lenth:
-                lenth = len(line)
-                print("<< " + "=" * lenth + " >>")
-            lenth = len(line)
+                lenth = len(line) + 6
+                print("<< " + "━" * lenth + " >>")
+            lenth = len(line) + 6
             color = self.get_color()
             show(color + "   " + line)
-        print("<< " + "=" * lenth + " >>")
+        print("<< " + "━" * lenth + " >>")
         # print()
         # print("=" * lenth)
         # print("=" * lenth)
