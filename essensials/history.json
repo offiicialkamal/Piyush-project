@@ -8,6 +8,8 @@
   ],
   "comment": "hear is the coment",
   "post_link": "https://www.facebook.com/share/1CuZ1JpWoS/",
-  "comment_per_acc": "\udce2",
-  "threads_count": 1
+  "comment_per_acc": 1,
+  "threads_count": 1,
+  "locked_till_now":[],
+  "sucess_till_now": 0
 }

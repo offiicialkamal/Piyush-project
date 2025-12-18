@@ -8,23 +8,12 @@ from typing import Dict, Optional, Tuple
 
 
 class FacebookCommentBot:
-    """
-    A bot that automates posting comments on Facebook posts using GraphQL API.
-    Dynamically fetches all required parameters for each session.
-    """
-
-    def __init__(self, cookie_string, user_agent, i_user = None):
-        """
-        Initialize the bot with Facebook session cookies.
-
-        Args:
-            cookie_string: Facebook cookies in 'name=value; name2=value2' format
-        """
+    def __init__(self, cookie_string, user_agent, ua_parts, i_user=None):
         self.user_agent = user_agent
         self.session = requests.Session()
         self.cookies = cookie_string
         self.session.cookies.update(self.cookies)
-
+        self.ua_parts = ua_parts
         # User ID from cookies
         self.user_id = self.cookies.get('c_user', '')
         self.i_user = i_user
@@ -48,7 +37,7 @@ class FacebookCommentBot:
         self.volatile_params = {}
         self.request_counter = 0
 
-        print(f"✅ Bot initialized for user: {self.user_id}")
+        # print(f"✅ Bot initialized for user: {self.user_id}")
 
 
     def _extract_from_html(self, html: str, patterns: list) -> Optional[str]:
@@ -62,13 +51,7 @@ class FacebookCommentBot:
 
 
     def fetch_post_page(self, post_url: str) -> Tuple[bool, str, Dict]:
-        """
-        Fetch the post page and extract basic parameters.
-
-        Returns:
-            Tuple of (success, error_message, extracted_params)
-        """
-        print(f"📄 Fetching post page: {post_url}")
+        # print(f"📄 Fetching post page: {post_url}")
 
         try:
             headers = self.base_headers.copy()
@@ -88,8 +71,8 @@ class FacebookCommentBot:
 
             html = response.text
             # print(html)
-            with open("aa.html", "w") as f:
-                f.write(html)
+            # with open("aa.html", "w") as f:
+                # f.write(html)
             # Check if we're logged in
             if "login.php" in response.url or "Log In" in html.lower():return False, "Not logged in - cookies expired", {}
 
@@ -169,7 +152,7 @@ class FacebookCommentBot:
                 'content-type': 'application/x-www-form-urlencoded',
                 'origin': 'https://www.facebook.com',
                 'referer': 'https://www.facebook.com/',
-                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                'user-agent': self.user_agent,
                 'x-asbd-id': '359341',
                 'x-fb-friendly-name': 'CometUFILiveTypingBroadcastMutation_StartMutation',
                 'x-fb-lsd': basic_params['lsd'],
@@ -257,17 +240,17 @@ class FacebookCommentBot:
             'priority': 'u=1, i',
             # 'referer': 'https://www.facebook.com/',
             'referer': 'https://www.facebook.com/share/1BWqDnrwJ7/',
-            'sec-ch-prefers-color-scheme': 'dark',
-            'sec-ch-ua': '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
-            'sec-ch-ua-full-version-list': '"Google Chrome";v="143.0.7499.42", "Chromium";v="143.0.7499.42", "Not A(Brand";v="24.0.0.0"',
-            'sec-ch-ua-mobile': '?0',
+            'sec-ch-prefers-color-scheme': 'dark',            
+            'sec-ch-ua': ua_parts["sec_ch_ua"],
+            'sec-ch-ua-full-version-list': sec_ch_ua_full_version_list,
+            'sec-ch-ua-mobile': ua_parts["sec_ch_ua_mobile"],
             'sec-ch-ua-model': '""',
-            'sec-ch-ua-platform': '"Windows"',
-            'sec-ch-ua-platform-version': '"19.0.0"',
+            'sec-ch-ua-platform': ua_parts["sec_ch_ua_platform"],
+            'sec-ch-ua-platform-version': ua_parts["sec_ch_ua_platform_version"],
             'sec-fetch-dest': 'empty',
             'sec-fetch-mode': 'cors',
             'sec-fetch-site': 'same-origin',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'user-agent': self.user_agent,
             'x-asbd-id': '359341',
             'x-fb-friendly-name': 'CometUFILiveTypingBroadcastMutation_StartMutation',
             'x-fb-lsd': basic_params['lsd'],
@@ -360,16 +343,16 @@ class FacebookCommentBot:
             'priority': 'u=1, i',
             'referer': 'https://www.facebook.com/',
             'sec-ch-prefers-color-scheme': 'dark',
-            'sec-ch-ua': '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
-            'sec-ch-ua-full-version-list': '"Google Chrome";v="143.0.7499.42", "Chromium";v="143.0.7499.42", "Not A(Brand";v="24.0.0.0"',
-            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua': ua_parts["sec_ch_ua"],
+            'sec-ch-ua-full-version-list': sec_ch_ua_full_version_list,
+            'sec-ch-ua-mobile': ua_parts["sec_ch_ua_mobile"],
             'sec-ch-ua-model': '""',
-            'sec-ch-ua-platform': '"Windows"',
-            'sec-ch-ua-platform-version': '"19.0.0"',
+            'sec-ch-ua-platform': ua_parts["sec_ch_ua_platform"],
+            'sec-ch-ua-platform-version': ua_parts["sec_ch_ua_platform_version"],
             'sec-fetch-dest': 'empty',
             'sec-fetch-mode': 'cors',
             'sec-fetch-site': 'same-origin',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'user-agent': self.user_agent,
             'x-asbd-id': '359341',
             'x-fb-friendly-name': 'useCometUFICreateCommentMutation',
             'x-fb-lsd': basic_params['lsd'],
@@ -447,8 +430,6 @@ class FacebookCommentBot:
             }),
             'doc_id': '24615176934823390',
         }
-
-        
 
         try:
             print(basic_params['feedback_id'])

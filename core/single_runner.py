@@ -8,18 +8,18 @@ from .general import Admin1
 from .general import FacebookCommentBot
 
 
-
 class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot):
     def __init__(self, cookie, post_link, comment, comment_per_acc, options, result_container):
         super().__init__()
+        self.__healper_functions = generalFunctions()
         self.__userAgent = cookie.get(list(cookie.keys())[0])[0]
-        self.__cookie = generalFunctions().refactorCookie(list(cookie.keys())[0])
+        self.__cookie = self.__healper_functions.refactorCookie(list(cookie.keys())[0])
         self.__post_link = post_link
         self.__comment = comment
         self.__comment_per_acc = comment_per_acc
         self.__options = options
+        self.__ua_parts = self.__healper_functions.get_ua_parts(self.self.__userAgent)
         self.result_container = result_container
-        
         ## class specific variables
         self.__pagesURL = "https://www.facebook.com/pages/?category=your_page"
         self.__tokens = {}
@@ -54,11 +54,7 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
             ######################################################################################################################
             ######################################################################################################################
         ######## STEP 1
-            params, fresh_cookies = self.extract_params_from_page(self.__cookie, self.__pagesURL, self.__userAgent)
-            print(params)
-            # print()
-            # print(fresh_cookies)
-            # sys.exit()
+            params, fresh_cookies = self.extract_params_from_page(self.__cookie, self.__pagesURL, self.__userAgent, self.__ua_parts)
         ######## STEP 2
             if params:
                 self.__tokens = params
@@ -82,15 +78,15 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
                     post_link = self.__post_link
                     comment = self.__comment
                     tokens = self.__tokens
-                    print(self.__cookie)
-                    print()
-                    print()
-                    print(user)
-                    print()
-                    print()
+                    # print(self.__cookie)
+                    # print()
+                    # print()
+                    # print(user)
+                    # print()
+                    # print()
                     for _ in range(self.__comment_per_acc):
                         try:
-                            bot = FacebookCommentBot(cookie, user_agent) if is_main_user else FacebookCommentBot(cookie, user_agent, user)
+                            bot = FacebookCommentBot(cookie, user_agent, self.ua_parts) if is_main_user else FacebookCommentBot(cookie, user_agent, self.ua_parts, i_user=user)
                             success, result, response = bot.execute_comment(post_link, comment)
                             if success:
                                 print(f"✅ SUCCESS: Comment ID: {result}")
