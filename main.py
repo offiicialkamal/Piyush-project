@@ -177,7 +177,7 @@ class comenter:
             t = batch_runner(cookies_batch, self.post_link, self.comment, self.comment_per_acc, self.options, self.result_container)
             t.start()
             t.join()
-            sys.exit()
+            
             if not self.cookies: break
             # time.sleep(6)
 
