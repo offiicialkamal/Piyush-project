@@ -3,6 +3,7 @@ import json
 import re
 import time
 import uuid
+import base64
 from typing import Dict, Optional, Tuple
 
 
@@ -23,11 +24,11 @@ class FacebookCommentBot:
         self.session = requests.Session()
         self.cookies = cookie_string
         self.session.cookies.update(self.cookies)
-        
+
         # User ID from cookies
         self.user_id = self.cookies.get('c_user', '')
         self.is_page = True
-        self.i_user = "61585351100418"
+        self.i_user = None
 
         # Base headers
         self.base_headers = {
@@ -50,15 +51,6 @@ class FacebookCommentBot:
 
         print(f"✅ Bot initialized for user: {self.user_id}")
 
-    def _parse_cookies(self, cookie_string: str) -> Dict[str, str]:
-        """Parse cookie string into dictionary."""
-        cookies = {}
-        for item in cookie_string.split(';'):
-            item = item.strip()
-            if '=' in item:
-                key, value = item.split('=', 1)
-                cookies[key.strip()] = value.strip()
-        return cookies
 
     def _extract_from_html(self, html: str, patterns: list) -> Optional[str]:
         """Extract value from HTML using multiple regex patterns."""
@@ -67,6 +59,8 @@ class FacebookCommentBot:
             if match:
                 return match.group(1)
         return None
+
+
 
     def fetch_post_page(self, post_url: str) -> Tuple[bool, str, Dict]:
         """
@@ -87,8 +81,8 @@ class FacebookCommentBot:
                 timeout=15,
                 allow_redirects=True
             )
-            print(response.headers.get('Content-Type'))
-            print(response.headers.get('Content-Encoding'))
+            # print(response.headers.get('Content-Type'))
+            # print(response.headers.get('Content-Encoding'))
 
             if response.status_code != 200:
                 return False, f"HTTP {response.status_code}", {}
@@ -98,13 +92,9 @@ class FacebookCommentBot:
             with open("aa.html", "w") as f:
                 f.write(html)
             # Check if we're logged in
-            if "login.php" in response.url or "Log In" in html.lower():
-                return False, "Not logged in - cookies expired", {}
+            if "login.php" in response.url or "Log In" in html.lower():return False, "Not logged in - cookies expired", {}
 
-            # Extract all basic parameters
             params = {}
-
-            # Critical: fb_dtsg (multiple patterns)
             fb_dtsg_patterns = [
                 r'"DTSGInitData",\[\],{"token":"([^"]+)"',
                 r'name="fb_dtsg" value="([^"]+)"',
@@ -114,29 +104,20 @@ class FacebookCommentBot:
             ]
 
             fb_dtsg = self._extract_from_html(html, fb_dtsg_patterns)
-            if not fb_dtsg:
-                return False, "Could not find fb_dtsg", {}
+            if not fb_dtsg:return False, "Could not find fb_dtsg", {}
             params['fb_dtsg'] = fb_dtsg
 
-            # LSD
             lsd_patterns = [
                 r'"LSD",\[\],{"token":"([^"]+)"',
                 r'"lsd":"([^"]+)"',
                 r'LSD.*?token["\']:\s*["\']([^"\']+)',
             ]
-            params['lsd'] = self._extract_from_html(
-                html, lsd_patterns) or "Av0yXxabc123"
+            params['lsd'] = self._extract_from_html(html, lsd_patterns) or "Av0yXxabc123"
 
-            # Generate jazoest from fb_dtsg
             params['jazoest'] = str(sum(ord(c) for c in fb_dtsg) % 100000)
-
-            # Revision and other params
-            params['__rev'] = self._extract_from_html(
-                html, [r'"revision":(\d+)', r'"__rev":(\d+)']) or "1031055084"
-            params['__s'] = self._extract_from_html(
-                html, [r'"__s":"([^"]+)"']) or "vhcdt2:k0s1cy:4til2p"
-            params['__hsi'] = self._extract_from_html(
-                html, [r'"hsi":"(\d+)"', r'"__hsi":"(\d+)"']) or "7583390057087405802"
+            params['__rev'] = self._extract_from_html(html, [r'"revision":(\d+)', r'"__rev":(\d+)']) or "1031055084"
+            params['__s'] = self._extract_from_html(html, [r'"__s":"([^"]+)"']) or "vhcdt2:k0s1cy:4til2p"
+            params['__hsi'] = self._extract_from_html(html, [r'"hsi":"(\d+)"', r'"__hsi":"(\d+)"']) or "7583390057087405802"
             params['__spin_r'] = params['__rev']
             params['__spin_t'] = str(int(time.time()))
 
@@ -146,17 +127,17 @@ class FacebookCommentBot:
                 r'ft_ent_identifier":"([^"]+)"',
                 r'feedback:([^"]+)"',
             ]
-            params['feedback_id'] = self._extract_from_html(
-                html, feedback_patterns)
+            params['feedback_id'] = self._extract_from_html(html, feedback_patterns)
+            if params['feedback_id']:
+                decoded = base64.b64decode(params['feedback_id'].encode("utf-8")).decode("utf-8")
+                params['feedback_id'] = base64.b64encode(f"{decoded if not '_' in decoded else decoded.split('_')[0]}".encode()).decode()
 
             if not params['feedback_id']:
                 # Try to extract post ID and construct feedback_id
                 post_id_match = re.search(r'post_id["\']:\s*["\'](\d+)', html)
                 if post_id_match:
                     post_id = post_id_match.group(1)
-                    import base64
-                    encoded = base64.b64encode(
-                        f"feedback:{post_id}".encode()).decode()
+                    encoded = base64.b64encode(f"feedback:{post_id if not '_' in post_id else post_id.split()[0]}".encode()).decode()
                     params['feedback_id'] = encoded
                 else:
                     return False, "Could not find feedback_id or post_id", params
@@ -430,7 +411,7 @@ class FacebookCommentBot:
                     "client_mutation_id": str(self.request_counter),
                     "actor_id": self.user_id if not self.is_page else self.i_user,
                     "attachments": None,
-                    "feedback_id": "ZmVlZGJhY2s6NTM0ODkxMDcyMTU0MDM3",#basic_params['feedback_id'],
+                    "feedback_id": basic_params['feedback_id'],
                     "formatting_style": None,
                     "message": {
                         "ranges": [],

@@ -82,7 +82,7 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
                         bot = FacebookCommentBot(cookie, user_agent)
                         success, result, response = bot.execute_comment(post_link, comment)
                         # now validate 
-                        print("\n" + "="*60)
+                        # print("\n" + "="*60)
                         if success:
                             print(f"✅ SUCCESS: Comment ID: {result}")
                         else:

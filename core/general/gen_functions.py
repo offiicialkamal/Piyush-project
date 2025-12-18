@@ -1,4 +1,5 @@
 import json
+import base64
 
 
 class generalFunctions:
@@ -18,4 +19,7 @@ class generalFunctions:
                 cokie_json[name] = value
         print("sucessfully refactord cookies")
         return cokie_json
+    
+    def refactorFeeedbackID(self, raw_id):
+        base64.b64decode(raw_id)
 
