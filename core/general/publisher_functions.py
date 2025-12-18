@@ -8,12 +8,13 @@ from typing import Dict, Optional, Tuple
 
 
 class FacebookCommentBot:
-    def __init__(self, cookie_string, user_agent, ua_parts, i_user=None):
+    def __init__(self, cookie_string, user_agent, ua_parts, post_link, i_user=None):
         self.user_agent = user_agent
         self.session = requests.Session()
         self.cookies = cookie_string
         self.session.cookies.update(self.cookies)
         self.ua_parts = ua_parts
+        self.post_link = post_link
         # User ID from cookies
         self.user_id = self.cookies.get('c_user', '')
         self.i_user = i_user
@@ -113,8 +114,8 @@ class FacebookCommentBot:
             if params['feedback_id']:
                 decoded = base64.b64decode(params['feedback_id'].encode("utf-8")).decode("utf-8")
                 currected = decoded if '_' not in decoded else decoded.split('_')[0]
-                print(decoded)
-                print(currected)
+                # print(decoded)
+                # print(currected)
                 params['feedback_id'] = base64.b64encode(f"{currected}".encode()).decode()
 
             if not params['feedback_id']:
@@ -130,19 +131,19 @@ class FacebookCommentBot:
             # Store the HTML for debugging
             self.last_html = html
 
-            print(f"✅ Extracted parameters: {list(params.keys())}")
+            # print(f"✅ Extracted parameters: {list(params.keys())}")
             return True, "", params
 
         except Exception as e:
             return False, f"Error fetching page: {str(e)}", {}
 
     def get_volatile_parameters(self, basic_params: Dict) -> Tuple[bool, str, Dict]:
-        """
-        Get volatile parameters (__dyn, __csr, etc.) by making a test request.
+        # """
+        # Get volatile parameters (__dyn, __csr, etc.) by making a test request.
 
-        These parameters change frequently and must be fetched fresh.
-        """
-        print("🔄 Fetching volatile parameters...")
+        # These parameters change frequently and must be fetched fresh.
+        # """
+        # print("🔄 Fetching volatile parameters...")
 
         try:
             # Prepare a test request to get fresh volatile params
@@ -217,7 +218,7 @@ class FacebookCommentBot:
                     '__sjsp': 'gai1Wy8bA1rf4IiwywQgkxykioa8og6-gcgg8qpEgxi8xd8oAHf4jML25gPb5Qx0hfYbONYJhFuyNsegFEd8JsjRkG8QmqACakGclt489iUykmbQS8GCIwyzGBaHhPhSnv9Jlmp2KEW8x5x17qghxp7Az6FoyimUpwOxG2hwKzE8FQ2t28Ze5e2111092m0wUW4A4Q2-6Ee80-K0aNg1uU',
                 }
 
-                print("✅ Got volatile parameters")
+                # print("✅ Got volatile parameters")
                 return True, "", volatile_params
 
             else:
@@ -227,11 +228,11 @@ class FacebookCommentBot:
             return False, f"Error getting volatile params: {str(e)}", {}
 
     def send_typing_indicator(self, basic_params: Dict, volatile_params: Dict) -> Tuple[bool, str, str]:
-        """Send typing indicator to Facebook."""
-        print("⌨️  Sending typing indicator...")
+        # """Send typing indicator to Facebook."""
+        # print("⌨️  Sending typing indicator...")
 
         self.request_counter += 1
-
+        # print("ddddd", self.ua_parts)
         headers = {
             'accept': '*/*',
             'accept-language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,mr;q=0.6',
@@ -239,7 +240,8 @@ class FacebookCommentBot:
             'origin': 'https://www.facebook.com',
             'priority': 'u=1, i',
             # 'referer': 'https://www.facebook.com/',
-            'referer': 'https://www.facebook.com/share/1BWqDnrwJ7/',
+            # 'referer': 'https://www.facebook.com/share/1BWqDnrwJ7/',
+            'referer': self.post_link,
             'sec-ch-prefers-color-scheme': 'dark',            
             'sec-ch-ua': self.ua_parts["sec_ch_ua"],
             'sec-ch-ua-full-version-list': self.ua_parts["sec_ch_ua_full_version_list"],
@@ -357,7 +359,7 @@ class FacebookCommentBot:
         }
 
         current_time = int(time.time() * 1000)
-        print("this is hear ",basic_params['feedback_id'],)
+        # print("this is hear ",basic_params['feedback_id'],)
         data = {
             'av': self.user_id if not self.i_user else self.i_user,
             '__aaid': '0',
@@ -415,7 +417,7 @@ class FacebookCommentBot:
                     "idempotence_token": f"client:{str(uuid.uuid4())}",
                     "session_id": session_id,
                     "downstream_share_session_id": str(uuid.uuid4()),
-                    "downstream_share_session_origin_uri": "https://www.facebook.com/share/1AkJY1hLLP/",
+                    "downstream_share_session_origin_uri": self.post_link,
                     "downstream_share_session_start_time": str(current_time - 100)
                 },
                 "inviteShortLinkKey": None,
@@ -430,7 +432,7 @@ class FacebookCommentBot:
         }
 
         try:
-            print(basic_params['feedback_id'])
+            # print(basic_params['feedback_id'])
             response = self.session.post(
                 'https://www.facebook.com/api/graphql/',
                 headers=headers,
@@ -485,7 +487,7 @@ class FacebookCommentBot:
         success, error, volatile_params = self.get_volatile_parameters(
             basic_params)
         if not success:
-            print(f"⚠ Warning: Using fallback volatile params: {error}")
+            # print(f"⚠ Warning: Using fallback volatile params: {error}")
             # Use fallback volatile params
             volatile_params = self.volatile_params
 
@@ -493,7 +495,7 @@ class FacebookCommentBot:
         time.sleep(1)  # Small delay
         success, error, session_id = self.send_typing_indicator(basic_params, volatile_params)
         if not success:
-            print(f"⚠ Typing indicator failed: {error}")
+            # print(f"⚠ Typing indicator failed: {error}")
             # Continue anyway with a generated session_id
             session_id = str(uuid.uuid4())
 
