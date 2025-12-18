@@ -1,0 +1,46 @@
+{
+  "data": {
+    "comment_create": null
+  },
+  "errors": [
+    {
+      "message": "A server error field_exception occured. Check server logs for details.",
+      "severity": "CRITICAL",
+      "mids": [
+        "2d0ea6f39b7bee6dc399af712f5775fd"
+      ],
+      "debug_link": "https://www.meta.com/debug/?mid=2d0ea6f39b7bee6dc399af712f5775fd",
+      "code": 1404078,
+      "api_error_code": 10,
+      "summary": "Your account is restricted",
+      "description": {
+        "__html": "You&#039;re temporarily restricted from commenting until 23 December at 20:55.<br /><br />If you think that this doesn&#039;t go against our Community Standards, <a href=\"https://www.facebook.com/help/contact/571927962827151?additional_content=Aegkx2N-izVRMtH1CCQxIqnowCTLSZH3FO-wP4Jg0FT31aeNsC3ZGYQwAiNth0YF29V0VKtEpj35zL7oy9DSwL1FhqkcNFBdkL2ywTgHbd1ew3FUkAp2tz9J0CWfCyxOa3TzEPxXZ_I1ZG7auqB6jUpeY5nfcbSaitnOMvJ0py063bhIGLxkGYV6_h-lS4fFKrLvxDHKSeBkUgzd9ckmLOHyQDPdVBE_41iLUO-P73CMidUrLJygIGg1rv2DjtBz0zbyXGgXGp9xLkucvApY2psGKvUBC5qIp38L9CNANZwll0Dep8Nk_PYEoG3SLw3Od-iZdUs2M-U2NsrF0GTiGkiuRMKgeLhZX-KgFa4Fvmrw-__SZWfmSCOAjnyfWjpVD18wSL1cFAx65vJ0BYlHWS4jBYsWfmw7s7KtJRWkN8TkA_cOiyGeRbTO9elIHXmhOAM\" target=\"_blank\">let us know</a>."
+      },
+      "description_raw": {
+        "__html": "You&#039;re temporarily restricted from commenting until 23 December at 20:55.<br /><br />If you think that this doesn&#039;t go against our Community Standards, <a href=\"https://www.facebook.com/help/contact/571927962827151?additional_content=Aejl3H29flKeUHyYyGNWJu4bY_BPerVBecdmY_Ns9mLU0NgW9P3ST6cjO47l4ly9azQj9CiUl7kysXAuQS211H1xWRSArQn4mLyZO2zjp6b0Xuul8gg86aBzI8vJ8cIMqY72AX4fiCcYIFfICARYyflBMBtzgbhOH2XopNmzsUNJ5G2UwffXNAkKSpseuX4TZ2OwRVRn3X19vsT4zX2Pv1pajGWX4WyNai3jaCQiKAH98eYeyL21KN8RPQKdWQfcX4ntqxmhtAl-lWRHolmnYLuxUaazftFjq74DRUpbHjafomQfk6vmNmcY2F2_iaWxhXAKyBDbgJ08nqSvfU2WiVZGD4Y_JFMCR_vZbQ5hK74PdjOVtiZCtexmqSemSdjQEkXdvhBW1l4gPI7oYwS0Wv_iGOV3rfKfE55JEFEloNhA5pZaCxKUqLouhdwIFtH45ec\" target=\"_blank\">let us know</a>."
+      },
+      "is_silent": false,
+      "is_transient": false,
+      "is_not_critical": true,
+      "requires_reauth": false,
+      "allow_user_retry": false,
+      "debug_info": null,
+      "query_path": null,
+      "fbtrace_id": "CeU4pX1kdS0",
+      "www_request_id": "Ab9tGIQELgxnK5hyY24A7hA",
+      "sentry_block_user_info": {
+        "sentry_block_data": "AehJZ2GNBBXypf5Yyn5SiY0UgJIajcWTmszs4VLP15nZpNAs7jwnU3jo-hHX1oyocBntylyAZozcNw381FKh_AsQP5baot44U2S7tgiinL9VVINTVwD9eBIRDfex_9ytxvAXuQenSti0bEA58yKoCfljM99rMQbGooypGNZDJ0vTe2K6XHKIVNrwr13m-XsIt-8gL86HhdY6sII0uTngATYUk0p54dpuf_8ELdQ7JU9BfTsD5rGWpgF-0oF6sBdJR8T2JcahHtH9ghZkHM3pecv-gQbjxJZD5V17go3Rdis06R-K7PRfexuAvPEKKw3M_SXx6-SlrSb7AaGt22d7Gd0mcDyAP_2_aWE7kO8-eLJWaispRBmag9Wkkiv7HGZ7FMPpEDx0YlL_Yrq040Vp11mTD1mPsqFmRl82kw8uqs3xbA"
+      },
+      "path": [
+        "comment_create"
+      ]
+    }
+  ],
+  "extensions": {
+    "server_metadata": {
+      "request_start_time_ms": 1766074320978,
+      "time_at_flush_ms": 1766074321708
+    },
+    "is_final": true
+  }
+}

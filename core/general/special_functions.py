@@ -1,5 +1,8 @@
 import requests
-import re, time, json
+import re
+import time
+import json
+
 
 class Admin1:
     def __init__(self):
@@ -29,7 +32,7 @@ class Admin1:
         # sec_ch_ua_mobile = "?1" if "Mobile" in user_agent else "?0"  # If Mobile is present in userAgent, use ?1
         # sec_ch_ua_platform = '"Linux"' if "Linux" in platform else '"Unknown OS"'
         # sec_ch_ua_platform_version = '"i686"' if "i686" in platform else '"Unknown Platform Version"'
-        
+
         # Construct headers using the extracted values and the generated user-agent
         headers = {
             'accept': '*/*',
@@ -94,10 +97,12 @@ class Admin1:
         }
 
         # Add __s parameter if found
-        if '__s' in params:data['__s'] = params['__s']
+        if '__s' in params:
+            data['__s'] = params['__s']
 
         # Set the lsd in headers
-        if 'lsd' in params:headers['x-fb-lsd'] = params['lsd']
+        if 'lsd' in params:
+            headers['x-fb-lsd'] = params['lsd']
 
         response = requests.post(
             'https://www.facebook.com/api/graphql/',
@@ -118,9 +123,10 @@ class Admin1:
 
                 # Extract profiles if available
                 if 'data' in data and 'viewer' in data['data']:
-                    profiles = data['data']['viewer']['actor'].get('additional_profiles_with_biz_tools', {}).get('edges', {})
+                    profiles = data['data']['viewer']['actor'].get(
+                        'additional_profiles_with_biz_tools', {}).get('edges', {})
                     # print(f"\nFound {len(profiles)} profiles:")
-                    
+
                     for profile in profiles:
                         profile = profile.get('node', {})
                         name = profile.get('name', 'N/A')
@@ -129,7 +135,7 @@ class Admin1:
                         # print(profile_id)
                         profiles_collection["ids"][profile_id] = name
                     return profiles_collection
-                    
+
                 else:
                     # print("No profiles found in response")
                     # print("Response structure:",json.dumps(data, indent=2)[:500])
@@ -151,6 +157,8 @@ class Admin1:
         session = requests.Session()
         session.cookies.update(cookies)
 
+        # print(cookies, pageURL, userAgent)
+
         headers = {
             'user-Agent': userAgent,
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
@@ -169,6 +177,8 @@ class Admin1:
             return None
 
         html = response.text
+        with open("g.html", "w") as a:
+            a.write(html)
         params = {}
 
         fb_dtsg_match = re.search(r'"DTSGInitData",\[\],{"token":"([^"]+)"', html)
@@ -199,6 +209,7 @@ class Admin1:
 
         if '__s' not in params:
             script_match = re.search(r'__s":"([^"]+)"', html)
-            if script_match:params['__s'] = script_match.group(1)
+            if script_match:
+                params['__s'] = script_match.group(1)
 
         return params, session.cookies.get_dict()

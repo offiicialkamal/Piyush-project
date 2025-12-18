@@ -241,12 +241,12 @@ class FacebookCommentBot:
             # 'referer': 'https://www.facebook.com/',
             'referer': 'https://www.facebook.com/share/1BWqDnrwJ7/',
             'sec-ch-prefers-color-scheme': 'dark',            
-            'sec-ch-ua': ua_parts["sec_ch_ua"],
-            'sec-ch-ua-full-version-list': sec_ch_ua_full_version_list,
-            'sec-ch-ua-mobile': ua_parts["sec_ch_ua_mobile"],
+            'sec-ch-ua': self.ua_parts["sec_ch_ua"],
+            'sec-ch-ua-full-version-list': self.ua_parts["sec_ch_ua_full_version_list"],
+            'sec-ch-ua-mobile': self.ua_parts["sec_ch_ua_mobile"],
             'sec-ch-ua-model': '""',
-            'sec-ch-ua-platform': ua_parts["sec_ch_ua_platform"],
-            'sec-ch-ua-platform-version': ua_parts["sec_ch_ua_platform_version"],
+            'sec-ch-ua-platform': self.ua_parts["sec_ch_ua_platform"],
+            'sec-ch-ua-platform-version':self.ua_parts["sec_ch_ua_platform_version"],
             'sec-fetch-dest': 'empty',
             'sec-fetch-mode': 'cors',
             'sec-fetch-site': 'same-origin',
@@ -330,8 +330,6 @@ class FacebookCommentBot:
             return False, f"Error: {str(e)}", ""
 
     def post_comment(self, basic_params: Dict, volatile_params: Dict,session_id: str, comment_text: str) -> Tuple[bool, str, Dict]:
-        """Post the actual comment."""
-        print(f"💬 Posting comment: '{comment_text}'")
 
         self.request_counter += 1
 
@@ -343,12 +341,12 @@ class FacebookCommentBot:
             'priority': 'u=1, i',
             'referer': 'https://www.facebook.com/',
             'sec-ch-prefers-color-scheme': 'dark',
-            'sec-ch-ua': ua_parts["sec_ch_ua"],
-            'sec-ch-ua-full-version-list': sec_ch_ua_full_version_list,
-            'sec-ch-ua-mobile': ua_parts["sec_ch_ua_mobile"],
+            'sec-ch-ua': self.ua_parts["sec_ch_ua"],
+            'sec-ch-ua-full-version-list': self.ua_parts["sec_ch_ua_full_version_list"],
+            'sec-ch-ua-mobile': self.ua_parts["sec_ch_ua_mobile"],
             'sec-ch-ua-model': '""',
-            'sec-ch-ua-platform': ua_parts["sec_ch_ua_platform"],
-            'sec-ch-ua-platform-version': ua_parts["sec_ch_ua_platform_version"],
+            'sec-ch-ua-platform': self.ua_parts["sec_ch_ua_platform"],
+            'sec-ch-ua-platform-version': self.ua_parts["sec_ch_ua_platform_version"],
             'sec-fetch-dest': 'empty',
             'sec-fetch-mode': 'cors',
             'sec-fetch-site': 'same-origin',
@@ -479,17 +477,6 @@ class FacebookCommentBot:
             return False, f"Error: {str(e)}", {}
 
     def execute_comment(self, post_url: str, comment_text: str) -> Tuple[bool, str, Dict]:
-        """
-        Main method to execute a complete comment posting workflow.
-
-        Returns:
-            Tuple of (success, message_or_comment_id, full_response)
-        """
-        print("\n" + "="*60)
-        print("🚀 Starting Facebook comment automation")
-        print("="*60)
-
-        # Step 1: Fetch post page and extract basic parameters
         success, error, basic_params = self.fetch_post_page(post_url)
         if not success:
             return False, f"Failed to fetch page: {error}", {}
