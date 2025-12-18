@@ -140,13 +140,13 @@ class comenter:
         number_of_coments = input("Comments Per Account: ")
         if not number_of_coments: return
         try:self.comment_per_acc = int(number_of_coments)
-        except:print("invalid input");set_comment_per_acc(self)
+        except:print("invalid input");self.set_comment_per_acc()
         update_data(HISTORY_FILE, "comment_per_acc", number_of_coments)
     def set_threads_count(self):
         threads_count = input("Enter Speed (1 - 10 recomended): ")
         if not threads_count: return
         try:self.threads_count = int(threads_count)
-        except: print("invalid input");set_threads_count(self)
+        except: print("invalid input");self.set_threads_count()
         update_data(HISTORY_FILE, "threads_count", threads_count)
     def set_comment(self):
         is_enterd= False

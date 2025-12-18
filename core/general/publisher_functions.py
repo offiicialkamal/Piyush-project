@@ -13,7 +13,7 @@ class FacebookCommentBot:
     Dynamically fetches all required parameters for each session.
     """
 
-    def __init__(self, cookie_string, user_agent):
+    def __init__(self, cookie_string, user_agent, i_user = None):
         """
         Initialize the bot with Facebook session cookies.
 
@@ -27,8 +27,7 @@ class FacebookCommentBot:
 
         # User ID from cookies
         self.user_id = self.cookies.get('c_user', '')
-        self.is_page = True
-        self.i_user = None
+        self.i_user = i_user
 
         # Base headers
         self.base_headers = {
@@ -130,14 +129,17 @@ class FacebookCommentBot:
             params['feedback_id'] = self._extract_from_html(html, feedback_patterns)
             if params['feedback_id']:
                 decoded = base64.b64decode(params['feedback_id'].encode("utf-8")).decode("utf-8")
-                params['feedback_id'] = base64.b64encode(f"{decoded if not '_' in decoded else decoded.split('_')[0]}".encode()).decode()
+                currected = decoded if '_' not in decoded else decoded.split('_')[0]
+                print(decoded)
+                print(currected)
+                params['feedback_id'] = base64.b64encode(f"{currected}".encode()).decode()
 
             if not params['feedback_id']:
                 # Try to extract post ID and construct feedback_id
                 post_id_match = re.search(r'post_id["\']:\s*["\'](\d+)', html)
                 if post_id_match:
                     post_id = post_id_match.group(1)
-                    encoded = base64.b64encode(f"feedback:{post_id if not '_' in post_id else post_id.split()[0]}".encode()).decode()
+                    encoded = base64.b64encode(f"feedback:{post_id if '_' not in post_id else post_id.split()[0]}".encode()).decode()
                     params['feedback_id'] = encoded
                 else:
                     return False, "Could not find feedback_id or post_id", params
@@ -374,11 +376,11 @@ class FacebookCommentBot:
         }
 
         current_time = int(time.time() * 1000)
-
+        print("this is hear ",basic_params['feedback_id'],)
         data = {
-            'av': self.user_id if not self.is_page else self.i_user,
+            'av': self.user_id if not self.i_user else self.i_user,
             '__aaid': '0',
-            '__user': self.user_id if not self.is_page else self.i_user,
+            '__user': self.user_id if not self.i_user else self.i_user,
             '__a': '1',
             '__req': hex(self.request_counter)[2:],
             '__hs': '20435.HYP:comet_pkg.2.1...0',
@@ -409,7 +411,7 @@ class FacebookCommentBot:
                 "groupID": None,
                 "input": {
                     "client_mutation_id": str(self.request_counter),
-                    "actor_id": self.user_id if not self.is_page else self.i_user,
+                    "actor_id": self.user_id if not self.i_user else self.i_user,
                     "attachments": None,
                     "feedback_id": basic_params['feedback_id'],
                     "formatting_style": None,

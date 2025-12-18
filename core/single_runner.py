@@ -64,32 +64,43 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
                 self.__tokens = params
                 if self.__options['from_page']:
                     response = self.fetch_pages(params, fresh_cookies, self.__userAgent)
-                    print(response)
+                    if response and response.get('ids'):
+                        ids = response.get('ids')
+                        for id in list(ids.keys()):
+                            self.__all_profiles[id] = ids[id]
+                            
                 if self.__options['from_user']:
-                    self.__all_profiles[self.__cookie['c_user']] = 'Name'
+                    self.__all_profiles[self.__cookie['c_user']] = 'Main_User'
                 
                 print(self.__all_profiles)
                 for user in self.__all_profiles.keys():
-                    # UID = user
-                    self.__cookie["i_user"] = '61585351100418'
+                    is_main_user = True if self.__all_profiles.get(user) == 'Main_User' else False
+                    if not is_main_user:self.__cookie["i_user"] = user
+                    else:self.__cookie.pop('i_user', ' ')
                     cookie = self.__cookie
                     user_agent = self.__userAgent
                     post_link = self.__post_link
                     comment = self.__comment
                     tokens = self.__tokens
                     print(self.__cookie)
+                    print()
+                    print()
+                    print(user)
+                    print()
+                    print()
                     for _ in range(self.__comment_per_acc):
-                        bot = FacebookCommentBot(cookie, user_agent)
-                        success, result, response = bot.execute_comment(post_link, comment)
-                        # now validate 
-                        # print("\n" + "="*60)
-                        if success:
-                            print(f"✅ SUCCESS: Comment ID: {result}")
-                        else:
-                            print(f"❌ FAILED: {result}")
-                            if response:
-                                print(f"Response: {json.dumps(response, indent=2)[:500]}...")
-                        print("="*60)
+                        try:
+                            bot = FacebookCommentBot(cookie, user_agent) if is_main_user else FacebookCommentBot(cookie, user_agent, user)
+                            success, result, response = bot.execute_comment(post_link, comment)
+                            if success:
+                                print(f"✅ SUCCESS: Comment ID: {result}")
+                            else:
+                                print(f"❌ FAILED: {result}")
+                                if response:
+                                    print(f"Response: {json.dumps(response, indent=2)[:500]}...")
+                            print("="*60)
+                        except Exception:
+                            pass
 
 
                 self.__all_profiles[self.__cookie['c_user']] = 'Name'
