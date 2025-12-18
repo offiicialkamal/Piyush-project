@@ -1,46 +1,329 @@
 {
-  "data": {
-    "comment_create": null
-  },
-  "errors": [
-    {
-      "message": "A server error field_exception occured. Check server logs for details.",
-      "severity": "CRITICAL",
-      "mids": [
-        "2d0ea6f39b7bee6dc399af712f5775fd"
+  "__ar": 1,
+  "error": 1357001,
+  "errorSummary": "Log in to continue",
+  "errorDescription": "Please log in to your account.",
+  "isNotCritical": 1,
+  "rid": "AEAz6kDP6XHDI8GGCPquElU",
+  "payload": {
+    "__dialog": {
+      "title": {
+        "__html": "Not logged in"
+      },
+      "body": "Please log in to continue.",
+      "buttons": [
+        "cancel",
+        {
+          "name": "login",
+          "label": "Log in",
+          "href": "https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2F"
+        }
       ],
-      "debug_link": "https://www.meta.com/debug/?mid=2d0ea6f39b7bee6dc399af712f5775fd",
-      "code": 1404078,
-      "api_error_code": 10,
-      "summary": "Your account is restricted",
-      "description": {
-        "__html": "You&#039;re temporarily restricted from commenting until 23 December at 20:55.<br /><br />If you think that this doesn&#039;t go against our Community Standards, <a href=\"https://www.facebook.com/help/contact/571927962827151?additional_content=Aegkx2N-izVRMtH1CCQxIqnowCTLSZH3FO-wP4Jg0FT31aeNsC3ZGYQwAiNth0YF29V0VKtEpj35zL7oy9DSwL1FhqkcNFBdkL2ywTgHbd1ew3FUkAp2tz9J0CWfCyxOa3TzEPxXZ_I1ZG7auqB6jUpeY5nfcbSaitnOMvJ0py063bhIGLxkGYV6_h-lS4fFKrLvxDHKSeBkUgzd9ckmLOHyQDPdVBE_41iLUO-P73CMidUrLJygIGg1rv2DjtBz0zbyXGgXGp9xLkucvApY2psGKvUBC5qIp38L9CNANZwll0Dep8Nk_PYEoG3SLw3Od-iZdUs2M-U2NsrF0GTiGkiuRMKgeLhZX-KgFa4Fvmrw-__SZWfmSCOAjnyfWjpVD18wSL1cFAx65vJ0BYlHWS4jBYsWfmw7s7KtJRWkN8TkA_cOiyGeRbTO9elIHXmhOAM\" target=\"_blank\">let us know</a>."
+      "modal": true,
+      "onloadRegisterSJSP": {
+        "define": [
+          [
+            "cr:310",
+            [
+              "RunWWW"
+            ],
+            {
+              "__rc": [
+                "RunWWW",
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:1126",
+            [
+              "TimeSliceSham"
+            ],
+            {
+              "__rc": [
+                "TimeSliceSham",
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:3725",
+            [
+              "clearTimeoutWWWOrMobile"
+            ],
+            {
+              "__rc": [
+                "clearTimeoutWWWOrMobile",
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:4344",
+            [
+              "setTimeoutWWWOrMobile"
+            ],
+            {
+              "__rc": [
+                "setTimeoutWWWOrMobile",
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:6640",
+            [],
+            {
+              "__rc": [
+                null,
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:7388",
+            [
+              "setIntervalWWW"
+            ],
+            {
+              "__rc": [
+                "setIntervalWWW",
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:8958",
+            [
+              "FBJSON"
+            ],
+            {
+              "__rc": [
+                "FBJSON",
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:5695",
+            [
+              "EventListenerWWW"
+            ],
+            {
+              "__rc": [
+                "EventListenerWWW",
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:925100",
+            [
+              "RunComet"
+            ],
+            {
+              "__rc": [
+                "RunComet",
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:7386",
+            [
+              "clearTimeoutWWW"
+            ],
+            {
+              "__rc": [
+                "clearTimeoutWWW",
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:7390",
+            [
+              "setTimeoutWWW"
+            ],
+            {
+              "__rc": [
+                "setTimeoutWWW",
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:896461",
+            [
+              "setIntervalComet"
+            ],
+            {
+              "__rc": [
+                "setIntervalComet",
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:1353359",
+            [
+              "CometEventListener"
+            ],
+            {
+              "__rc": [
+                "CometEventListener",
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:806696",
+            [
+              "clearTimeoutComet"
+            ],
+            {
+              "__rc": [
+                "clearTimeoutComet",
+                null
+              ]
+            },
+            -1
+          ],
+          [
+            "cr:807042",
+            [
+              "setTimeoutComet"
+            ],
+            {
+              "__rc": [
+                "setTimeoutComet",
+                null
+              ]
+            },
+            -1
+          ]
+        ],
+        "require": [
+          [
+            "LoginDialog",
+            "pollLoginCookies",
+            [],
+            []
+          ],
+          [
+            "ServiceWorkerRegistration",
+            "unregisterControllingWorker",
+            [],
+            []
+          ]
+        ]
       },
-      "description_raw": {
-        "__html": "You&#039;re temporarily restricted from commenting until 23 December at 20:55.<br /><br />If you think that this doesn&#039;t go against our Community Standards, <a href=\"https://www.facebook.com/help/contact/571927962827151?additional_content=Aejl3H29flKeUHyYyGNWJu4bY_BPerVBecdmY_Ns9mLU0NgW9P3ST6cjO47l4ly9azQj9CiUl7kysXAuQS211H1xWRSArQn4mLyZO2zjp6b0Xuul8gg86aBzI8vJ8cIMqY72AX4fiCcYIFfICARYyflBMBtzgbhOH2XopNmzsUNJ5G2UwffXNAkKSpseuX4TZ2OwRVRn3X19vsT4zX2Pv1pajGWX4WyNai3jaCQiKAH98eYeyL21KN8RPQKdWQfcX4ntqxmhtAl-lWRHolmnYLuxUaazftFjq74DRUpbHjafomQfk6vmNmcY2F2_iaWxhXAKyBDbgJ08nqSvfU2WiVZGD4Y_JFMCR_vZbQ5hK74PdjOVtiZCtexmqSemSdjQEkXdvhBW1l4gPI7oYwS0Wv_iGOV3rfKfE55JEFEloNhA5pZaCxKUqLouhdwIFtH45ec\" target=\"_blank\">let us know</a>."
-      },
-      "is_silent": false,
-      "is_transient": false,
-      "is_not_critical": true,
-      "requires_reauth": false,
-      "allow_user_retry": false,
-      "debug_info": null,
-      "query_path": null,
-      "fbtrace_id": "CeU4pX1kdS0",
-      "www_request_id": "Ab9tGIQELgxnK5hyY24A7hA",
-      "sentry_block_user_info": {
-        "sentry_block_data": "AehJZ2GNBBXypf5Yyn5SiY0UgJIajcWTmszs4VLP15nZpNAs7jwnU3jo-hHX1oyocBntylyAZozcNw381FKh_AsQP5baot44U2S7tgiinL9VVINTVwD9eBIRDfex_9ytxvAXuQenSti0bEA58yKoCfljM99rMQbGooypGNZDJ0vTe2K6XHKIVNrwr13m-XsIt-8gL86HhdY6sII0uTngATYUk0p54dpuf_8ELdQ7JU9BfTsD5rGWpgF-0oF6sBdJR8T2JcahHtH9ghZkHM3pecv-gQbjxJZD5V17go3Rdis06R-K7PRfexuAvPEKKw3M_SXx6-SlrSb7AaGt22d7Gd0mcDyAP_2_aWE7kO8-eLJWaispRBmag9Wkkiv7HGZ7FMPpEDx0YlL_Yrq040Vp11mTD1mPsqFmRl82kw8uqs3xbA"
-      },
-      "path": [
-        "comment_create"
-      ]
+      "closeHandlerSJSP": {
+        "require": [
+          [
+            "LoginDialog",
+            "onClose",
+            [],
+            []
+          ]
+        ]
+      }
     }
-  ],
-  "extensions": {
-    "server_metadata": {
-      "request_start_time_ms": 1766074320978,
-      "time_at_flush_ms": 1766074321708
+  },
+  "hsrp": {
+    "hsdp": {
+      "clpData": {
+        "6476": {
+          "r": 1000,
+          "s": 1
+        },
+        "1838142": {
+          "r": 1,
+          "s": 1
+        }
+      },
+      "gkxData": {
+        "20935": {
+          "result": true,
+          "hash": null
+        },
+        "21043": {
+          "result": false,
+          "hash": null
+        }
+      },
+      "justknobxData": {
+        "1276": {
+          "r": true
+        }
+      }
     },
-    "is_final": true
-  }
+    "hblp": {
+      "consistency": {
+        "rev": 1031272454
+      },
+      "rsrcMap": {
+        "vU8bzbs": {
+          "type": "js",
+          "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yj/r/2Wcmy4GvmT0.js",
+          "m": "1031272454_main",
+          "prelude": 1
+        },
+        "WRYPSSj": {
+          "type": "js",
+          "src": "https://static.xx.fbcdn.net/rsrc.php/v4/y1/r/qf1iz4Jf85w.js",
+          "m": "1031272454_main"
+        },
+        "Ha8Qye0": {
+          "type": "js",
+          "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yL/r/lp1wvjqLHyx.js",
+          "m": "1031272454_main"
+        },
+        "VGEq+Xm": {
+          "type": "js",
+          "src": "https://static.xx.fbcdn.net/rsrc.php/v4/y-/r/Oe20q7dgbs_.js",
+          "m": "1031272454_main"
+        },
+        "JGxItgK": {
+          "type": "js",
+          "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yP/r/hdMjbyi1AeM.js",
+          "m": "1031272454_main"
+        },
+        "b4M/W+D": {
+          "type": "js",
+          "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yE/r/od8vdgzH4Wo.js",
+          "m": "1031272454_main"
+        },
+        "NU6AE/V": {
+          "type": "js",
+          "src": "https://static.xx.fbcdn.net/rsrc.php/v4/yd/r/cr8zymt1sGA.js",
+          "m": "1031272454_main"
+        }
+      },
+      "indexUpgrades": {}
+    }
+  },
+  "allResources": [
+    "vU8bzbs",
+    "WRYPSSj",
+    "Ha8Qye0",
+    "VGEq+Xm",
+    "JGxItgK",
+    "b4M/W+D",
+    "NU6AE/V"
+  ],
+  "lid": "7585285392064441106"
 }

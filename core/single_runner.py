@@ -69,7 +69,7 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
 
                 if self.__options['from_user']:self.__all_profiles[self.__cookie['c_user']] = 'Main_User'
 
-                print(self.__all_profiles)
+                # print(self.__all_profiles)
                 for user in self.__all_profiles.keys():
                     is_main_user = True if self.__all_profiles.get(user) == 'Main_User' else False
                     if not is_main_user:self.__cookie["i_user"] = user
@@ -79,26 +79,25 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
                     post_link = self.__post_link
                     comment = self.__comment
                     tokens = self.__tokens
-                    print(self.__cookie)
-                    print()
-                    print()
-                    print(user)
-                    print()
-                    print()
+                    # print(self.__cookie)
+                    # print()
+                    # print()
+                    # print(user)
+                    # print()
+                    # print()
                     for _ in range(self.__comment_per_acc):
-                        try:
-                            bot = FacebookCommentBot(cookie, user_agent, self.__ua_parts) if is_main_user else FacebookCommentBot(cookie, user_agent, self.__ua_parts, i_user=user)
+                        # try:
+                            bot = FacebookCommentBot(cookie, user_agent,self.__ua_parts, post_link) if is_main_user else FacebookCommentBot(cookie, user_agent, self.__ua_parts, post_link,i_user=user)
                             success, result, response = bot.execute_comment(post_link, comment)
                             if success:
                                 print(f"✅ SUCCESS: Comment ID: {result}")
                             else:
                                 print(f"❌ FAILED: {result}")
                                 if response:
-                                    print(
-                                        f"Response: {json.dumps(response, indent=2)[:500]}...")
+                                    print(f"Response: {json.dumps(response, indent=2)[:500]}...")
                             print("="*60)
-                        except Exception as e:
-                            print(e)
+                        # except Exception as e:
+                        #     print("jdfjhd ", e)
 
                 self.__all_profiles[self.__cookie['c_user']] = 'Name'
             else:

@@ -79,10 +79,8 @@ class comenter:
 
     def get_choice(self, subject: str, t=""):
         if not t:
-            choice = input(subject) if (" " in subject) else input(
-                f"Enter Your {subject} : ")
-            if not choice:
-                return
+            choice = input(subject) if (" " in subject) else input(f"Enter Your {subject} : ")
+            if not choice:return
         else:
             try:
                 choice = int(input(subject) if (" " in subject) else input(f"Enter Your {subject} : "))
@@ -149,13 +147,13 @@ class comenter:
         if not number_of_coments: return
         try:self.comment_per_acc = int(number_of_coments)
         except:print("invalid input");self.set_comment_per_acc()
-        update_data(HISTORY_FILE, "comment_per_acc", number_of_coments)
+        update_data(HISTORY_FILE, "comment_per_acc", int(number_of_coments))
     def set_threads_count(self):
         threads_count = input("Enter Speed (1 - 10 recomended): ")
         if not threads_count: return
         try:self.threads_count = int(threads_count)
         except: print("invalid input");self.set_threads_count()
-        update_data(HISTORY_FILE, "threads_count", threads_count)
+        update_data(HISTORY_FILE, "threads_count", int(threads_count))
     def set_comment(self):
         is_enterd= False
         comment = ""
@@ -170,18 +168,18 @@ class comenter:
     def start_thread(self):
         #hear ill handle the threads count system
         total_cookies = len(self.cookies)
-        cookies_batch_size = self.threads_count // total_cookies
+        cookies_batch_size = self.threads_count // total_cookies or 1
+        print(cookies_batch_size)
         
         while True:
             if cookies_batch_size >= len(self.cookies):cookies_batch = [self.cookies.pop() for _ in range(len(self.cookies))]
             else: cookies_batch = [self.cookies.pop() for _ in range(cookies_batch_size)]
             t = batch_runner(cookies_batch, self.post_link, self.comment, self.comment_per_acc, self.options, self.result_container)
             t.start()
-            t.join()  
+            t.join()
+            sys.exit()
             if not self.cookies: break
-            print("round complete")
-            print("hear is the cokie", self.cookies)
-            time.sleep(6)
+            # time.sleep(6)
 
 
 comenter(result_container).start()
