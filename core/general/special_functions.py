@@ -40,7 +40,7 @@ class Admin1:
             'referer': 'https://www.facebook.com/pages/?category=your_page',
             'sec-ch-prefers-color-scheme': 'dark',
             'sec-ch-ua': ua_parts["sec_ch_ua"],
-            'sec-ch-ua-full-version-list': ua_parts[sec_ch_ua_full_version_list],
+            'sec-ch-ua-full-version-list': ua_parts["sec_ch_ua_full_version_list"],
             'sec-ch-ua-mobile': ua_parts["sec_ch_ua_mobile"],
             'sec-ch-ua-model': '""',  # Empty model for now
             'sec-ch-ua-platform': ua_parts["sec_ch_ua_platform"],

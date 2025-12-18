@@ -18,7 +18,7 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
         self.__comment = comment
         self.__comment_per_acc = comment_per_acc
         self.__options = options
-        self.__ua_parts = self.__healper_functions.get_ua_parts(self.self.__userAgent)
+        self.__ua_parts = self.__healper_functions.get_ua_parts(self.__userAgent)
         self.result_container = result_container
         ## class specific variables
         self.__pagesURL = "https://www.facebook.com/pages/?category=your_page"
@@ -54,12 +54,12 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
             ######################################################################################################################
             ######################################################################################################################
         ######## STEP 1
-            params, fresh_cookies = self.extract_params_from_page(self.__cookie, self.__pagesURL, self.__userAgent, self.__ua_parts)
+            params, fresh_cookies = self.extract_params_from_page(self.__cookie, self.__pagesURL, self.__userAgent)
         ######## STEP 2
             if params:
                 self.__tokens = params
                 if self.__options['from_page']:
-                    response = self.fetch_pages(params, fresh_cookies, self.__userAgent)
+                    response = self.fetch_pages(params, fresh_cookies, self.__userAgent, self.__ua_parts)
                     if response and response.get('ids'):
                         ids = response.get('ids')
                         for id in list(ids.keys()):
