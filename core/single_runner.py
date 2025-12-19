@@ -1,5 +1,6 @@
 import re
 import sys
+import base64
 import json
 import threading
 import requests
@@ -90,7 +91,7 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
                             bot = FacebookCommentBot(cookie, user_agent,self.__ua_parts, post_link) if is_main_user else FacebookCommentBot(cookie, user_agent, self.__ua_parts, post_link,i_user=user)
                             success, result, response = bot.execute_comment(post_link, comment)
                             if success:
-                                print(f"✅ SUCCESS: Comment ID: {result}")
+                                print(f"COMMENT DONE UID: {base64.b64decode(result.encode('utf-8')).decode("utf-8")}")
                             else:
                                 print("FAILED: ACCOUNT RESTRICTED")
                                 # if response:
