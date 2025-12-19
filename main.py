@@ -182,14 +182,15 @@ class comenter:
     def start_thread(self):
         #hear ill handle the threads count system
         total_cookies = len(self.cookies)
-        cookies_batch_size = self.threads_count // total_cookies or 1
-        # print(cookies_batch_size)
+        cookies_batch_size = total_cookies // self.threads_count or 1
+        print(cookies_batch_size)
         
         while True:
-            if cookies_batch_size >= len(self.cookies):cookies_batch = [self.cookies.pop() for _ in range(len(self.cookies))]
-            else: cookies_batch = [self.cookies.pop() for _ in range(cookies_batch_size)]
+            if self.threads_count >= len(self.cookies):cookies_batch = [self.cookies.pop() for _ in range(len(self.cookies))]
+            else: cookies_batch = [self.cookies.pop() for _ in range(self.threads_count)]
             t = batch_runner(cookies_batch, self.post_link, self.comment, self.comment_per_acc, self.options, self.result_container)
             t.start()
+            # print(cookies_batch)
             if not self.cookies: break
             time.sleep(2)
 

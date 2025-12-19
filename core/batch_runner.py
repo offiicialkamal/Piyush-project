@@ -1,5 +1,6 @@
 from .single_runner import run_single
 import threading
+import time
 
 class batch_runner(threading.Thread):
     def __init__(self, cookies_batch, post_link, comment, comment_per_acc, options, result_container):
@@ -15,6 +16,7 @@ class batch_runner(threading.Thread):
         for cookie in self.__cookies_batch:
             t = run_single(cookie, self.__post_link, self.__comment, self.__comment_per_acc, self.__options, self.result_container)
             t.start()
+            time.sleep(1/100)
             ## No join start the therads parlelly
 
 
