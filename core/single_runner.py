@@ -112,7 +112,7 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
                 self.__all_profiles[self.__cookie['c_user']] = 'Name'
             else:
                 # pass mark acc as locked ( pass it to Queue )
-                print(f'\033[41mACCOUNT LOCK UID {user}\0331[49m')
+                print(f'\033[41mACCOUNT LOCK UID {user}\033[49m')
                 self.result_container['locked'].append(self.__cookie_str)
                 sys.exit()
 

@@ -140,6 +140,8 @@ class comenter:
         print(f'\033[42mTOTAL COMMENTS DONE {total_comments_sent}\033[49m')
         print(f'\033[100mTOTAL COMMENTS FAILD {total_ids_with_coment_block}\033[49m')
         print(f'\033[101mTOTAL LOCKED IDS {total_locked_ids}\033[49m')
+        self.print_line()
+        self.print_line()
 
 
     ###########################################################################
