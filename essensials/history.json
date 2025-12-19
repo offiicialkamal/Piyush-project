@@ -353,8 +353,8 @@
   ],
   "comment": "\nThis an testing cmt",
   "post_link": "https://www.facebook.com/share/1Efe621hDM/",
-  "comment_per_acc": 2,
-  "threads_count": 1,
+  "comment_per_acc": 1,
+  "threads_count": 35,
   "locked_till_now": [],
   "sucess_till_now": 0
 }
