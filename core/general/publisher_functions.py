@@ -448,8 +448,8 @@ class FacebookCommentBot:
             if response.status_code == 200:
                 try:
                     result = json.loads(response_text)
-                    with open("aa.json", "w") as a:
-                        json.dump(result, a, indent=2)
+                    # with open("aa.json", "w", encoding="utf-8") as a:
+                    #     json.dump(result, a, indent=2)
                     if 'errors' in result:
                         error_msg = result['errors'][0].get(
                             'message', 'Unknown error')
@@ -505,10 +505,10 @@ class FacebookCommentBot:
             basic_params, volatile_params, session_id, comment_text
         )
 
-        if success:
-            print(f"\n🎉 Success! Comment posted with ID: {result}")
-        else:
-            print(f"\n❌ Failed: {result}")
+        # if success:
+        #     print(f"\n🎉 Success! Comment posted with ID: {result}")
+        # else:
+        #     # print(f"\n❌ Failed: {r'Your account is restricted' if  'Your account is restricted' in result else 'checkup needex'}")
 
         return success, result, full_response
 
