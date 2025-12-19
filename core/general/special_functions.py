@@ -156,60 +156,62 @@ class Admin1:
         main_page_url = pageURL
         session = requests.Session()
         session.cookies.update(cookies)
-
-        # print(cookies, pageURL, userAgent)
-
-        headers = {
-            'user-Agent': userAgent,
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,mr;q=0.6',
-            'Sec-Fetch-Dest': 'document',
-            'Sec-Fetch-Mode': 'navigate',
-            'Sec-Fetch-Site': 'same-origin',
-            'Upgrade-Insecure-Requests': '1',
-        }
-
-        # Get the main page
-        response = session.get(main_page_url, headers=headers)
-
-        if response.status_code != 200:
-            # print(f"Failed to fetch page: {response.status_code}")
-            return None
-
-        html = response.text
-        # with open("g.html", "w", encoding="utf-8") as a:
-        #     a.write(html)
-        params = {}
-
-        fb_dtsg_match = re.search(r'"DTSGInitData",\[\],{"token":"([^"]+)"', html)
-        if not fb_dtsg_match:fb_dtsg_match = re.search(r'name="fb_dtsg" value="([^"]+)"', html)
-        if not fb_dtsg_match:fb_dtsg_match = re.search(r'"fb_dtsg":"([^"]+)"', html)
-
-        if fb_dtsg_match:params['fb_dtsg'] = fb_dtsg_match.group(1)
-        # else:print("Warning: Could not find fb_dtsg")
-
-        lsd_match = re.search(r'"LSD",\[\],{"token":"([^"]+)"', html)
-        if not lsd_match:lsd_match = re.search(r'"lsd":"([^"]+)"', html)
-
-        if lsd_match:params['lsd'] = lsd_match.group(1)
-        # else:print("Warning: Could not find lsd")
-
-        # jazoest_match = re.search(r'name="jazoest" value="(\d+)"', html)
-        jazoest_match = re.search(r'jazoest=(\d+)"', html)
-        if not jazoest_match:jazoest_match = re.search(r'"jazoest":"(\d+)"', html)
-
-        if jazoest_match:params['jazoest'] = jazoest_match.group(1)
-        # else:print("Warning: Could not find jazoest")
-
-        hsi_match = re.search(r'"hsi":"(\d+)"', html)
-        if hsi_match:params['__hsi'] = hsi_match.group(1)
-
-        s_match = re.search(r'"site_data":\{"s":"([^"]+)"', html)
-        if s_match:params['__s'] = s_match.group(1)
-
-        if '__s' not in params:
-            script_match = re.search(r'__s":"([^"]+)"', html)
-            if script_match:
-                params['__s'] = script_match.group(1)
-
-        return params, session.cookies.get_dict()
+        try:
+            # print(cookies, pageURL, userAgent)
+    
+            headers = {
+                'user-Agent': userAgent,
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,mr;q=0.6',
+                'Sec-Fetch-Dest': 'document',
+                'Sec-Fetch-Mode': 'navigate',
+                'Sec-Fetch-Site': 'same-origin',
+                'Upgrade-Insecure-Requests': '1',
+            }
+    
+            # Get the main page
+            response = session.get(main_page_url, headers=headers)
+    
+            if response.status_code != 200:
+                # print(f"Failed to fetch page: {response.status_code}")
+                return None
+    
+            html = response.text
+            # with open("g.html", "w", encoding="utf-8") as a:
+            #     a.write(html)
+            params = {}
+    
+            fb_dtsg_match = re.search(r'"DTSGInitData",\[\],{"token":"([^"]+)"', html)
+            if not fb_dtsg_match:fb_dtsg_match = re.search(r'name="fb_dtsg" value="([^"]+)"', html)
+            if not fb_dtsg_match:fb_dtsg_match = re.search(r'"fb_dtsg":"([^"]+)"', html)
+    
+            if fb_dtsg_match:params['fb_dtsg'] = fb_dtsg_match.group(1)
+            # else:print("Warning: Could not find fb_dtsg")
+    
+            lsd_match = re.search(r'"LSD",\[\],{"token":"([^"]+)"', html)
+            if not lsd_match:lsd_match = re.search(r'"lsd":"([^"]+)"', html)
+    
+            if lsd_match:params['lsd'] = lsd_match.group(1)
+            # else:print("Warning: Could not find lsd")
+    
+            # jazoest_match = re.search(r'name="jazoest" value="(\d+)"', html)
+            jazoest_match = re.search(r'jazoest=(\d+)"', html)
+            if not jazoest_match:jazoest_match = re.search(r'"jazoest":"(\d+)"', html)
+    
+            if jazoest_match:params['jazoest'] = jazoest_match.group(1)
+            # else:print("Warning: Could not find jazoest")
+    
+            hsi_match = re.search(r'"hsi":"(\d+)"', html)
+            if hsi_match:params['__hsi'] = hsi_match.group(1)
+    
+            s_match = re.search(r'"site_data":\{"s":"([^"]+)"', html)
+            if s_match:params['__s'] = s_match.group(1)
+    
+            if '__s' not in params:
+                script_match = re.search(r'__s":"([^"]+)"', html)
+                if script_match:
+                    params['__s'] = script_match.group(1)
+    
+            return params, session.cookies.get_dict()
+        except:
+            return None, {}
