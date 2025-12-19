@@ -173,12 +173,12 @@ class Admin1:
         response = session.get(main_page_url, headers=headers)
 
         if response.status_code != 200:
-            print(f"Failed to fetch page: {response.status_code}")
+            # print(f"Failed to fetch page: {response.status_code}")
             return None
 
         html = response.text
-        with open("g.html", "w") as a:
-            a.write(html)
+        # with open("g.html", "w", encoding="utf-8") as a:
+        #     a.write(html)
         params = {}
 
         fb_dtsg_match = re.search(r'"DTSGInitData",\[\],{"token":"([^"]+)"', html)
@@ -186,20 +186,20 @@ class Admin1:
         if not fb_dtsg_match:fb_dtsg_match = re.search(r'"fb_dtsg":"([^"]+)"', html)
 
         if fb_dtsg_match:params['fb_dtsg'] = fb_dtsg_match.group(1)
-        else:print("Warning: Could not find fb_dtsg")
+        # else:print("Warning: Could not find fb_dtsg")
 
         lsd_match = re.search(r'"LSD",\[\],{"token":"([^"]+)"', html)
         if not lsd_match:lsd_match = re.search(r'"lsd":"([^"]+)"', html)
 
         if lsd_match:params['lsd'] = lsd_match.group(1)
-        else:print("Warning: Could not find lsd")
+        # else:print("Warning: Could not find lsd")
 
         # jazoest_match = re.search(r'name="jazoest" value="(\d+)"', html)
         jazoest_match = re.search(r'jazoest=(\d+)"', html)
         if not jazoest_match:jazoest_match = re.search(r'"jazoest":"(\d+)"', html)
 
         if jazoest_match:params['jazoest'] = jazoest_match.group(1)
-        else:print("Warning: Could not find jazoest")
+        # else:print("Warning: Could not find jazoest")
 
         hsi_match = re.search(r'"hsi":"(\d+)"', html)
         if hsi_match:params['__hsi'] = hsi_match.group(1)

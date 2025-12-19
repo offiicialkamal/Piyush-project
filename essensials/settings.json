@@ -4,12 +4,12 @@
     "force": false
   },
   "logo": {
-    "main": "MASTER 160",
+    "main": "SKS",
     "secondary": "UPDATE",
-    "font": "random",
+    "font": "tarty8",
     "color": {
       "delay": 1,
-      "color": "random",
+      "color": "Yellow",
       "random_color_each_line": true
     }
   }

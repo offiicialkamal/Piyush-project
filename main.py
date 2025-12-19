@@ -2,6 +2,7 @@ import os
 import time
 import sys
 import webbrowser as wb
+sys.stdout.reconfigure(encoding="utf-8")
 from customs import show
 from global_constants import COLORS_FILE, SETTINGS_FILE, HISTORY_FILE
 from file_handlers import read_text, update_data, read_json
@@ -30,6 +31,7 @@ class comenter:
         self.comment_per_acc = history["comment_per_acc"]
         self.threads_count = history["threads_count"]
         self.locked_till_now = history["locked_till_now"]
+        self.sucess_till_now = history["sucess_till_now"]
         self.options = {"from_page": True,"from_user": True}
 
     def start(self):
@@ -94,10 +96,22 @@ class comenter:
 
     def print_line(self):
         length = self.logo_length
-        print("<< " + "━" * length + " >>")
+        # print("<< " + "━" * length + " >>")
+        print("━" * length)
     
     def show_history(self):
-        print("HISTORY".center(self.logo_length+6))
+        l = self.logo_length
+        print("\033[104m" + "HISTORY".center(l) + "\033[49m")
+        l+=(-8)
+        l+=(-8)
+        print()
+        print("\tLOADED SPEED               ".ljust(l//2)  + f"{self.threads_count}/Sec\t".rjust(l//2))
+        print("\tCMT PER ACC                ".ljust(l//2)  + f"{self.comment_per_acc}/ACC\t".rjust(l//2))
+        print("\tOVERALL IDs                ".ljust(l//2)  + f"{len(self.cookies)+len(self.locked_till_now)} IDs\t".rjust(l//2))
+        print("\tTOTAL OK IDs               ".ljust(l//2)  + f"{len(self.cookies)} IDs\t".rjust(l//2))
+        # print("\tTOTAL LOCKED IDS           ".ljust(l//2)  + f"{len(self.locked_till_now)} OK ids\t".rjust(l//2))
+        print("\tTOTAL SUCSESS CMT          ".ljust(l//2)  + f"{self.sucess_till_now} CTs\t".rjust(l//2))
+        print("\tTOTAL LOCKED TILL NOW      ".ljust(l//2)  + f"{len(self.locked_till_now)} IDs\t".rjust(l//2))
         self.print_line()
 
 
@@ -127,7 +141,7 @@ class comenter:
         try:
             cookies = []
             new_cookie = read_text(path)
-            print(type(new_cookie))
+            # print(type(new_cookie))
             for cookie in new_cookie.splitlines():
                 user_agent = Generator().generate()
                 cookies.append({cookie: [user_agent]})
@@ -169,17 +183,15 @@ class comenter:
         #hear ill handle the threads count system
         total_cookies = len(self.cookies)
         cookies_batch_size = self.threads_count // total_cookies or 1
-        print(cookies_batch_size)
+        # print(cookies_batch_size)
         
         while True:
             if cookies_batch_size >= len(self.cookies):cookies_batch = [self.cookies.pop() for _ in range(len(self.cookies))]
             else: cookies_batch = [self.cookies.pop() for _ in range(cookies_batch_size)]
             t = batch_runner(cookies_batch, self.post_link, self.comment, self.comment_per_acc, self.options, self.result_container)
             t.start()
-            t.join()
-            sys.exit()
             if not self.cookies: break
-            # time.sleep(6)
+            time.sleep(2)
 
 
 comenter(result_container).start()

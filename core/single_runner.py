@@ -58,7 +58,7 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
             params, fresh_cookies = self.extract_params_from_page(self.__cookie, self.__pagesURL, self.__userAgent)
             # print("this is prameter", params)
         # STEP 2
-            if params:
+            if params and (params.get('fb_dtsg') or params.get('jazoest')):
                 self.__tokens = params
                 if self.__options['from_page']:
                     response = self.fetch_pages(params, fresh_cookies, self.__userAgent, self.__ua_parts)
@@ -92,9 +92,9 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
                             if success:
                                 print(f"✅ SUCCESS: Comment ID: {result}")
                             else:
-                                print(f"❌ FAILED: {result}")
-                                if response:
-                                    print(f"Response: {json.dumps(response, indent=2)[:500]}...")
+                                print("FAILED: ACCOUNT RESTRICTED")
+                                # if response:
+                                #     print(f"Response: {json.dumps(response, indent=2)[:500]}...")
                             print("="*60)
                         # except Exception as e:
                         #     print("jdfjhd ", e)
@@ -102,7 +102,7 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
                 self.__all_profiles[self.__cookie['c_user']] = 'Name'
             else:
                 # pass mark acc as locked ( pass it to Queue )
-                print("Failed to extract parameters MAY BE ACCOUNT IS ALREADY LOCKED")
+                print("❌ FAILED: ACCOUNT LOCKED")
                 sys.exit()
 
         except Exception as e:
