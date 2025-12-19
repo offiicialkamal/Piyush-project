@@ -59,6 +59,7 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
             params, fresh_cookies = self.extract_params_from_page(self.__cookie, self.__pagesURL, self.__userAgent)
             # print("this is prameter", params)
         # STEP 2
+            user = self.__cookie.get('c_user')
             if params and (params.get('fb_dtsg') or params.get('jazoest')):
                 self.__tokens = params
                 if self.__options['from_page']:
@@ -91,9 +92,13 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
                             bot = FacebookCommentBot(cookie, user_agent,self.__ua_parts, post_link) if is_main_user else FacebookCommentBot(cookie, user_agent, self.__ua_parts, post_link,i_user=user)
                             success, result, response = bot.execute_comment(post_link, comment)
                             if success:
-                                print(f"COMMENT DONE LINK: {base64.b64decode(result.encode('utf-8')).decode("utf-8")}")
+                                # print(f"COMMENT DONE LINK: {base64.b64decode(result.encode('utf-8')).decode("utf-8")}")
+                                # print(f'COMMENT DONE UID {user}') if is_main_user else print(f"COMMENT DONE PAGE {user}")
+                                print(f'\033[42mCOMMENT DONE {"UID" if is_main_user else "PAGE"} {user}\033[49m')
                             else:
-                                print(f"FAILED: COMMENTS BLOCKED : {user}")
+                                # print(f"FAILED: COMMENTS BLOCKED : {user}")
+                                # print(f'COMMENT BLOCKED UID {user}') if is_main_user else print(f"COMMENT BLOCKED PAGE {user}")
+                                print(f'\033[101mCOMMENT BLOCKED {"UID" if is_main_user else "PAGE"} {user}\033[49m')
                                 break
                                 # if response:
                                 #     print(f"Response: {json.dumps(response, indent=2)[:500]}...")
@@ -104,7 +109,7 @@ class run_single(threading.Thread, generalFunctions, Admin1, FacebookCommentBot)
                 self.__all_profiles[self.__cookie['c_user']] = 'Name'
             else:
                 # pass mark acc as locked ( pass it to Queue )
-                print("❌ FAILED: ACCOUNT LOCKED")
+                print(f'\033[41mACCOUNT LOCK UID {user}\0331[49m')
                 sys.exit()
 
         except Exception as e:

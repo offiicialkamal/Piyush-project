@@ -183,8 +183,8 @@ class comenter:
         #hear ill handle the threads count system
         total_cookies = len(self.cookies)
         cookies_batch_size = total_cookies // self.threads_count or 1
-        print(cookies_batch_size)
-        
+        # print(cookies_batch_size)
+        print('\033[1m')
         while True:
             if self.threads_count >= len(self.cookies):cookies_batch = [self.cookies.pop() for _ in range(len(self.cookies))]
             else: cookies_batch = [self.cookies.pop() for _ in range(self.threads_count)]
