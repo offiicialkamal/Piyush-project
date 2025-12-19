@@ -213,7 +213,7 @@ class comenter:
         
         self.show_results()
         self.cookies = self.reserve_cookies
-        input("HIT ENTER BOSS IM READY FOR NEXT ROUND")
+        input("PRESS ENTER TO RESTART OR ANY-KEY AND ENTER TO REMOVE LOCKED")
         # comenter(self.result_container, self.ALL_THEADS).start()
         self.start()
 
