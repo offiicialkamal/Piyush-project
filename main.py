@@ -36,7 +36,7 @@ class comenter:
 
     def start(self):
         # S(REQUITRTEMENTS_FILE).check()
-        # updates().check()
+        updates().check()
         self.clear()
         self.logo_length = L(COLORS_FILE, SETTINGS_FILE).print_logo()
         self.show_history()

@@ -319,7 +319,7 @@ class FacebookCommentBot:
                     if 'errors' in result:
                         return False, f"Typing error: {result['errors'][0].get('message', 'Unknown')}", ""
 
-                    print("✅ Typing indicator sent")
+                    # print("✅ Typing indicator sent")
                     return True, "", session_id
 
                 except json.JSONDecodeError:

@@ -4,13 +4,13 @@
     "force": false
   },
   "logo": {
-    "main": "SKS",
+    "main": "SCH",
     "secondary": "UPDATE",
-    "font": "tarty8",
+    "font": "slant",
     "color": {
       "delay": 1,
-      "color": "Yellow",
-      "random_color_each_line": true
+      "color": "random",
+      "random_color_each_line": false
     }
   }
 }
