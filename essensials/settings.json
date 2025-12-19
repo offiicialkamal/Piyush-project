@@ -6,7 +6,7 @@
   "logo": {
     "main": "SAMRAJYA",
     "secondary": "UPDATE",
-    "font": "tarty9",
+    "font": "roman",
     "color": {
       "delay": 1,
       "color": "random",

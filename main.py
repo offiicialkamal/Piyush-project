@@ -1,5 +1,6 @@
 import os
 import time
+import copy
 import sys
 import webbrowser as wb
 sys.stdout.reconfigure(encoding="utf-8")
@@ -11,18 +12,18 @@ from security import security as S
 from updater import updates
 from core import batch_runner
 # from queue import Queue
-
+ALL_THEADS = []
 history = read_json(HISTORY_FILE)
 # result_container = Queue() # list like structure and by default its thread safe and provides put, get like mutable methods 
 result_container = {
-    "success":{},   # id_no: name, .....
-    "faliure":{},   # id_no: name, .....
+    "success":[],   # id_no: name, .....
+    "faliure":[],   # id_no: name, .....
     "locked":[]     # "cookie", "cookie"....
 }
 
 time.sleep(2)
 class comenter:
-    def __init__(self, result_container):
+    def __init__(self, result_container, ALL_THEADS):
         self.result_container = result_container
         self.logo_length = None
         self.cookies = history["cookies"]
@@ -33,10 +34,12 @@ class comenter:
         self.locked_till_now = history["locked_till_now"]
         self.sucess_till_now = history["sucess_till_now"]
         self.options = {"from_page": True,"from_user": True}
+        self.ALL_THEADS = ALL_THEADS
+        self.reserve_cookies = []
 
     def start(self):
         # S(REQUITRTEMENTS_FILE).check()
-        updates().check()
+        # updates().check()
         self.clear()
         self.logo_length = L(COLORS_FILE, SETTINGS_FILE).print_logo()
         self.show_history()
@@ -113,8 +116,7 @@ class comenter:
         print("\tTOTAL SUCSESS CMT          ".ljust(l//2)  + f"{self.sucess_till_now} CTs\t".rjust(l//2))
         print("\tTOTAL LOCKED TILL NOW      ".ljust(l//2)  + f"{len(self.locked_till_now)} IDs\t".rjust(l//2))
         self.print_line()
-
-
+        
     def show_options(self):
         try:
             print("   01 FROM PAGE")
@@ -129,7 +131,15 @@ class comenter:
             print("Unexpected Input Please choose one of the given option",  e)
             time.sleep(3)
             self.start()
-
+    def show_results(self):
+        self.print_line()
+        self.print_line()
+        total_locked_ids = len(self.result_container['locked'])
+        total_ids_with_coment_block = len(self.result_container['faliure'])
+        total_comments_sent = len(self.result_container['success'])
+        print(f'\033[42mTOTAL COMMENTS DONE {total_comments_sent}\033[49m')
+        print(f'\033[100mTOTAL COMMENTS FAILD {total_ids_with_coment_block}\033[49m')
+        print(f'\033[101mTOTAL LOCKED IDS {total_locked_ids}\033[49m')
 
 
     ###########################################################################
@@ -185,14 +195,25 @@ class comenter:
         cookies_batch_size = total_cookies // self.threads_count or 1
         # print(cookies_batch_size)
         print('\033[1m')
+        self.reserve_cookies = copy.deepcopy(self.cookies)
         while True:
             if self.threads_count >= len(self.cookies):cookies_batch = [self.cookies.pop() for _ in range(len(self.cookies))]
             else: cookies_batch = [self.cookies.pop() for _ in range(self.threads_count)]
-            t = batch_runner(cookies_batch, self.post_link, self.comment, self.comment_per_acc, self.options, self.result_container)
+            t = batch_runner(cookies_batch, self.post_link, self.comment, self.comment_per_acc, self.options, self.result_container, self.ALL_THEADS)
             t.start()
+            self.ALL_THEADS.append(t)
             # print(cookies_batch)
             if not self.cookies: break
-            time.sleep(2)
+            time.sleep(1)
+        
+        for th in self.ALL_THEADS:
+            if th.is_alive():th.join()
+        
+        self.show_results()
+        self.cookies = self.reserve_cookies
+        input("HIT ENTER BOSS IM READY FOR NEXT ROUND")
+        # comenter(self.result_container, self.ALL_THEADS).start()
+        self.start()
 
 
-comenter(result_container).start()
+comenter(result_container, ALL_THEADS).start()
