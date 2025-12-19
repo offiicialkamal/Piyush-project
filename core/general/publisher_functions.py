@@ -299,37 +299,37 @@ class FacebookCommentBot:
             }),
             'doc_id': '9815271091886179',
         }
+        return True, "", session_id
+        # try:
+        #     response = self.session.post(
+        #         'https://www.facebook.com/api/graphql/',
+        #         headers=headers,
+        #         data=data,
+        #         timeout=15
+        #     )
 
-        try:
-            response = self.session.post(
-                'https://www.facebook.com/api/graphql/',
-                headers=headers,
-                data=data,
-                timeout=15
-            )
+        #     if response.status_code == 200:
+        #         # Remove "for (;;);" prefix
+        #         response_text = response.text
+        #         if response_text.startswith("for (;;);"):
+        #             response_text = response_text[9:]
 
-            if response.status_code == 200:
-                # Remove "for (;;);" prefix
-                response_text = response.text
-                if response_text.startswith("for (;;);"):
-                    response_text = response_text[9:]
+        #         try:
+        #             result = json.loads(response_text)
+        #             if 'errors' in result:
+        #                 return False, f"Typing error: {result['errors'][0].get('message', 'Unknown')}", ""
 
-                try:
-                    result = json.loads(response_text)
-                    if 'errors' in result:
-                        return False, f"Typing error: {result['errors'][0].get('message', 'Unknown')}", ""
+        #             # print("✅ Typing indicator sent")
+        #             return True, "", session_id
 
-                    # print("✅ Typing indicator sent")
-                    return True, "", session_id
+        #         except json.JSONDecodeError:
+        #             return True, "", session_id  # Still consider it successful for session_id
 
-                except json.JSONDecodeError:
-                    return True, "", session_id  # Still consider it successful for session_id
+        #     else:
+        #         return False, f"HTTP {response.status_code}", ""
 
-            else:
-                return False, f"HTTP {response.status_code}", ""
-
-        except Exception as e:
-            return False, f"Error: {str(e)}", ""
+        # except Exception as e:
+        #     return False, f"Error: {str(e)}", ""
 
     def post_comment(self, basic_params: Dict, volatile_params: Dict,session_id: str, comment_text: str) -> Tuple[bool, str, Dict]:
 
@@ -484,8 +484,7 @@ class FacebookCommentBot:
             return False, f"Failed to fetch page: {error}", {}
 
         # Step 2: Get volatile parameters
-        success, error, volatile_params = self.get_volatile_parameters(
-            basic_params)
+        success, error, volatile_params = self.get_volatile_parameters(basic_params)
         if not success:
             # print(f"⚠ Warning: Using fallback volatile params: {error}")
             # Use fallback volatile params

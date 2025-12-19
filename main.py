@@ -207,7 +207,7 @@ class comenter:
             # print(cookies_batch)
             if not self.cookies: break
             time.sleep(1)
-        
+
         for th in self.ALL_THEADS:
             if th.is_alive():th.join()
         
