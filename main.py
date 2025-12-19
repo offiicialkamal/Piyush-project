@@ -216,7 +216,7 @@ class comenter:
         print("PRESS - ")
         print("       ENTER TO RESTART")
         print("       Y, ENTER TO REMOVE LOCKED & RESTART")
-        Print("       S, ENTER TO SAVE THE DATA & RESTART")
+        print("       S, ENTER TO SAVE THE DATA & RESTART")
         c = input("WAITING FOR YOUR ORDER BOSS : ")
         # comenter(self.result_container, self.ALL_THEADS).start()
         self.start()
