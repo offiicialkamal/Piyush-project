@@ -213,7 +213,11 @@ class comenter:
         
         self.show_results()
         self.cookies = self.reserve_cookies
-        input("PRESS ENTER TO RESTART OR ANY-KEY AND ENTER TO REMOVE LOCKED")
+        print("PRESS - ")
+        print("       ENTER TO RESTART")
+        print("       Y, ENTER TO REMOVE LOCKED & RESTART")
+        Print("       S, ENTER TO SAVE THE DATA & RESTART")
+        c = input("WAITING FOR YOUR ORDER BOSS : ")
         # comenter(self.result_container, self.ALL_THEADS).start()
         self.start()
 
